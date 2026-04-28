@@ -48,17 +48,16 @@ In the previous company, setup the DevOPs department.
     <td><img src="https://graylog.org/favicon.ico" width="64" height="64" /></td>
     <td><img src="https://nutanix.com/favicon.ico" width="64" height="64" /></td>
   <tr>
+    <td><img src="https://vmware.com/vm-favicon-48x48.png" width="64" height="64" /></td>
+    <td><img src="https://fluentbit.io/images/logo.svg" width="64" height="64" /></td>
+    <td><img src="https://kafka.apache.org/logos/kafka_logo--simple.png" width="64" height="64" /></td>
+    <td><img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/aws-color.png" width="64" height="64" /></td>
+    <td><img src="https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico" width="64" height="64" /></td>
     <td><img src="https://elastic.co/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://nginx.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://tomcat.apache.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://vmware.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://ansible.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://fluentbit.io/favicon.ico" width="64" height="64" /></td>
   </tr>
   <tr>
-    <td><img src="https://kafka.apache.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://aws.amazon.com/tw/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://cn.aliyun.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://nginx.org/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://tomcat.apache.org/favicon.ico" width="64" height="64" /></td>
   </tr>
 </table>
 
