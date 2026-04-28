@@ -4,7 +4,9 @@
 
 🔭 👯 💬 
 I have Linux experience for more than 18 years since I was a student.
+
 Likes to study the technical tools and then use it at working.
+
 In the previous company, setup the DevOPs department.
 
 - 🌱 I’m currently learning **ai**
@@ -16,19 +18,28 @@ In the previous company, setup the DevOPs department.
 ---
 
 ### 🛠 Tech Stack
-![k8s](https://kubernetes.io/)
-![Python](https://shields.io)
-![openclaw](https://openclaw.ai/)
 
-![gentoo](https://www.gentoo.org/)
-![redhat](https://www.redhat.com/)
-![freebsd](https://www.freebsd.org/)
+![geminicli](https://geminicli.com/favicon.ico)
+![openclaw](https://openclaw.ai/favicon.ico)
 
-![cisco](https://www.cisco.com/)
+![k8s](https://kubernetes.io/favicon.ico)
+![terraform](https://developer.hashicorp.com/favicon.ico)
+![Python](https://www.python.org/favicon.ico)
+
+![bitrise](https://bitrise.io/favicon.ico)
+![jenkins](https://www.jenkins.io/favicon.ico)
+
+![gentoo](https://www.gentoo.org/favicon.ico)
+![redhat](https://www.redhat.com/favicon.ico)
+![freebsd](https://www.freebsd.org/favicon.ico)
+
+![cisco](https://www.cisco.com/favicon.ico)
 
 ---
 ### 📫 Connect with me
+
 [![LinkedIn](https://shields.io)](https://linkedin.com)
+
 [![Cake](https://shields.io)](https://www.cake.me)
 
 
