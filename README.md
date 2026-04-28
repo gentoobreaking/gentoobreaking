@@ -20,9 +20,9 @@ In the previous company, setup the DevOPs department.
 ### 🛠 Tech Stack
 
 ![geminicli](https://geminicli.com/favicon.ico)
-![openclaw](https://openclaw.ai/favicon.ico)
+![openclaw](https://openclaw.ai/favicon.svg)
 
-![k8s](https://kubernetes.io/favicon.ico)
+![k8s](https://cdn.brandfetch.io/idJMXjfNh8/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B)
 ![terraform](https://developer.hashicorp.com/favicon.ico)
 ![Python](https://www.python.org/favicon.ico)
 
