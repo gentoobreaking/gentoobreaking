@@ -54,10 +54,6 @@ In the previous company, setup the DevOPs department.
   <td><img src="https://nginx.org/favicon.ico" width="64" height="64" /></td>
     <td><img src="https://ansible.com/favicon.ico" width="64" height="64" /></td>
     <td><img src="https://nutanix.com/favicon.ico" width="64" height="64" /></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
   </tr>
 </table>
 
