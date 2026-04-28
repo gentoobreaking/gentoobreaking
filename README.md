@@ -19,27 +19,63 @@ In the previous company, setup the DevOPs department.
 
 ### 🛠 Tech Stack
 
-![geminicli](https://geminicli.com/favicon.ico)
-![openclaw](https://openclaw.ai/favicon.svg)
-
-![k8s](https://cdn.brandfetch.io/idJMXjfNh8/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B)
-![terraform](https://developer.hashicorp.com/favicon.ico)
-![Python](https://www.python.org/favicon.ico)
-
-![bitrise](https://bitrise.io/favicon.ico)
-![jenkins](https://www.jenkins.io/favicon.ico)
-
-![gentoo](https://www.gentoo.org/favicon.ico)
-![redhat](https://www.redhat.com/favicon.ico)
-![freebsd](https://www.freebsd.org/favicon.ico)
-
-![cisco](https://www.cisco.com/favicon.ico)
+<table>
+  <tr>
+    <td><img src="https://geminicli.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://openclaw.ai/favicon.svg" width="64" height="64" /></td>
+    <td><img src="https://cdn.brandfetch.io/idJMXjfNh8/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B" width="64" height="64" /></td>
+    <td><img src="https://developer.hashicorp.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://www.python.org/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://bitrise.io/favicon.ico" width="64" height="64" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://www.jenkins.io/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://www.gentoo.org/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://www.redhat.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://www.freebsd.org/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://www.cisco.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://vectorlogo.zone/favicon.ico" width="80" height="80" /></td>
+  </tr>
+    <td><img src="https://grafana.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://zabbix.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://docker.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://podman.io/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://graylog.org/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://fluentbit.io/favicon.ico" width="64" height="64" /></td>
+  <tr>
+    <td><img src="https://elastic.co/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://apache.org/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://awsstatic.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://alicdn.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://vmware.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://apache.org/favicon.ico" width="64" height="64" /></td>
+  </tr>
+  <tr>
+  <td><img src="https://nginx.org/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://ansible.com/favicon.ico" width="64" height="64" /></td>
+    <td><img src="https://nutanix.com/favicon.ico" width="64" height="64" /></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 ---
 ### 📫 Connect with me
 
-[![LinkedIn](https://shields.io)](https://linkedin.com)
-
-[![Cake](https://shields.io)](https://www.cake.me)
-
+<table>
+  <tr>
+    <td>
+      <a href="https://linkedin.com">
+        <img src="https://www.linkedin.com/favicon.ico" width="64" height="64" />
+      </a>
+    </td>
+    <td>
+      <a href="https://www.cake.me">
+        <img src="https://www.cake.me/favicon.ico" width="64" height="64" />
+      </a>
+    </td>
+  </tr>
+</table>
 
