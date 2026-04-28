@@ -67,12 +67,12 @@ In the previous company, setup the DevOPs department.
 <table>
   <tr>
     <td>
-      <a href="https://linkedin.com">
+      <a href="https://www.linkedin.com/in/yuhao-c-b851015a/">
         <img src="https://www.linkedin.com/favicon.ico" width="64" height="64" />
       </a>
     </td>
     <td>
-      <a href="https://www.cake.me">
+      <a href="https://www.cake.me/me/chen-david-eb92ff">
         <img src="https://www.cake.me/favicon.ico" width="64" height="64" />
       </a>
     </td>
