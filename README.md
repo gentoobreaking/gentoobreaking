@@ -19,6 +19,13 @@ In the previous company, setup the DevOPs department.
   Click here to visit my openclaw lab
 </a>
 
+
+- 🔭
+
+<a href="https://openclawchen8-lgtm.github.io/mindnav-codeagent/">
+Click here to visit mindnav-codeagent
+</a>
+
 - 👯
 
 ---
