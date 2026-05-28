@@ -13,18 +13,15 @@ In the previous company, setup the DevOPs department.
 - 📫 How to reach me: **[LinkedIn/Cake]**
 - ⚡ Fun fact: **nothing**
 
-- 🔭
-<a href="https://github.com/openclawchen8-lgtm">
-  <img src="https://openclaw.ai/favicon.svg" alt="My openclaw lab" width="64" height="64">
-  Click here to visit my openclaw lab
-</a>
+- 🔭 <a href="https://github.com/openclawchen8-lgtm">
+     <img src="https://openclaw.ai/favicon.svg" alt="My openclaw lab" width="64" height="64">
+     Click here to visit my openclaw lab
+     </a>
 
 
-- 🔭
-
-<a href="https://openclawchen8-lgtm.github.io/mindnav-codeagent/">
-Click here to visit mindnav-codeagent
-</a>
+- 🔭 <a href="https://openclawchen8-lgtm.github.io/mindnav-codeagent/">
+     Click here to visit mindnav-codeagent
+     </a>
 
 - 👯
 
