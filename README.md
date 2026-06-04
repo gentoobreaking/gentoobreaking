@@ -1,85 +1,89 @@
-# Hi there, I'm David! 👋
+<h1 align="center">Hi, I'm David 👋</h1>
 
-### 👨‍💻 Senior DevOps/SRE/Network Engineer
+<p align="center">
+  <b>Senior DevOps / SRE / Network Engineer</b><br/>
+  <sub>🐧 18+ years Linux &nbsp;·&nbsp; 🤖 Currently learning AI &nbsp;·&nbsp; 📍 Taipei, Taiwan</sub>
+</p>
 
-- 💬 
-I have Linux experience for more than 18 years since I was a student.
-
-Likes to study the technical tools and then use it at working.
-
-In the previous company, setup the DevOPs department.
-
-- 🌱 I’m currently learning **ai**
-- 📫 How to reach me: **[LinkedIn/Cake]**
-- ⚡ Fun fact: **nothing**
-
-- 🔭 <a href="https://github.com/openclawchen8-lgtm">
-     <img src="https://openclaw.ai/favicon.svg" alt="My openclaw lab" width="64" height="64">
-     Click here to visit my openclaw lab
-     </a>
-
-
-- 🔭 <a href="https://openclawchen8-lgtm.github.io/mindnav-codeagent/">
-     Click here to visit mindnav-codeagent
-     </a>
-
-- 👯
+<p align="center">
+  <a href="https://www.linkedin.com/in/yuhao-c-b851015a/">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://www.cake.me/me/chen-david-eb92ff">
+    <img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" />
+  </a>
+  <a href="https://github.com/openclawchen8-lgtm">
+    <img src="https://img.shields.io/badge/OpenClaw%20Lab-181717?style=flat&logo=github&logoColor=white" />
+  </a>
+</p>
 
 ---
 
-### 🛠 Tech Stack
+## 👨‍💻 About Me
 
-<table>
-  <tr>
-    <td><img src="https://geminicli.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://openclaw.ai/favicon.svg" width="64" height="64" /></td>
-    <td><img src="https://cdn.brandfetch.io/idJMXjfNh8/w/400/h/400/theme/dark/icon.png?c=1dxbfHSJFAPEGdCLU4o5B" width="64" height="64" /></td>    <td><img src="https://developer.hashicorp.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://www.python.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://bitrise.io/favicon.ico" width="64" height="64" /></td>
-  </tr>
-  <tr>
-    <td><img src="https://www.jenkins.io/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://www.gentoo.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://www.debian.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://www.redhat.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://www.freebsd.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://www.cisco.com/favicon.ico" width="64" height="64" /></td>
-  </tr>
-    <td><img src="https://grafana.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://zabbix.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://docker.com/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://podman.io/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://graylog.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://nutanix.com/favicon.ico" width="64" height="64" /></td>
-  <tr>
-    <td><img src="https://vmware.com/vm-favicon-48x48.png" width="64" height="64" /></td>
-    <td><img src="https://fluentbit.io/images/logo.svg" width="64" height="64" /></td>
-    <td><img src="https://kafka.apache.org/logos/kafka_logo--simple.png" width="64" height="64" /></td>
-    <td><img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/aws-color.png" width="64" height="64" /></td>
-    <td><img src="https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico" width="64" height="64" /></td>
-    <td><img src="https://elastic.co/favicon.ico" width="64" height="64" /></td>
-  </tr>
-  <tr>
-    <td><img src="https://nginx.org/favicon.ico" width="64" height="64" /></td>
-    <td><img src="https://tomcat.apache.org/favicon.ico" width="64" height="64" /></td>
-  </tr>
-</table>
+- 🐧 Linux user since university — **18+ years** of hands-on experience
+- 🏗️ Built and led the **DevOps department** at a previous company from scratch
+- 🔬 Prefer to **study tools deeply** before applying them in production
+- 🌱 Currently exploring **AI** and integrating it into my workflow
 
 ---
-### 📫 Connect with me
 
-<table>
-  <tr>
-    <td>
-      <a href="https://www.linkedin.com/in/yuhao-c-b851015a/">
-        <img src="https://www.linkedin.com/favicon.ico" width="64" height="64" />
-      </a>
-    </td>
-    <td>
-      <a href="https://www.cake.me/me/chen-david-eb92ff">
-        <img src="https://www.cake.me/favicon.ico" width="64" height="64" />
-      </a>
-    </td>
-  </tr>
-</table>
+## 🚀 Projects
 
+| Project | Description |
+|---|---|
+| 🔬 [OpenClaw Lab](https://github.com/openclawchen8-lgtm) | Personal lab for experiments & tooling |
+| 🤖 [MindNav CodeAgent](https://openclawchen8-lgtm.github.io/mindnav-codeagent/) | AI-powered code navigation agent |
+| 📈 [台股 + ETF 自動選股系統](https://github.com/openclawchen8-lgtm/tw-quant-selector/) | Automated Taiwan stock & ETF selector |
+
+---
+
+## 🛠 Tech Stack
+
+**☁️ Cloud & Infra**
+
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
+![Alibaba Cloud](https://img.shields.io/badge/Alibaba%20Cloud-FF6A00?style=flat&logo=alibabacloud&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white)
+![VMware](https://img.shields.io/badge/VMware-607078?style=flat&logo=vmware&logoColor=white)
+![Nutanix](https://img.shields.io/badge/Nutanix-024DA1?style=flat&logo=nutanix&logoColor=white)
+
+**🐳 Container & CI/CD**
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![Podman](https://img.shields.io/badge/Podman-892CA0?style=flat&logo=podman&logoColor=white)
+![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white)
+![Bitrise](https://img.shields.io/badge/Bitrise-683D87?style=flat&logo=bitrise&logoColor=white)
+
+**📊 Observability**
+
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white)
+![Zabbix](https://img.shields.io/badge/Zabbix-CC0000?style=flat&logo=zabbix&logoColor=white)
+![Elasticsearch](https://img.shields.io/badge/Elasticsearch-005571?style=flat&logo=elasticsearch&logoColor=white)
+![Graylog](https://img.shields.io/badge/Graylog-FF3633?style=flat&logo=graylog&logoColor=white)
+
+**🔀 Data & Messaging**
+
+![Kafka](https://img.shields.io/badge/Kafka-231F20?style=flat&logo=apachekafka&logoColor=white)
+![Fluent Bit](https://img.shields.io/badge/Fluent%20Bit-49BDA5?style=flat&logo=fluentbit&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white)
+![Tomcat](https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=black)
+
+**🐧 OS & Networking**
+
+![Gentoo](https://img.shields.io/badge/Gentoo-54487A?style=flat&logo=gentoo&logoColor=white)
+![Debian](https://img.shields.io/badge/Debian-A81D33?style=flat&logo=debian&logoColor=white)
+![Red Hat](https://img.shields.io/badge/Red%20Hat-EE0000?style=flat&logo=redhat&logoColor=white)
+![FreeBSD](https://img.shields.io/badge/FreeBSD-AB2B28?style=flat&logo=freebsd&logoColor=white)
+![Cisco](https://img.shields.io/badge/Cisco-1BA0D7?style=flat&logo=cisco&logoColor=white)
+
+**💻 Languages & Tools**
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnubash&logoColor=white)
+
+---
+
+<p align="center">
+  <sub>⚡ Fun fact: nothing</sub>
+</p>

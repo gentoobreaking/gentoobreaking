@@ -1,0 +1,357 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;500;700;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.profile-root {
+  font-family: 'Syne', sans-serif;
+  padding: 2rem 1.5rem;
+  max-width: 680px;
+}
+
+.header-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1D9E75, #0F6E56);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #E1F5EE;
+  flex-shrink: 0;
+  border: 2px solid var(--color-border-secondary);
+}
+
+.header-info { flex: 1; }
+
+.name {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.title-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 4px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+.dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; display: inline-block; }
+
+.stat-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.stat {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stat strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.divider {
+  height: 0.5px;
+  background: var(--color-border-tertiary);
+  margin: 1.5rem 0;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.bio-item {
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: 10px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.bio-icon {
+  font-size: 16px;
+  color: #1D9E75;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.bio-text {
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.bio-text em {
+  font-style: normal;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.tech-pill {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-weight: 500;
+  transition: border-color 0.15s, color 0.15s;
+  cursor: default;
+}
+
+.tech-pill:hover {
+  border-color: #1D9E75;
+  color: var(--color-text-primary);
+}
+
+.tech-pill.highlight {
+  background: #E1F5EE;
+  border-color: #9FE1CB;
+  color: #0F6E56;
+}
+
+.links-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-family: 'Syne', sans-serif;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.link-btn:hover {
+  border-color: #1D9E75;
+  background: var(--color-background-secondary);
+}
+
+.link-btn i { font-size: 15px; color: #1D9E75; }
+
+.learning-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #E1F5EE;
+  border: 0.5px solid #9FE1CB;
+  border-radius: 99px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: #0F6E56;
+  font-weight: 500;
+}
+
+.pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1D9E75;
+  display: inline-block;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.exp-bar {
+  margin-bottom: 1.5rem;
+}
+
+.exp-track {
+  height: 3px;
+  background: var(--color-border-tertiary);
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.exp-fill {
+  height: 100%;
+  background: #1D9E75;
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+</style>
+
+<h2 class="sr-only">David Chen — Senior DevOps/SRE/Network Engineer profile</h2>
+
+<div class="profile-root">
+
+  <div class="header-section">
+    <div class="avatar">DC</div>
+    <div class="header-info">
+      <div class="name">David Chen</div>
+      <div class="title-badge">
+        <span class="dot"></span>
+        Senior DevOps / SRE / Network Engineer
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span class="learning-tag"><span class="pulse"></span> currently learning AI</span>
+        <span class="stat">18+ yrs Linux</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">About</div>
+  <div class="bio-grid">
+    <div class="bio-item">
+      <i class="ti ti-server bio-icon" aria-hidden="true"></i>
+      <div class="bio-text"><em>Background</em>18+ years Linux experience since university</div>
+    </div>
+    <div class="bio-item">
+      <i class="ti ti-building-factory bio-icon" aria-hidden="true"></i>
+      <div class="bio-text"><em>Previous role</em>Founded & built DevOps dept from scratch</div>
+    </div>
+    <div class="bio-item">
+      <i class="ti ti-brain bio-icon" aria-hidden="true"></i>
+      <div class="bio-text"><em>Approach</em>Study tools deeply, then apply them at work</div>
+    </div>
+    <div class="bio-item">
+      <i class="ti ti-map-pin bio-icon" aria-hidden="true"></i>
+      <div class="bio-text"><em>Location</em>Taipei, Taiwan</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Tech stack</div>
+  <div class="tech-grid" id="tech-grid"></div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">Projects & Links</div>
+  <div class="links-row">
+    <a href="https://github.com/openclawchen8-lgtm" class="link-btn">
+      <i class="ti ti-brand-github" aria-hidden="true"></i> OpenClaw Lab
+    </a>
+    <a href="https://openclawchen8-lgtm.github.io/mindnav-codeagent/" class="link-btn">
+      <i class="ti ti-robot" aria-hidden="true"></i> MindNav CodeAgent
+    </a>
+    <a href="https://github.com/openclawchen8-lgtm/tw-quant-selector/" class="link-btn">
+      <i class="ti ti-chart-candlestick" aria-hidden="true"></i> 台股選股系統
+    </a>
+    <a href="https://www.linkedin.com/in/yuhao-c-b851015a/" class="link-btn">
+      <i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn
+    </a>
+    <a href="https://www.cake.me/me/chen-david-eb92ff" class="link-btn">
+      <i class="ti ti-id-badge" aria-hidden="true"></i> Cake Resume
+    </a>
+  </div>
+
+</div>
+
+<script>
+const tech = [
+  { name: 'Linux', hi: true },
+  { name: 'Docker', hi: true },
+  { name: 'Kubernetes', hi: false },
+  { name: 'Terraform', hi: false },
+  { name: 'Python', hi: true },
+  { name: 'AWS', hi: false },
+  { name: 'Aliyun', hi: false },
+  { name: 'Kafka', hi: false },
+  { name: 'Elasticsearch', hi: false },
+  { name: 'Grafana', hi: true },
+  { name: 'Zabbix', hi: false },
+  { name: 'Graylog', hi: false },
+  { name: 'Fluent Bit', hi: false },
+  { name: 'Nginx', hi: false },
+  { name: 'Jenkins', hi: false },
+  { name: 'Bitrise', hi: false },
+  { name: 'VMware', hi: false },
+  { name: 'Nutanix', hi: false },
+  { name: 'Podman', hi: false },
+  { name: 'Cisco', hi: false },
+  { name: 'Gentoo', hi: false },
+  { name: 'Debian', hi: false },
+  { name: 'Red Hat', hi: false },
+  { name: 'FreeBSD', hi: false },
+];
+
+const grid = document.getElementById('tech-grid');
+tech.forEach(t => {
+  const el = document.createElement('div');
+  el.className = 'tech-pill' + (t.hi ? ' highlight' : '');
+  el.textContent = t.name;
+  grid.appendChild(el);
+});
+
+setTimeout(() => {
+  document.querySelectorAll('.exp-fill').forEach(el => {
+    el.style.width = el.dataset.w;
+  });
+}, 200);
+</script>
