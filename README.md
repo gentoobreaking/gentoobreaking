@@ -35,6 +35,8 @@
 | 🔬 [OpenClaw Lab](https://github.com/openclawchen8-lgtm) | Personal lab for experiments & tooling |
 | 🤖 [MindNav CodeAgent](https://openclawchen8-lgtm.github.io/mindnav-codeagent/) | AI-powered code navigation agent |
 | 📈 [台股 + ETF 自動選股系統](https://github.com/openclawchen8-lgtm/tw-quant-selector/) | Automated Taiwan stock & ETF selector |
+| 📄 [MD Viewer App](https://github.com/openclawchen8-lgtm/md-viewer) | Lightweight Markdown reader & previewer |
+| 🐳 [MD Viewer App](https://github.com/openclawchen8-lgtm/dev-sandbox) | Gemini SandBox Docker Mode |
 
 ---
 
