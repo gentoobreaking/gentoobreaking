@@ -2,7 +2,7 @@
 
 <p align="center">
   <b>Senior DevOps / SRE / Network Engineer</b><br/>
-  <sub>🐧 18+ years Linux &nbsp;·&nbsp; 🤖 Currently learning AI &nbsp;·&nbsp; 📍 Taipei, Taiwan</sub>
+  <sub>🐧 20+ years Linux &nbsp;·&nbsp; 🤖 Currently learning AI &nbsp;·&nbsp; 📍 Taipei, Taiwan</sub>
 </p>
 
 <p align="center">
