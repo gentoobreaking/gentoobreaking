@@ -12,8 +12,8 @@
   <a href="https://www.cake.me/me/chen-david-eb92ff">
     <img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" />
   </a>
-  <a href="https://github.com/openclawchen8-lgtm">
-    <img src="https://img.shields.io/badge/OpenClaw%20Lab-181717?style=flat&logo=github&logoColor=white" />
+  <a href="https://github.com/gentoobreaking">
+    <img src="https://img.shields.io/badge/AI%20Lab-181717?style=flat&logo=github&logoColor=white" />
   </a>
 </p>
 
@@ -32,11 +32,11 @@
 
 | Project | Description |
 |---|---|
-| 🔬 [OpenClaw Lab](https://github.com/openclawchen8-lgtm) | Personal lab for experiments & tooling |
-| 🤖 [MindNav CodeAgent](https://openclawchen8-lgtm.github.io/mindnav-codeagent/) | AI-powered code navigation agent |
-| 📈 [台股 + ETF 自動選股系統](https://github.com/openclawchen8-lgtm/tw-quant-selector/) | Automated Taiwan stock & ETF selector |
-| 📄 [MD Viewer App](https://github.com/openclawchen8-lgtm/md-viewer) | Lightweight Markdown reader & previewer |
-| 🐳 [Gemini SandBox Docker Mode](https://github.com/openclawchen8-lgtm/dev-sandbox) | Gemini SandBox Docker Mode |
+| 🔬 [AI Lab](https://github.com/gentoobreaking/ai-tasks) | Personal lab for experiments & tooling |
+| 🤖 [MindNav CodeAgent](https://gentoobreaking.github.io/mindnav-codeagent/) | AI-powered code navigation agent |
+| 📈 [台股 + ETF 自動選股系統](https://github.com/gentoobreaking/tw-quant-selector/) | Automated Taiwan stock & ETF selector |
+| 📄 [MD Viewer App](https://github.com/gentoobreaking/md-viewer) | Lightweight Markdown reader & previewer |
+| 🐳 [Gemini SandBox Docker Mode](https://github.com/gentoobreaking/dev-sandbox) | Gemini SandBox Docker Mode |
 
 ---
 
