@@ -12,7 +12,7 @@
   <a href="https://www.cake.me/me/chen-david-eb92ff">
     <img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" />
   </a>
-  <a href="https://github.com/gentoobreaking">
+  <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md">
     <img src="https://img.shields.io/badge/AI%20Lab-181717?style=flat&logo=github&logoColor=white" />
   </a>
 </p>
@@ -32,7 +32,7 @@
 
 | Project | Description |
 |---|---|
-| 🔬 [AI Lab](https://github.com/gentoobreaking/ai-tasks) | Personal lab for experiments & tooling |
+| 🔬 [AI Lab](https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md) | Personal lab for experiments & tooling |
 | 🤖 [MindNav CodeAgent](https://gentoobreaking.github.io/mindnav-codeagent/) | AI-powered code navigation agent |
 | 📈 [台股 + ETF 自動選股系統](https://github.com/gentoobreaking/tw-quant-selector/) | Automated Taiwan stock & ETF selector |
 | 📄 [MD Viewer App](https://github.com/gentoobreaking/md-viewer) | Lightweight Markdown reader & previewer |
