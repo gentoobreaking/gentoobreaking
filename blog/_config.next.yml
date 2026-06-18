@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------
+# NexT Theme Settings
+# ---------------------------------------------------------------
+
+# Schemes
+scheme: Gemini
+
+# ---------------------------------------------------------------
+# Menu Settings
+# ---------------------------------------------------------------
+menu:
+  home: / || fa fa-home
+  about: /about/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+
+menu_settings:
+  icons: true
+  badges: true
+
+# ---------------------------------------------------------------
+# Visual Enhancements
+# ---------------------------------------------------------------
+
+# 深色模式 (根據系統自動切換)
+darkmode: true
+
+# 頂部閱讀進度條
+reading_progress:
+  enable: true
+  color: "#4f46e5"
+  height: 3px
+
+# 回到頂部按鈕
+back2top:
+  enable: true
+  sidebar: true # 放在側邊欄更美觀
+  scrollpercent: true # 顯示百分比
+
+# 文字間距優化 (中英文自動加空格)
+pangu: true
+
+# 動畫效果
+motion:
+  enable: true
+  async: true
+  transition:
+    menu_item: fadeInDown
+    post_block: fadeIn
+    post_header: fadeInDown
+    post_body: fadeInDown
+
+# ---------------------------------------------------------------
+# Custom File Paths
+# ---------------------------------------------------------------
+custom_file_path:
+  variable: source/_data/variables.styl
+  style: source/_data/styles.styl
