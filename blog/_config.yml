@@ -5,7 +5,8 @@ keywords: null
 author: Yuhao Chen
 language: zh-TW
 timezone: Asia/Taipei
-url: https://gentoobreaking.github.io
+url: https://gentoobreaking.github.io/gentoobreaking/
+root: /gentoobreaking/
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
