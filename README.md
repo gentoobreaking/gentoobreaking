@@ -36,6 +36,7 @@
 | 🤖 [MindNav CodeAgent](https://gentoobreaking.github.io/mindnav-codeagent/) | AI-powered code navigation agent |
 | 📈 [台股 + ETF 自動選股系統](https://github.com/gentoobreaking/tw-quant-selector/) | Automated Taiwan stock & ETF selector |
 | 📄 [MD Viewer App](https://github.com/gentoobreaking/md-viewer) | Lightweight Markdown reader & previewer |
+| 📝 [Blog](https://gentoobreaking.github.io/gentoobreaking/) | My tech blog about Infra & AI 
 | 🐳 [Gemini SandBox Docker Mode](https://github.com/gentoobreaking/dev-sandbox) | Gemini SandBox Docker Mode |
 
 ---
