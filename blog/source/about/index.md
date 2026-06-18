@@ -15,6 +15,7 @@ type: about
   <div style="margin-top:16px;">
     <a href="https://www.linkedin.com/in/yuhao-c-b851015a/" style="margin:0 4px;"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" /></a>
     <a href="https://www.cake.me/me/chen-david-eb92ff" style="margin:0 4px;"><img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" /></a>
+    <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md" style="margin:0 4px;"><img src="https://img.shields.io/badge/AI%20Lab-181717?style=flat&logo=github&logoColor=white" /></a>
   </div>
 </div>
 
@@ -66,14 +67,56 @@ type: about
 
 <h2>🛠 Tech Stack</h2>
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+<div style="margin-top: 10px;">
+
+#### ☁️ Cloud & Infra
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
   <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Alibaba%20Cloud-FF6A00?style=flat&logo=alibabacloud&logoColor=white" />
   <img src="https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white" />
+  <img src="https://img.shields.io/badge/VMware-607078?style=flat&logo=vmware&logoColor=white" />
+  <img src="https://img.shields.io/badge/Nutanix-024DA1?style=flat&logo=nutanix&logoColor=white" />
+</div>
+
+#### 🐳 Container & CI/CD
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white" />
+  <img src="https://img.shields.io/badge/Podman-892CA0?style=flat&logo=podman&logoColor=white" />
+  <img src="https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white" />
+  <img src="https://img.shields.io/badge/Bitrise-683D87?style=flat&logo=bitrise&logoColor=white" />
+</div>
+
+#### 📊 Observability
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
   <img src="https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white" />
+  <img src="https://img.shields.io/badge/Zabbix-CC0000?style=flat&logo=zabbix&logoColor=white" />
+  <img src="https://img.shields.io/badge/Elasticsearch-005571?style=flat&logo=elasticsearch&logoColor=white" />
+  <img src="https://img.shields.io/badge/Graylog-FF3633?style=flat&logo=graylog&logoColor=white" />
+</div>
+
+#### 🔀 Data & Messaging
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+  <img src="https://img.shields.io/badge/Kafka-231F20?style=flat&logo=apachekafka&logoColor=white" />
+  <img src="https://img.shields.io/badge/Fluent%20Bit-49BDA5?style=flat&logo=fluentbit&logoColor=white" />
+  <img src="https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=black" />
+</div>
+
+#### 🐧 OS & Networking
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+  <img src="https://img.shields.io/badge/Gentoo-54487A?style=flat&logo=gentoo&logoColor=white" />
+  <img src="https://img.shields.io/badge/Debian-A81D33?style=flat&logo=debian&logoColor=white" />
+  <img src="https://img.shields.io/badge/Red%20Hat-EE0000?style=flat&logo=redhat&logoColor=white" />
+  <img src="https://img.shields.io/badge/FreeBSD-AB2B28?style=flat&logo=freebsd&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cisco-1BA0D7?style=flat&logo=cisco&logoColor=white" />
+</div>
+
+#### 💻 Languages & Tools
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnubash&logoColor=white" />
+</div>
+
 </div>
 
 </div>
