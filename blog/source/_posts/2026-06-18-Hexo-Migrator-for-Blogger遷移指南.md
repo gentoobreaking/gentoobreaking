@@ -1,8 +1,6 @@
 ---
 title: Hexo Migrator for Blogger 遷移指南
 date: 2026-06-18
-categories: [開發工具與自動化]
-tags: [Hexo, Blogger, Migration]
 ---
 
 <h2>Hexo Migrator for Blogger 遷移指南</h2>

@@ -1,8 +1,6 @@
 ---
 title: CentOS 自動化安裝：PXE 網路開機實戰
 date: 2008-12-29
-categories: [伺服器管理]
-tags: [CentOS, PXE, Kickstart]
 ---
 
 <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:14px 16px;margin:16px 0;border-radius:0 8px 8px 0;">

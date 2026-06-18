@@ -1,8 +1,6 @@
 ---
 title: Windows Rootkit & Virus & Spyware Check Way
 date: 2012-09-11
-categories: [資安技術]
-tags: [Windows Security, Rootkit, Malware]
 ---
 
 <h2>Windows Rootkit &amp; Virus &amp; Spyware 檢測工具彙整</h2>

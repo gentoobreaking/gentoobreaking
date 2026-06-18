@@ -1,8 +1,6 @@
 ---
 title: Build only Core CentOS 5.5 AMI for Amazon EC2
 date: 2012-11-23
-categories: [伺服器管理]
-tags: [AWS, EC2, CentOS, AMI]
 ---
 
 <h2>在 EC2 上构建 CentOS 5.5 自定义 AMI</h2>

@@ -1,8 +1,6 @@
 ---
 title: Simple Install Cacti from source in RHEL / Linux
 date: 2008-10-17
-categories: [伺服器管理]
-tags: [Cacti, Linux, Monitoring]
 ---
 
 <h2>從原始碼編譯安裝 Cacti（RHEL / Linux）</h2>

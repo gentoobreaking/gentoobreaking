@@ -1,8 +1,6 @@
 ---
 title: logging all user command history (已解決winscp/sftp問題)
 date: 2012-11-23
-categories: [伺服器管理]
-tags: [Linux Audit, TTY, Monitoring]
 ---
 
 <h2>Linux TTY 稽核工具測試案例</h2>
