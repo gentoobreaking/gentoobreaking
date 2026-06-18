@@ -4,7 +4,9 @@ date: 2026-06-18 14:02:21
 type: about
 ---
 
-<div style="background:#ffffff; padding:24px; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); text-align:center; margin-bottom: 30px;">
+<div style="background:#ffffff; padding:24px; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 30px; color: #333;">
+
+<div style="text-align:center; margin-bottom: 30px;">
   <h1 style="margin:0; font-size:28px; color:#1e293b;">Hi, I'm David 👋</h1>
   <p style="color:#64748b; margin-top:10px; font-size: 18px;">
     <b>Senior DevOps / SRE / Network Engineer</b><br/>
@@ -27,13 +29,38 @@ type: about
 <hr/>
 
 <h2>🚀 Projects</h2>
-| Project | Description |
-|---|---|
-| 🔬 [AI Lab](https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md) | Personal lab for experiments & tooling |
-| 🤖 [MindNav CodeAgent](https://gentoobreaking.github.io/mindnav-codeagent/) | AI-powered code navigation agent |
-| 📈 [台股 + ETF 自動選股系統](https://github.com/gentoobreaking/tw-quant-selector/) | Automated Taiwan stock & ETF selector |
-| 📄 [MD Viewer App](https://github.com/gentoobreaking/md-viewer) | Lightweight Markdown reader & previewer |
-| 🐳 [Gemini SandBox Docker Mode](https://github.com/gentoobreaking/dev-sandbox) | Gemini SandBox Docker Mode |
+<div style="overflow-x: auto;">
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+    <thead>
+      <tr style="border-bottom: 2px solid #ddd;">
+        <th style="padding: 10px; text-align: left;">Project</th>
+        <th style="padding: 10px; text-align: left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">🔬 <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md">AI Lab</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">Personal lab for experiments & tooling</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">🤖 <a href="https://gentoobreaking.github.io/mindnav-codeagent/">MindNav CodeAgent</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">AI-powered code navigation agent</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">📈 <a href="https://github.com/gentoobreaking/tw-quant-selector/">台股 + ETF 自動選股系統</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">Automated Taiwan stock & ETF selector</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">📄 <a href="https://github.com/gentoobreaking/md-viewer">MD Viewer App</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">Lightweight Markdown reader & previewer</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">🐳 <a href="https://github.com/gentoobreaking/dev-sandbox">Gemini SandBox Docker Mode</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #eee;">Gemini SandBox Docker Mode</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <hr/>
 
@@ -47,4 +74,6 @@ type: about
   <img src="https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white" />
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnubash&logoColor=white" />
+</div>
+
 </div>
