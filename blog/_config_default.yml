@@ -3,7 +3,7 @@ subtitle: ''
 description: ''
 keywords: null
 author: Yuhao Chen
-language: zh-TW
+language: zh
 timezone: Asia/Taipei
 url: https://gentoobreaking.github.io
 permalink: ':year/:month/:day/:title/'
@@ -32,6 +32,14 @@ post_asset_folder: false
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+  enable: true
+  htmlify: false
 prismjs:
   preprocess: true
   line_number: true
@@ -49,19 +57,10 @@ time_format: HH:mm:ss
 updated_option: mtime
 per_page: 10
 pagination_dir: page
-feed:
-  type: atom
-  path: atom.xml
-  limit: 20
-  hub: null
-  content: true
-  content_limit: 140
-  content_limit_delim: ' '
-  order_by: '-date'
 include: null
 exclude: null
 ignore: null
-theme: next
+theme: landscape
 deploy:
   type: ''
 marked:
@@ -70,21 +69,4 @@ marked:
   pedantic: false
   mangle: false
   headerIds: true
-highlight:
-  enable: false
-  line_number: false
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
-  hljs: false
-  htmlify: false
 unsafe: true
-pjax: true
-
-# Search (for local_search plugin)
-search:
-  path: search.xml
-  field: post
-  content: true
-  format: html
-
