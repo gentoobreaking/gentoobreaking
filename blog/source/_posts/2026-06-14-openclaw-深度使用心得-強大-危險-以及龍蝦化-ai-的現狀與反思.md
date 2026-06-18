@@ -1,6 +1,8 @@
 ---
 title: OpenClaw 深度使用心得：強大、危險，以及龍蝦化 AI 的現狀與反思
 date: 2026-06-14
+categories: [AI 觀點]
+tags: [AI Agent, OpenClaw, LLM]
 ---
 
 <h1>OpenClaw 深度使用心得：強大、危險，以及龍蝦化 AI 的現狀與反思</h1>

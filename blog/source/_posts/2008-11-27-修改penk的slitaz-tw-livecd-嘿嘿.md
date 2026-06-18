@@ -1,6 +1,8 @@
 ---
 title: 修改penk的SliTaz.tw LiveCD.....嘿嘿
 date: 2008-11-27
+categories: [開發工具與自動化]
+tags: [SliTaz, LiveCD, Linux]
 ---
 
 <h2>自製 SliTaz 作業用 LiveCD 實戰心得</h2>

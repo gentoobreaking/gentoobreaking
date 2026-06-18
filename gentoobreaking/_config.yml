@@ -1,0 +1,4 @@
+permalink: posts/:title/
+source_dir: blog/source
+public_dir: blog/public
+theme: snark

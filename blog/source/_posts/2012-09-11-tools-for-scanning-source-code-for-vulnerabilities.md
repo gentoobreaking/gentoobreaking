@@ -2,6 +2,8 @@
 title: Tools for Scanning Source Code for Vulnerabilities
 date: 2012-09-11
 allowHTML: true
+categories: [資安技術]
+tags: [Security, Vulnerability Scanning, OWASP]
 ---
 
 ## 商業版本
