@@ -301,58 +301,6 @@
     
     
     <entry>
-      <title>GSN3</title>
-      <link href="/gentoobreaking/2008/10/28/2008-10-29-gsn3/"/>
-      <url>/gentoobreaking/2008/10/28/2008-10-29-gsn3/</url>
-      
-        <content type="html"><![CDATA[<p>這個應該很多人都知道囉。就不多說囉。<br /><br /><img src="file:///C:/DOCUME%7E1/ADMINI%7E1/LOCALS%7E1/Temp/moz-screenshot.jpg" alt="" /> <p align="center"><img src="http://www.gns3.net/sites/gns3.net/files/images/screenshots/screenshot-complex-lab.mini.png" title="You can design complex toplogies" width="600" height="450" /></p></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 網路技術 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> GNS3 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Cisco Packet Tracer</title>
-      <link href="/gentoobreaking/2008/10/28/2008-10-29-cisco-packet-tracer/"/>
-      <url>/gentoobreaking/2008/10/28/2008-10-29-cisco-packet-tracer/</url>
-      
-        <content type="html"><![CDATA[<p><span class="titlename">Cisco Packet Tracer<br /><br />目前有Windows及Linux兩種版本。<br /><br /></span><strong style="color: rgb(255, 255, 255);">Windows:</strong><br /><table style="color: rgb(0, 0, 0);" width="100%" bgcolor="#999999" border="0" cellpadding="0" cellspacing="0">      <tbody>      <tr>        <td colspan="2">          <table width="100%" border="0" cellpadding="4" cellspacing="1">            <tbody>   <tr bgcolor="#cccccc">              <td class="bodytextsmall" valign="bottom" align="middle"><b>Title</b></td>              <td class="bodytextsmall" align="middle" bgcolor="#cccccc"><br /></td></tr>            <tr>              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial<br />This is the complete Packet Tracer program including tutorials as a single downloadable package for Windows 2000, XP and Vista.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr>              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application only<br />This option is just the Packet Tracer program and the help files for Windows 2000, XP and Vista. It does not include the tutorial files. The tutorial files are not necessary to run Packet Tracer.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr>              <td class="bodytextsmall" bgcolor="#ffffff">Tutorial Addon for Packet Tracer 5.0<br />  This download is the Windows tutorials only. There is no Packet Tracer program or help files included in this download.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>             </tbody>             </table>             </td>        </tr>        </tbody></table><br /><strong style="color: rgb(255, 255, 255);"></strong><strong style="color: rgb(255, 255, 255);">Linux:</strong><br /><span style="color: rgb(0, 0, 0);">To install the Linux BIN packages, set the permission to be executable (chmod +x PacketTracer5_*.bin) then execute the binary in the terminal.</span><br /><table width="100%" bgcolor="#999999" border="0" cellpadding="0" cellspacing="0">      <tbody>      <tr>        <td colspan="2">          <table width="100%" border="0" cellpadding="4" cellspacing="1">            <tbody>   <tr style="color: rgb(0, 0, 0);" bgcolor="#cccccc">              <td class="bodytextsmall" valign="bottom" align="middle"><b>Title</b></td>              <td class="bodytextsmall" align="middle" bgcolor="#cccccc"><br /></td></tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial Linux-Ubuntu<br />  This is the complete Packet Tracer program including tutorials as a single downloadable package for Ubuntu release 7.10.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application only Linux-Ubuntu<br />This option is just the Packet Tracer program and the help files for Ubuntu release 7.10. It does not include the tutorial files. The tutorial files are not necessary to run Packet Tracer.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial Linux-Fedora<br />  This is the complete Packet Tracer program including tutorials as a single downloadable package for Fedora release 7.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application only Linux-Fedora<br />This option is just the Packet Tracer program and the help files for Fedora release 7. It does not include the tutorial files. The tutorial files are not necessary to run Packet Tracer.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Tutorial Addon for Packet Tracer 5.0 Linux<br />  This download is the Linux tutorials only. There is no Packet Tracer program or help files included in this download.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr>              <td style="color: rgb(0, 0, 0);" class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial Generic<br />This is the complete Packet Tracer program including tutorials for generic Linux distributions with kernel versions 2.6 and above.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>             </tbody>             </table>             </td>        </tr>        </tbody></table></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 網路技術 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Cisco </tag>
-            
-            <tag> Packet Tracer </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Netscreen OR JunOS 模擬器 (轉貼)</title>
       <link href="/gentoobreaking/2008/10/28/2008-10-29-netscreen-or-junos-%E6%A8%A1%E6%93%AC%E5%99%A8-%E8%BD%89%E8%B2%BC/"/>
       <url>/gentoobreaking/2008/10/28/2008-10-29-netscreen-or-junos-%E6%A8%A1%E6%93%AC%E5%99%A8-%E8%BD%89%E8%B2%BC/</url>
@@ -376,6 +324,31 @@
             <tag> 模擬器 </tag>
             
             <tag> JunOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GSN3</title>
+      <link href="/gentoobreaking/2008/10/28/2008-10-29-gsn3/"/>
+      <url>/gentoobreaking/2008/10/28/2008-10-29-gsn3/</url>
+      
+        <content type="html"><![CDATA[<p>這個應該很多人都知道囉。就不多說囉。<br /><br /><img src="file:///C:/DOCUME%7E1/ADMINI%7E1/LOCALS%7E1/Temp/moz-screenshot.jpg" alt="" /> <p align="center"><img src="http://www.gns3.net/sites/gns3.net/files/images/screenshots/screenshot-complex-lab.mini.png" title="You can design complex toplogies" width="600" height="450" /></p></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 網路技術 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GNS3 </tag>
             
         </tags>
       
@@ -411,6 +384,33 @@
     
     
     <entry>
+      <title>Cisco Packet Tracer</title>
+      <link href="/gentoobreaking/2008/10/28/2008-10-29-cisco-packet-tracer/"/>
+      <url>/gentoobreaking/2008/10/28/2008-10-29-cisco-packet-tracer/</url>
+      
+        <content type="html"><![CDATA[<p><span class="titlename">Cisco Packet Tracer<br /><br />目前有Windows及Linux兩種版本。<br /><br /></span><strong style="color: rgb(255, 255, 255);">Windows:</strong><br /><table style="color: rgb(0, 0, 0);" width="100%" bgcolor="#999999" border="0" cellpadding="0" cellspacing="0">      <tbody>      <tr>        <td colspan="2">          <table width="100%" border="0" cellpadding="4" cellspacing="1">            <tbody>   <tr bgcolor="#cccccc">              <td class="bodytextsmall" valign="bottom" align="middle"><b>Title</b></td>              <td class="bodytextsmall" align="middle" bgcolor="#cccccc"><br /></td></tr>            <tr>              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial<br />This is the complete Packet Tracer program including tutorials as a single downloadable package for Windows 2000, XP and Vista.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr>              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application only<br />This option is just the Packet Tracer program and the help files for Windows 2000, XP and Vista. It does not include the tutorial files. The tutorial files are not necessary to run Packet Tracer.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr>              <td class="bodytextsmall" bgcolor="#ffffff">Tutorial Addon for Packet Tracer 5.0<br />  This download is the Windows tutorials only. There is no Packet Tracer program or help files included in this download.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>             </tbody>             </table>             </td>        </tr>        </tbody></table><br /><strong style="color: rgb(255, 255, 255);"></strong><strong style="color: rgb(255, 255, 255);">Linux:</strong><br /><span style="color: rgb(0, 0, 0);">To install the Linux BIN packages, set the permission to be executable (chmod +x PacketTracer5_*.bin) then execute the binary in the terminal.</span><br /><table width="100%" bgcolor="#999999" border="0" cellpadding="0" cellspacing="0">      <tbody>      <tr>        <td colspan="2">          <table width="100%" border="0" cellpadding="4" cellspacing="1">            <tbody>   <tr style="color: rgb(0, 0, 0);" bgcolor="#cccccc">              <td class="bodytextsmall" valign="bottom" align="middle"><b>Title</b></td>              <td class="bodytextsmall" align="middle" bgcolor="#cccccc"><br /></td></tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial Linux-Ubuntu<br />  This is the complete Packet Tracer program including tutorials as a single downloadable package for Ubuntu release 7.10.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application only Linux-Ubuntu<br />This option is just the Packet Tracer program and the help files for Ubuntu release 7.10. It does not include the tutorial files. The tutorial files are not necessary to run Packet Tracer.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial Linux-Fedora<br />  This is the complete Packet Tracer program including tutorials as a single downloadable package for Fedora release 7.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application only Linux-Fedora<br />This option is just the Packet Tracer program and the help files for Fedora release 7. It does not include the tutorial files. The tutorial files are not necessary to run Packet Tracer.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr style="color: rgb(0, 0, 0);">              <td class="bodytextsmall" bgcolor="#ffffff">Tutorial Addon for Packet Tracer 5.0 Linux<br />  This download is the Linux tutorials only. There is no Packet Tracer program or help files included in this download.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>            <tr>              <td style="color: rgb(0, 0, 0);" class="bodytextsmall" bgcolor="#ffffff">Packet Tracer v5.0 Application + Tutorial Generic<br />This is the complete Packet Tracer program including tutorials for generic Linux distributions with kernel versions 2.6 and above.</td>              <td class="bodytextsmall" bgcolor="#ffffff" nowrap="nowrap"><br /></td>             </tr>             </tbody>             </table>             </td>        </tr>        </tbody></table></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 網路技術 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Cisco </tag>
+            
+            <tag> Packet Tracer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>挖掘能力的黃金組合</title>
       <link href="/gentoobreaking/2008/10/28/2008-10-29-%E6%8C%96%E6%8E%98%E8%83%BD%E5%8A%9B%E7%9A%84%E9%BB%83%E9%87%91%E7%B5%84%E5%90%88/"/>
       <url>/gentoobreaking/2008/10/28/2008-10-29-%E6%8C%96%E6%8E%98%E8%83%BD%E5%8A%9B%E7%9A%84%E9%BB%83%E9%87%91%E7%B5%84%E5%90%88/</url>
@@ -428,31 +428,6 @@
         <tags>
             
             <tag> 職涯 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>壓力測試工具</title>
-      <link href="/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/"/>
-      <url>/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/</url>
-      
-        <content type="html"><![CDATA[<p><span style="font-size:130%;"><span style="font-weight: bold;">許多工具的地方：</span><br /><br /><a style="font-family: arial;" href="http://www.softwareqatest.com/qatweb1.html#SECURITY">Web Site Test Tools and Site Management Tools</a><br /><br /><br /><a style="font-family: arial;" href="http://www.opensourcetesting.org/performance.php">Open Source Performance test tools</a></span><br /><br /><span style="font-size:130%;"><a style="font-weight: bold; font-family: arial;" href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank"></a><span style="font-weight: bold;font-family:arial;" >ApacheBench </span></span>- 可由Apache直接下載安裝使用。也可以直接copy出來單獨使用。<br /><br /><span style="font-weight: bold;">使用範例：</span><br />C:&gt;ab -e output.csv -n 10000 -c 10 -k <a href="http://www.xxx.com.tw/index.aspx">http://www.xxx.com.tw/index.aspx</a><br />This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;<br />Copyright 1996 Adam Twiss, Zeus Technology Ltd, <a href="http://www.zeustech.net/">http://www.zeustech.net/</a><br />Licensed to The Apache Software Foundation, <a href="http://www.apache.org/">http://www.apache.org/</a><br /><br />Benchmarking <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a> (be patient)<br />Completed 1000 requests<br />Completed 2000 requests<br />Completed 3000 requests<br />Completed 4000 requests<br />Completed 5000 requests<br />Completed 6000 requests<br />Completed 7000 requests<br />Completed 8000 requests<br />Completed 9000 requests<br />Completed 10000 requests<br />Finished 10000 requests<br /><br /><br />Server Software:        Apache<br />Server Hostname:        <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a><br />Server Port:            80<br /><br />Document Path:          &#x2F;index.aspx<br />Document Length:        208 bytes<br /><br />Concurrency Level:      10<br />Time taken for tests:   17.156 seconds<br />Complete requests:      10000<br />Failed requests:        0<br />Write errors:           0<br />Non-2xx responses:      10000<br />Keep-Alive requests:    9985<br />Total transferred:      4087331 bytes<br />HTML transferred:       2080000 bytes<br />Requests per second:    582.88 [#&#x2F;sec] (mean)<br />Time per request:       17.156 [ms] (mean)<br />Time per request:       1.716 [ms] (mean, across all concurrent requests)<br />Transfer rate:          232.66 [Kbytes&#x2F;sec] received<br /><br />Connection Times (ms)<br />              min  mean[+&#x2F;-sd] median   max<br />Connect:        0    0   0.9      0      31<br />Processing:     0   17   6.8     16     219<br />Waiting:        0   17   6.6     16     219<br />Total:          0   17   7.0     16     219<br /><br />Percentage of the requests served within a certain time (ms)<br />  50%     16<br />  66%     16<br />  75%     16<br />  80%     16<br />  90%     16<br />  95%     31<br />  98%     31<br />  99%     47<br /> 100%    219 (longest request)<br /><br /><span style="font-weight: bold;">參數說明：</span><br />C:&gt;ab -h<br />Usage: ab [options] [http:&#x2F;&#x2F;]hostname[:port]&#x2F;path<br />Options are:<br />   -n requests     Number of requests to perform<br />   -c concurrency  Number of multiple requests to make<br />   -t timelimit    Seconds to max. wait for responses<br />   -b windowsize   Size of TCP send&#x2F;receive buffer, in bytes<br />   -p postfile     File containing data to POST. Remember also to set -T<br />   -T content-type Content-type header for POSTing, eg.<br />                   ‘application&#x2F;x-www-form-urlencoded’<br />                   Default is ‘text&#x2F;plain’<br />   -v verbosity    How much troubleshooting info to print<br />   -w              Print out results in HTML tables<br />   -i              Use HEAD instead of GET<br />   -x attributes   String to insert as table attributes<br />   -y attributes   String to insert as tr attributes<br />   -z attributes   String to insert as td or th attributes<br />   -C attribute    Add cookie, eg. ‘Apache&#x3D;1234. (repeatable)<br />   -H attribute    Add Arbitrary header line, eg. ‘Accept-Encoding: gzip’<br />                   Inserted after all normal header lines. (repeatable)<br />   -A attribute    Add Basic WWW Authentication, the attributes<br />                   are a colon separated username and password.<br />   -P attribute    Add Basic Proxy Authentication, the attributes<br />                   are a colon separated username and password.<br />   -X proxy:port   Proxyserver and port number to use<br />   -V              Print version number and exit<br />   -k              Use HTTP KeepAlive feature<br />   -d              Do not show percentiles served table.<br />   -S              Do not show confidence estimators and warnings.<br />   -g filename     Output collected data to gnuplot format file.<br />   -e filename     Output CSV file with percentages served<br />   -r              Don’t exit on socket receive errors.<br />   -h              Display usage information (this message)<br /><br />C:&gt;<br /><br /><span style="font-weight: bold;">或可以參考</span><a style="font-weight: bold;" href="http://blog.miniasp.com/post/2008/06/Using-ApacheBench-ab-to-to-Web-stress-test.aspx">這裡</a><span style="font-weight: bold;">的說明。</span></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 開發工具與自動化 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 壓力測試 </tag>
             
         </tags>
       
@@ -480,6 +455,31 @@
             <tag> Spiceworks </tag>
             
             <tag> 資產管理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>壓力測試工具</title>
+      <link href="/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/"/>
+      <url>/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<p><span style="font-size:130%;"><span style="font-weight: bold;">許多工具的地方：</span><br /><br /><a style="font-family: arial;" href="http://www.softwareqatest.com/qatweb1.html#SECURITY">Web Site Test Tools and Site Management Tools</a><br /><br /><br /><a style="font-family: arial;" href="http://www.opensourcetesting.org/performance.php">Open Source Performance test tools</a></span><br /><br /><span style="font-size:130%;"><a style="font-weight: bold; font-family: arial;" href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank"></a><span style="font-weight: bold;font-family:arial;" >ApacheBench </span></span>- 可由Apache直接下載安裝使用。也可以直接copy出來單獨使用。<br /><br /><span style="font-weight: bold;">使用範例：</span><br />C:&gt;ab -e output.csv -n 10000 -c 10 -k <a href="http://www.xxx.com.tw/index.aspx">http://www.xxx.com.tw/index.aspx</a><br />This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;<br />Copyright 1996 Adam Twiss, Zeus Technology Ltd, <a href="http://www.zeustech.net/">http://www.zeustech.net/</a><br />Licensed to The Apache Software Foundation, <a href="http://www.apache.org/">http://www.apache.org/</a><br /><br />Benchmarking <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a> (be patient)<br />Completed 1000 requests<br />Completed 2000 requests<br />Completed 3000 requests<br />Completed 4000 requests<br />Completed 5000 requests<br />Completed 6000 requests<br />Completed 7000 requests<br />Completed 8000 requests<br />Completed 9000 requests<br />Completed 10000 requests<br />Finished 10000 requests<br /><br /><br />Server Software:        Apache<br />Server Hostname:        <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a><br />Server Port:            80<br /><br />Document Path:          &#x2F;index.aspx<br />Document Length:        208 bytes<br /><br />Concurrency Level:      10<br />Time taken for tests:   17.156 seconds<br />Complete requests:      10000<br />Failed requests:        0<br />Write errors:           0<br />Non-2xx responses:      10000<br />Keep-Alive requests:    9985<br />Total transferred:      4087331 bytes<br />HTML transferred:       2080000 bytes<br />Requests per second:    582.88 [#&#x2F;sec] (mean)<br />Time per request:       17.156 [ms] (mean)<br />Time per request:       1.716 [ms] (mean, across all concurrent requests)<br />Transfer rate:          232.66 [Kbytes&#x2F;sec] received<br /><br />Connection Times (ms)<br />              min  mean[+&#x2F;-sd] median   max<br />Connect:        0    0   0.9      0      31<br />Processing:     0   17   6.8     16     219<br />Waiting:        0   17   6.6     16     219<br />Total:          0   17   7.0     16     219<br /><br />Percentage of the requests served within a certain time (ms)<br />  50%     16<br />  66%     16<br />  75%     16<br />  80%     16<br />  90%     16<br />  95%     31<br />  98%     31<br />  99%     47<br /> 100%    219 (longest request)<br /><br /><span style="font-weight: bold;">參數說明：</span><br />C:&gt;ab -h<br />Usage: ab [options] [http:&#x2F;&#x2F;]hostname[:port]&#x2F;path<br />Options are:<br />   -n requests     Number of requests to perform<br />   -c concurrency  Number of multiple requests to make<br />   -t timelimit    Seconds to max. wait for responses<br />   -b windowsize   Size of TCP send&#x2F;receive buffer, in bytes<br />   -p postfile     File containing data to POST. Remember also to set -T<br />   -T content-type Content-type header for POSTing, eg.<br />                   ‘application&#x2F;x-www-form-urlencoded’<br />                   Default is ‘text&#x2F;plain’<br />   -v verbosity    How much troubleshooting info to print<br />   -w              Print out results in HTML tables<br />   -i              Use HEAD instead of GET<br />   -x attributes   String to insert as table attributes<br />   -y attributes   String to insert as tr attributes<br />   -z attributes   String to insert as td or th attributes<br />   -C attribute    Add cookie, eg. ‘Apache&#x3D;1234. (repeatable)<br />   -H attribute    Add Arbitrary header line, eg. ‘Accept-Encoding: gzip’<br />                   Inserted after all normal header lines. (repeatable)<br />   -A attribute    Add Basic WWW Authentication, the attributes<br />                   are a colon separated username and password.<br />   -P attribute    Add Basic Proxy Authentication, the attributes<br />                   are a colon separated username and password.<br />   -X proxy:port   Proxyserver and port number to use<br />   -V              Print version number and exit<br />   -k              Use HTTP KeepAlive feature<br />   -d              Do not show percentiles served table.<br />   -S              Do not show confidence estimators and warnings.<br />   -g filename     Output collected data to gnuplot format file.<br />   -e filename     Output CSV file with percentages served<br />   -r              Don’t exit on socket receive errors.<br />   -h              Display usage information (this message)<br /><br />C:&gt;<br /><br /><span style="font-weight: bold;">或可以參考</span><a style="font-weight: bold;" href="http://blog.miniasp.com/post/2008/06/Using-ApacheBench-ab-to-to-Web-stress-test.aspx">這裡</a><span style="font-weight: bold;">的說明。</span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 開發工具與自動化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 壓力測試 </tag>
             
         </tags>
       
