@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gentoobreaking.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Linux TTY 稽核工具測試案例  本篇記錄三種 Linux 指令執行稽核工具的測試心得：pam_tty_audit.so、sudosh2、snoopylogger。    Testing Case 1：pam_tty_audit.so  參考：jaredrobinson.com&#x2F;blog&#x2F;linux-tty-auditing  設定方式   # vi &#x2F;etc&#x2F;pam.d&#x2F;system-au">
+<meta property="og:type" content="article">
+<meta property="og:title" content="logging all user command history (已解決winscp&#x2F;sftp問題)">
+<meta property="og:url" content="https://gentoobreaking.github.io/2012/11/22/2012-11-23-logging-all-user-command-history-%E5%B7%B2%E8%A7%A3%E6%B1%BAwinscp-sftp%E5%95%8F%E9%A1%8C/index.html">
+<meta property="og:site_name" content="IT@DOG">
+<meta property="og:description" content="Linux TTY 稽核工具測試案例  本篇記錄三種 Linux 指令執行稽核工具的測試心得：pam_tty_audit.so、sudosh2、snoopylogger。    Testing Case 1：pam_tty_audit.so  參考：jaredrobinson.com&#x2F;blog&#x2F;linux-tty-auditing  設定方式   # vi &#x2F;etc&#x2F;pam.d&#x2F;system-au">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2012-11-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-18T08:37:39.896Z">
+<meta property="article:author" content="Yuhao Chen">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Logging">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gentoobreaking.github.io/2012/11/22/2012-11-23-logging-all-user-command-history-%E5%B7%B2%E8%A7%A3%E6%B1%BAwinscp-sftp%E5%95%8F%E9%A1%8C/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://gentoobreaking.github.io/2012/11/22/2012-11-23-logging-all-user-command-history-%E5%B7%B2%E8%A7%A3%E6%B1%BAwinscp-sftp%E5%95%8F%E9%A1%8C/","path":"2012/11/22/2012-11-23-logging-all-user-command-history-已解決winscp-sftp問題/","title":"logging all user command history (已解決winscp/sftp問題)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>logging all user command history (已解決winscp/sftp問題) | IT@DOG</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="IT@DOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">IT@DOG</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">45</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">26</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Linux TTY 稽核工具測試案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Testing Case 1：pam_tty_audit.so</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">設定方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">測試結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Testing Case 2：sudosh2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">編譯與安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">設定檔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">錄製與回放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">測試結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Testing Case 3：snoopylogger</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">編譯與啟用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">錄製範例（&#x2F;var&#x2F;log&#x2F;secure）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.3.</span> <span class="nav-text">測試結論</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">最終結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">附錄：sudosh2 的 SFTP 支援修正</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.1.</span> <span class="nav-text">發現：系統有兩支 sftp-server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.2.</span> <span class="nav-text">修改 &#x2F;etc&#x2F;sudosh.conf</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuhao Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://gentoobreaking.github.io/2012/11/22/2012-11-23-logging-all-user-command-history-%E5%B7%B2%E8%A7%A3%E6%B1%BAwinscp-sftp%E5%95%8F%E9%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuhao Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="logging all user command history (已解決winscp&#x2F;sftp問題) | IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          logging all user command history (已解決winscp/sftp問題)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2012-11-23 00:00:00" itemprop="dateCreated datePublished" datetime="2012-11-23T00:00:00+08:00">2012-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-06-18 16:37:39" itemprop="dateModified" datetime="2026-06-18T16:37:39+08:00">2026-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">伺服器管理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2>Linux TTY 稽核工具測試案例</h2>
+
+<p>本篇記錄三種 Linux 指令執行稽核工具的測試心得：<code>pam_tty_audit.so</code>、<code>sudosh2</code>、<code>snoopylogger</code>。</p>
+
+<hr/>
+
+<h2>Testing Case 1：pam_tty_audit.so</h2>
+
+<p>參考：<a href="http://jaredrobinson.com/blog/linux-tty-auditing/" target="_blank">jaredrobinson.com/blog/linux-tty-auditing</a></p>
+
+<h3>設定方式</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#567d46;"># vi /etc/pam.d/system-auth (add)</span>
+<span style="color:#569cd6;">session</span>     required      <span style="color:#9cdcfe;">pam_tty_audit.so enable=*</span>
+
+<span style="color:#567d46;"># yum install psacct audit sudo system-config-audit.x86_64</span>
+<span style="color:#569cd6;">/etc/audit/auditd.conf</span>
+<span style="color:#567d46;"># check for selinux</span>
+<span style="color:#569cd6;">sestatus</span>
+</pre>
+
+<h3>測試結論</h3>
+
+<div style="background:#fff7ed;border-left:4px solid #f97316;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#c2410c;"><strong>一般實體伺服器可正常運作，但 AWS 虛擬伺服器無法使用！</strong>（因為無法正式登入）這是個重大 bug！</p>
+  <p style="margin:8px 0 0 0;color:#9a3412;">新版本 RHEL 已修正，但 CentOS 5.5 只能以 patch 方式處理。<strong>未測試此方式，因風險較大！</strong></p>
+</div>
+
+<hr/>
+
+<h2>Testing Case 2：sudosh2</h2>
+
+<p>下載：<a href="http://sourceforge.net/projects/sudosh2/" target="_blank">sudosh2-1.0.4.tgz</a></p>
+
+<h3>編譯與安裝</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#569cd6;">yum install</span> <span style="color:#4ec9b0;">-y</span> gcc make
+<span style="color:#569cd6;">tar</span> <span style="color:#4ec9b0;">xvf</span> sudosh2-1.0.4.tgz
+<span style="color:#569cd6;">./configure</span> <span style="color:#4ec9b0;">--prefix=/usr/local/sudosh2</span> <span style="color:#4ec9b0;">--enable-recordinput</span>
+<span style="color:#569cd6;">make</span> ; <span style="color:#569cd6;">make check</span> ; <span style="color:#569cd6;">make install</span>
+<span style="color:#569cd6;">cd</span> <span style="color:#9cdcfe;">/usr/local/sudosh2</span>
+<span style="color:#569cd6;">man</span> <span style="color:#4ec9b0;">-M</span> <span style="color:#9cdcfe;">/usr/local/sudosh2/share/man/</span> sudosh
+</pre>
+
+<h3>設定檔</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#567d46;"># vi /etc/sudosh.conf</span>
+<span style="color:#9cdcfe;">default shell</span>           = /bin/bash
+
+<span style="color:#567d46;"># vi /etc/sudoers (add)</span>
+<span style="color:#9cdcfe;">User_Alias</span>      <span style="color:#b5cea8;">ADMINS</span>=david,linda
+<span style="color:#9cdcfe;">User_Alias</span>      <span style="color:#b5cea8;">OTHERS</span>=myop
+<span style="color:#9cdcfe;">Cmnd_Alias</span>      <span style="color:#b5cea8;">SUDOSH</span>=/usr/local/bin/sudosh
+
+<span style="color:#b5cea8;">ADMINS</span>          <span style="color:#9cdcfe;">ALL=SUDOSH</span>
+<span style="color:#b5cea8;">OTHERS</span>          <span style="color:#9cdcfe;">ALL=/usr/local/bin/sudosh</span>
+
+<span style="color:#567d46;"># vi /etc/shells</span>
+<span style="color:#9cdcfe;">/usr/local/sudosh2/bin/sudosh</span>
+</pre>
+
+<h3>錄製與回放</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#b5cea8;">[root@my500g bin]# ./sudosh-replay</span>
+Date                Duration From         To           ID
+====                ======== ====         ==           ==
+11/09/2012 01:54:02 3s       root         david        root-david-1352444042-q3mrDMJn0hjhORsQ
+11/09/2012 01:54:12 1s       root         david        root-david-1352444052-hO8j2wvJzDbgyG33
+11/09/2012 01:56:23 4m55s    linda        linda        linda-linda-1352444183-QNs12b1YPXYoavId
+11/09/2012 02:01:25 1s       linda        linda        linda-linda-1352444485-AqXxLFF8sjeDNDbU
+
+<span style="color:#b5cea8;">Usage: sudosh-replay ID [MULTIPLIER] [MAXWAIT]</span>
+Example: <span style="color:#9cdcfe;">sudosh-replay root-david-1352444052-hO8j2wvJzDbgyG33 1 2</span>
+<span style="color:#b5cea8;">[root@my500g bin]# ./sudosh-replay root-david-1352444042-q3mrDMJn0hjhORsQ 5</span>
+<span style="color:#567d46;">(動態演繹其作業及指令)</span>
+</pre>
+
+<h3>測試結論</h3>
+
+<ol style="color:#374151;line-height:1.8;">
+  <li>基本測試正常</li>
+  <li>紀錄方式為 <strong>hash</strong>，依 session 紀錄</li>
+  <li>須以 <code>sudosh-replay</code> 進行解碼，會演繹所有指令及行為，可調整演繹速度</li>
+  <li>可針對 user 設定是否紀錄（<code>/etc/passwd</code>），並使用 native shell</li>
+</ol>
+
+<hr/>
+
+<h2>Testing Case 3：snoopylogger</h2>
+
+<p>提供指令執行日誌。專案：<a href="http://sourceforge.net/projects/snoopylogger/" target="_blank">snoopylogger</a>、<a href="http://sourceforge.net/projects/rootsh/" target="_blank">rootsh</a></p>
+
+<h3>編譯與啟用</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#569cd6;">wget</span> <span style="color:#9cdcfe;">http://downloads.sourceforge.net/project/snoopylogger/snoopy-1.8.0.tar.gz</span>
+<span style="color:#569cd6;">tar</span> <span style="color:#4ec9b0;">xvf</span> snoopy-1.8.0.tar.gz
+<span style="color:#569cd6;">./configure</span> <span style="color:#4ec9b0;">--prefix=/usr/local/snoopy</span>
+<span style="color:#569cd6;">make</span> ; <span style="color:#569cd6;">make install</span>
+<span style="color:#569cd6;">make enable</span>
+<span style="color:#569cd6;">./enable.sh</span> <span style="color:#9cdcfe;">/usr/local/snoopy/lib</span>
+
+<span style="color:#ce9178;">Snoopy enabled in /etc/ld.so.preload. Check syslog messages for output.</span>
+</pre>
+
+<h3>錄製範例（/var/log/secure）</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:12px;line-height:1.5;margin:16px 0;">
+<span style="color:#9cdcfe;">Nov  9 02:13:14 my500g snoopy[10115]</span>: <span style="color:#4ec9b0;">[uid:503 sid:10113 tty:/dev/pts/2 cwd:/home/david filename:/usr/bin/id]</span>: id -un
+<span style="color:#9cdcfe;">Nov  9 02:13:14 my500g snoopy[10117]</span>: <span style="color:#4ec9b0;">[uid:503 sid:10113 tty:/dev/pts/2 cwd:/home/david filename:/bin/hostname]</span>: /bin/hostname
+<span style="color:#9cdcfe;">Nov  9 02:13:20 my500g snoopy[10137]</span>: <span style="color:#4ec9b0;">[uid:503 sid:10113 tty:/dev/pts/2 cwd:/var/log filename:/usr/bin/vim]</span>: vim secure
+<span style="color:#9cdcfe;">Nov  9 02:13:24 my500g snoopy[10140]</span>: <span style="color:#4ec9b0;">[uid:503 sid:10113 tty:/dev/pts/2 cwd:/var/log filename:/usr/bin/sudo]</span>: sudo su -
+<span style="color:#9cdcfe;">Nov  9 02:13:24 my500g snoopy[10143]</span>: <span style="color:#4ec9b0;">[uid:0 sid:10113 tty:/dev/pts/2 cwd:/var/log filename:/bin/su]</span>: su -
+<span style="color:#9cdcfe;">Nov  9 02:13:25 my500g snoopy[10158]</span>: <span style="color:#4ec9b0;">[uid:0 sid:10113 tty: cwd:/root filename:/bin/egrep]</span>: /bin/egrep -q (^|:)/sbin($|:)
+<span style="color:#9cdcfe;">Nov  9 02:13:31 my500g snoopy[10182]</span>: <span style="color:#4ec9b0;">[uid:0 sid:10113 tty:/dev/pts/2 cwd:/var/log filename:/usr/bin/vim]</span>: vim messages
+<span style="color:#9cdcfe;">Nov  9 02:14:09 my500g snoopy[10188]</span>: <span style="color:#4ec9b0;">[uid:0 sid:10113 tty:/dev/pts/2 cwd:/var/log filename:/bin/grep]</span>: grep sid:10113 secure
+</pre>
+
+<h3>測試結論</h3>
+
+<ol style="color:#374151;line-height:1.8;">
+  <li>基本測試正常</li>
+  <li>紀錄方式為 <strong>clear text</strong>，統一寫入 <code>/var/log/secure</code></li>
+  <li>可導入 remote server via <strong>syslog</strong>，調整 <code>syslog-facility</code> 和 <code>syslog-level</code></li>
+  <li>可過濾紀錄，但須先設定 <strong>filter-command</strong></li>
+</ol>
+
+<hr/>
+
+<h2>最終結論</h2>
+
+<table style="width:100%;max-width:700px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">情境</th>
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">建議工具</th>
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">原因</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">少數伺服器及人員監控</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">sudosh2</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">方便查詢、易於管理</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">大量伺服器及人員監控</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">snoopylogger</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">可統一導入 syslog server</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2>附錄：sudosh2 的 SFTP 支援修正</h2>
+
+<div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#166534;"><strong>問題：</strong>sudosh2 無法搭配 sftp 使用</p>
+  <p style="margin:0;color:#15803d;">參考 <a href="https://github.com/wojo/sudosh2/blob/master/README" target="_blank" style="color:#166534;text-decoration:underline;">sudosh2 README</a> 說明：</p>
+  <p style="margin:8px 0 0 0;color:#166534;font-size:13px;"><code>4) To allow things like scp, sftp, cvs, rsync, etc, use the "-c arg allow" in sudosh.conf.</code></p>
+</div>
+
+<h3>發現：系統有兩支 sftp-server</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#b5cea8;">[root@tw log]# find / -type f -name "sftp-server"</span>
+<span style="color:#9cdcfe;">/usr/libexec/openssh/sftp-server</span>   <span style="color:#567d46;"># 預設安裝及 sshd_config 設定</span>
+<span style="color:#9cdcfe;">/usr/libexec/sftp-server</span>            <span style="color:#567d46;"># 真正使用，但其他 AWS server 並無此檔</span>
+
+<span style="color:#b5cea8;">[root@tw ~]# rpm -q -l openssh-server | grep sftp-server</span>
+<span style="color:#9cdcfe;">/usr/libexec/openssh/sftp-server</span>
+</pre>
+
+<h3>修改 /etc/sudosh.conf</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#567d46;"># vi /etc/sudosh.conf</span>
+<span style="color:#9cdcfe;">logdir</span>                  = /var/log/sudosh
+<span style="color:#9cdcfe;">default shell</span>           = /bin/bash
+<span style="color:#9cdcfe;">delimiter</span>               = -
+<span style="color:#9cdcfe;">syslog.priority</span>         = <span style="color:#b5cea8;">LOG_INFO</span>
+<span style="color:#9cdcfe;">syslog.facility</span>         = <span style="color:#b5cea8;">LOG_LOCAL2</span>
+<span style="color:#9cdcfe;">clearenvironment</span>        = yes
+
+<span style="color:#567d46;"># Allow Sudosh to execute -c arguments? If so, what?</span>
+<span style="color:#9cdcfe;">-c arg allow</span> = /usr/libexec/sftp-server
+<span style="color:#9cdcfe;">-c arg allow</span> = scp
+<span style="color:#9cdcfe;">-c arg allow</span> = rsync
+</pre>
+
+<div style="background:#dcfce7;border-left:4px solid #22c55e;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#166534;"><strong>測試成功：</strong></p>
+  <pre style="margin:8px 0 0 0;background:#1e1e1e;color:#22c55e;padding:8px 12px;border-radius:4px;font-family:monospace;font-size:13px;">
+sftp -v david@2xx.xxx.xxx.xxx</pre>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Logging/" rel="tag"># Logging</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2012/09/10/2012-09-11-tools-for-scanning-source-code-for-vulnerabilities/" rel="prev" title="Tools for Scanning Source Code for Vulnerabilities">
+                  <i class="fa fa-angle-left"></i> Tools for Scanning Source Code for Vulnerabilities
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2012/11/22/2012-11-23-build-only-core-centos-5-5-ami-for-amazon-ec2/" rel="next" title="Build only Core CentOS 5.5 AMI for Amazon EC2">
+                  Build only Core CentOS 5.5 AMI for Amazon EC2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yuhao Chen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

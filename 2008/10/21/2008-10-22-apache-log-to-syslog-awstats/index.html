@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gentoobreaking.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Apache Log To Syslog &amp; AWStats  目的：統計多站台檔案存取次數及流量    一、Apache Log To Syslog  參考資源     O&#39;Reilly - HTTPd Syslog   DevShed - Logging in Apache   Study-Area 討論串   Linux ChinaUnix Techdoc      ⚠️ Remot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Log To Syslog &amp; AWStats">
+<meta property="og:url" content="https://gentoobreaking.github.io/2008/10/21/2008-10-22-apache-log-to-syslog-awstats/index.html">
+<meta property="og:site_name" content="IT@DOG">
+<meta property="og:description" content="Apache Log To Syslog &amp; AWStats  目的：統計多站台檔案存取次數及流量    一、Apache Log To Syslog  參考資源     O&#39;Reilly - HTTPd Syslog   DevShed - Logging in Apache   Study-Area 討論串   Linux ChinaUnix Techdoc      ⚠️ Remot">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2008-10-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-18T08:37:39.895Z">
+<meta property="article:author" content="Yuhao Chen">
+<meta property="article:tag" content="AWStats">
+<meta property="article:tag" content="Apache">
+<meta property="article:tag" content="Syslog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gentoobreaking.github.io/2008/10/21/2008-10-22-apache-log-to-syslog-awstats/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://gentoobreaking.github.io/2008/10/21/2008-10-22-apache-log-to-syslog-awstats/","path":"2008/10/21/2008-10-22-apache-log-to-syslog-awstats/","title":"Apache Log To Syslog & AWStats"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Apache Log To Syslog & AWStats | IT@DOG</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="IT@DOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">IT@DOG</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">45</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">26</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Apache Log To Syslog &amp; AWStats</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">目的：統計多站台檔案存取次數及流量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">一、Apache Log To Syslog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">參考資源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">開機時自動啟動 tail + logger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Syslog 設定：傳送到遠端伺服器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">Syslog 設定：寫入本地端檔案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text">修改 Log 自動封存時間</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">二、AWStats 安裝與設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">參考資源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">設定 Apache Alias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">執行 awstats_configure.pl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.5.</span> <span class="nav-text">修改 AWStats 設定檔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.6.</span> <span class="nav-text">手動更新統計資料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.7.</span> <span class="nav-text">瀏覽報表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.8.</span> <span class="nav-text">加入 Crontab 自動更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.9.</span> <span class="nav-text">流程總覽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.10.</span> <span class="nav-text">功能對照表</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuhao Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://gentoobreaking.github.io/2008/10/21/2008-10-22-apache-log-to-syslog-awstats/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuhao Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Apache Log To Syslog &amp; AWStats | IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Apache Log To Syslog & AWStats
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2008-10-22 00:00:00" itemprop="dateCreated datePublished" datetime="2008-10-22T00:00:00+08:00">2008-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-06-18 16:37:39" itemprop="dateModified" datetime="2026-06-18T16:37:39+08:00">2026-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">伺服器管理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2>Apache Log To Syslog &amp; AWStats</h2>
+
+<h3>目的：統計多站台檔案存取次數及流量</h3>
+
+<hr/>
+
+<h2>一、Apache Log To Syslog</h2>
+
+<h3>參考資源</h3>
+
+<ul style="color:#374151;line-height:2;">
+  <li><a href="http://www.oreillynet.com/pub/a/sysadmin/2006/10/12/httpd-syslog.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">O'Reilly - HTTPd Syslog</a></li>
+  <li><a href="http://www.devshed.com/c/a/Apache/Logging-in-Apache/4/" target="_blank" style="color:#1d4ed8;text-decoration:underline;">DevShed - Logging in Apache</a></li>
+  <li><a href="http://phorum.study-area.org/index.php?topic=26137.0" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Study-Area 討論串</a></li>
+  <li><a href="http://linux.chinaunix.net/techdoc/net/2007/11/30/973513.shtml" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Linux ChinaUnix Techdoc</a></li>
+</ul>
+
+<div style="background:#fff7ed;border-left:4px solid #f97316;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#c2410c;"><strong>⚠️</strong> <strong>Remote Log Server IP：</strong><code style="background:#fff7ed;color:#c2410c;padding:2px 6px;border-radius:4px;">@remotelogsrvip</code></p>
+</div>
+
+<h3>開機時自動啟動 tail + logger</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># vi /etc/rc.local 加入下列</span>
+<span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/error_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local1.info &amp;
+<span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/access_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local2.info &amp;
+</pre>
+
+<h3>Syslog 設定：傳送到遠端伺服器</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># vi /etc/syslog.conf</span>
+<span style="color:#9cdcfe;">local1.*</span>  <span style="color:#ce9178;">@remotelogsrvip</span>
+<span style="color:#9cdcfe;">local2.*</span>  <span style="color:#ce9178;">@remotelogsrvip</span>
+<span style="color:#9cdcfe;">*.*</span>       <span style="color:#ce9178;">@remotelogsrvip</span>
+</pre>
+
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#1e40af;"><strong>💡</strong> 需手動執行一次（開機後若 rc.local 尚未觸發）：p>
+</div>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/error_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local1.info &amp;
+<span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/access_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local2.info &amp;
+
+<span style="color:#569cd6;">service</span> syslog restart
+</pre>
+
+<h3>Syslog 設定：寫入本地端檔案</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># vi /etc/syslog.conf</span>
+<span style="color:#9cdcfe;">local1.*</span>  /var/log/apache/error_log
+<span style="color:#9cdcfe;">local2.*</span>  /var/log/apache/access_log
+</pre>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># 需手動執行一次</span>
+<span style="color:#569cd6;">mkdir</span> /var/log/apache
+<span style="color:#569cd6;">service</span> syslog restart
+</pre>
+
+<h3>修改 Log 自動封存時間</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># vi /etc/logrotate.conf</span>
+
+<span style="color:#9cdcfe;">/var/log/httpd/access_log</span> {
+  <span style="color:#9cdcfe;">daily</span>
+  <span style="color:#569cd6;">create</span> <span style="color:#b5cea8;">0664</span> root root
+  <span style="color:#9cdcfe;">rotate</span> <span style="color:#b5cea8;">90</span>
+}
+
+<span style="color:#9cdcfe;">/var/log/httpd/error_log</span> {
+  <span style="color:#9cdcfe;">daily</span>
+  <span style="color:#569cd6;">create</span> <span style="color:#b5cea8;">0664</span> root root
+  <span style="color:#9cdcfe;">rotate</span> <span style="color:#b5cea8;">90</span>
+}
+</pre>
+
+<hr/>
+
+<h2>二、AWStats 安裝與設定</h2>
+
+<h3>參考資源</h3>
+
+<ul style="color:#374151;line-height:2;">
+  <li><a href="http://awstats.sourceforge.net/docs/awstats_setup.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">AWStats 官方設定文件</a></li>
+  <li><a href="http://www.chedong.com/tech/awstats.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">chedong.com AWStats 教學</a></li>
+  <li><a href="http://dennys.tiger2.net/zh-hant/blog/2007/02/02/awstats" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Denny's AWStats 繁體中文設定</a></li>
+</ul>
+
+<h3>安裝</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#569cd6;">rpm</span> <span style="color:#4ec9b0;">-i</span> awstats-6.8-1.noarch.rpm
+</pre>
+
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#1e40af;"><strong>💡</strong> AWStats 安裝三步驟：</p>
+  <ol style="margin:8px 0 0 0;padding-left:20px;color:#1e40af;line-height:1.8;">
+    <li>Install and Setup with <code style="background:#dbeafe;padding:2px 4px;border-radius:3px;color:#1e40af;">awstats_configure.pl</code></li>
+    <li>Build/Update Statistics with <code style="background:#dbeafe;padding:2px 4px;border-radius:3px;color:#1e40af;">awstats.pl</code></li>
+    <li>Read Statistics</li>
+  </ol>
+</div>
+
+<h3>設定 Apache Alias</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># vi /etc/httpd/conf/httpd.conf 加入下列</span>
+
+<span style="color:#569cd6;">Alias</span> /awstatsclasses <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/classes/"</span>
+<span style="color:#569cd6;">Alias</span> /awstatscss <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/css/"</span>
+<span style="color:#569cd6;">Alias</span> /awstatsicons <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/icon/"</span>
+<span style="color:#569cd6;">ScriptAlias</span> /awstats/ <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/cgi-bin/"</span>
+
+<span style="color:#569cd6;">Options</span> None
+<span style="color:#569cd6;">AllowOverride</span> None
+<span style="color:#569cd6;">Order</span> allow,deny
+<span style="color:#569cd6;">Allow from</span> all
+</pre>
+
+<h3>執行 awstats_configure.pl</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#569cd6;">cd</span> /usr/local/awstats/
+<span style="color:#569cd6;">perl</span> awstats_configure.pl
+</pre>
+
+<p style="color:#374151;margin-top:16px;">畫面輸出：</p>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;">-----> Create config file '/etc/awstats/awstats.ftp.xxx.com.tw.conf'</span>
+<span style="color:#4ec9b0;">Config file /etc/awstats/awstats.ftp.xxx.com.tw.conf created.</span>
+
+<span style="color:#6a9955;">-----> Add update process inside a scheduler</span>
+<span style="color:#f97316;">Sorry, configure.pl does not support automatic add to cron yet.</span>
+<span style="color:#6a9955;">You can do it manually by adding the following command to your cron:</span>
+/usr/local/awstats/wwwroot/cgi-bin/awstats.pl -update -config=ftp.xxx.com.tw
+<span style="color:#6a9955;">Or if you have several config files:</span>
+/usr/local/awstats/tools/awstats_updateall.pl now
+
+<span style="color:#6a9955;"># 瀏覽 AWStats 報表</span>
+<span style="color:#ce9178;">http://localhost/awstats/awstats.pl?config=ftp.xxx.com.tw</span>
+</pre>
+
+<h3>修改 AWStats 設定檔</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># vi /etc/awstats/awstats.ftp.xxx.com.tw.conf</span>
+<span style="color:#6a9955;">##LogFile="/var/log/httpd/mylog.log"</span>
+<span style="color:#9cdcfe;">LogFile</span>=<span style="color:#ce9178;">"/var/log/apache/access_log"</span>
+<span style="color:#6a9955;">##DirData="/var/lib/awstats"</span>
+<span style="color:#9cdcfe;">DirData</span>=<span style="color:#ce9178;">"/usr/local/awstats/"</span>
+</pre>
+
+<h3>手動更新統計資料</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#569cd6;">/usr/local/awstats/wwwroot/cgi-bin/awstats.pl</span> <span style="color:#4ec9b0;">-update</span> <span style="color:#4ec9b0;">-config</span>=ftp.xxx.com.tw
+<span style="color:#569cd6;">/usr/local/awstats/wwwroot/cgi-bin/awstats.pl</span> <span style="color:#4ec9b0;">-update</span> <span style="color:#4ec9b0;">-config</span>=autopatch2.xxx.com.tw
+</pre>
+
+<h3>瀏覽報表</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#ce9178;">http://localhost/awstats/awstats.pl?config=ftp.xxx.com.tw</span>
+</pre>
+
+<h3>加入 Crontab 自動更新</h3>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#6a9955;"># crontab -e</span>
+<span style="color:#b5cea8;">5</span> * * * * /usr/local/awstats/tools/awstats_updateall.pl now
+</pre>
+
+<div style="background:#fff7ed;border-left:4px solid #f97316;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#c2410c;"><strong>⚠️</strong> <strong>注意：</strong><code style="background:#fff7ed;color:#c2410c;padding:2px 6px;border-radius:4px;">awstats_configure.pl</code> 目前還不支援自動寫入 crontab，需手動自行新增。</p>
+</div>
+
+<hr/>
+
+<h3>流程總覽</h3>
+
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px;margin:16px 0;text-align:center;font-family:monospace;font-size:13px;line-height:2.2;color:#374151;">
+  <strong style="color:#1e40af;">Apache Log</strong>（access_log / error_log）
+  → <strong style="color:#d97706;">tail + logger</strong>（Local1 / Local2）
+  → <strong style="color:#7c3aed;">Syslog Server</strong>
+  → <strong style="color:#dc2626;">AWStats</strong>（每小時更新）
+  → <strong style="color:#059669;">Web UI 報表</strong>
+</div>
+
+<hr/>
+
+<h3>功能對照表</h3>
+
+<table style="width:100%;max-width:850px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+  <caption style="text-align:left;padding:0 0 8px 4px;font-weight:600;color:#374151;font-size:15px;">Apache Log To Syslog &amp; AWStats 功能對照</caption>
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">項目</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">功能說明</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">相關設定</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">logger -p local1.info</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Apache Error Log 轉 syslog（local1）</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/syslog.conf</code></td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">logger -p local2.info</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Apache Access Log 轉 syslog（local2）</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/syslog.conf</code></td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">logrotate</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Log 自動封存（預設 90 天）</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/logrotate.conf</code></td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">awstats_configure.pl</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">快速建立站台設定檔</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/usr/local/awstats/</code></td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">awstats.pl -update</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">更新統計資料庫</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/awstats/*.conf</code></td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">awstats_updateall.pl</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">一次更新所有站台統計</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">加入 crontab 每小時執行</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:14px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#166534;"><strong>💜</strong> Apache Log To Syslog + AWStats 組合可以完整掌握多站台的流量、訪客、檔案存取次數等資訊，適合需要統計分析與流量監控的網站管理需求。</p>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Apache/" rel="tag"># Apache</a>
+              <a href="/tags/AWStats/" rel="tag"># AWStats</a>
+              <a href="/tags/Syslog/" rel="tag"># Syslog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2008/10/20/2008-10-21-%E7%B6%B2%E7%AB%99%E5%88%86%E6%9E%90%E8%BB%9F%E9%AB%94/" rel="prev" title="網站分析軟體">
+                  <i class="fa fa-angle-left"></i> 網站分析軟體
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/" rel="next" title="壓力測試工具">
+                  壓力測試工具 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yuhao Chen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

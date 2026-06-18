@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gentoobreaking.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="IDC 機房與網路管理工具懶人包  整理常用的 IDC 機房管理、IP 管理、資產管理、網路監控工具，方便快速查閱與選型。    IP 與資產管理     IP &amp; Asset Management Tools               工具名稱       用途說明       特色                       phpIP Management       IP 位址管">
+<meta property="og:type" content="article">
+<meta property="og:title" content="機房管理介面工具軟體整理">
+<meta property="og:url" content="https://gentoobreaking.github.io/2008/10/12/2008-10-13-%E6%A9%9F%E6%88%BF%E7%AE%A1%E7%90%86%E4%BB%8B%E9%9D%A2%E5%B7%A5%E5%85%B7%E8%BB%9F%E9%AB%94%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="IT@DOG">
+<meta property="og:description" content="IDC 機房與網路管理工具懶人包  整理常用的 IDC 機房管理、IP 管理、資產管理、網路監控工具，方便快速查閱與選型。    IP 與資產管理     IP &amp; Asset Management Tools               工具名稱       用途說明       特色                       phpIP Management       IP 位址管">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2008-10-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-18T08:37:39.895Z">
+<meta property="article:author" content="Yuhao Chen">
+<meta property="article:tag" content="機房管理">
+<meta property="article:tag" content="監控工具">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gentoobreaking.github.io/2008/10/12/2008-10-13-%E6%A9%9F%E6%88%BF%E7%AE%A1%E7%90%86%E4%BB%8B%E9%9D%A2%E5%B7%A5%E5%85%B7%E8%BB%9F%E9%AB%94%E6%95%B4%E7%90%86/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://gentoobreaking.github.io/2008/10/12/2008-10-13-%E6%A9%9F%E6%88%BF%E7%AE%A1%E7%90%86%E4%BB%8B%E9%9D%A2%E5%B7%A5%E5%85%B7%E8%BB%9F%E9%AB%94%E6%95%B4%E7%90%86/","path":"2008/10/12/2008-10-13-機房管理介面工具軟體整理/","title":"機房管理介面工具軟體整理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>機房管理介面工具軟體整理 | IT@DOG</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="IT@DOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">IT@DOG</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">45</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">26</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">IDC 機房與網路管理工具懶人包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">IP 與資產管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">機架視覺化工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">Racked</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">CRAMS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">網路監控與圖形化工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">Cacti 家族</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.2.</span> <span class="nav-text">開源 NMS 系統</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">工具分類總覽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">常見組合推薦</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuhao Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://gentoobreaking.github.io/2008/10/12/2008-10-13-%E6%A9%9F%E6%88%BF%E7%AE%A1%E7%90%86%E4%BB%8B%E9%9D%A2%E5%B7%A5%E5%85%B7%E8%BB%9F%E9%AB%94%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuhao Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="機房管理介面工具軟體整理 | IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          機房管理介面工具軟體整理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2008-10-13 00:00:00" itemprop="dateCreated datePublished" datetime="2008-10-13T00:00:00+08:00">2008-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-06-18 16:37:39" itemprop="dateModified" datetime="2026-06-18T16:37:39+08:00">2026-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">伺服器管理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2>IDC 機房與網路管理工具懶人包</h2>
+
+<p>整理常用的 IDC 機房管理、IP 管理、資產管理、網路監控工具，方便快速查閱與選型。</p>
+
+<hr/>
+
+<h2>IP 與資產管理</h2>
+
+<table style="width:100%;max-width:900px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+  <caption style="text-align:left;padding:0 0 8px 4px;font-weight:600;color:#374151;font-size:15px;">IP &amp; Asset Management Tools</caption>
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">工具名稱</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">用途說明</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">特色</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">phpIP Management</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">IP 位址管理（IPAM）系統</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">網段規劃、IP 申請審核、可用 IP 查詢</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">h-inventory</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">硬體設備資產管理</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">硬體規格、序號、保固期限追蹤</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">TGS Content Management</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">網站內容管理系統</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">文件發布、版本控制、工作流程</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">IDIS</code><br><span style="font-size:12px;color:#6b7280;">ISP Datacenter Inventory System</span></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">ISP 資料中心資產管理</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">機房空間、伺服器、網路設備統一管理</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">CRAMS</code><br><span style="font-size:12px;color:#6b7280;">Computer Rack and Asset Management System</span></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">機架與資產管理系統</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">U 槽位規劃、機架視覺化、資產盤點</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">OpenDataCenter NMS</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">開放資料中心網路管理系統</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">設備拓撲、流量分析、事件管理</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2>機架視覺化工具</h2>
+
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px;margin:16px 0;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+    <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;">
+      <h3 style="margin:0 0 8px 0;color:#1e40af;"><code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">Racked</code></h3>
+      <p style="margin:0;color:#374151;font-size:14px;line-height:1.6;">硬體機架視覺化工具，即時呈現機櫃內設備位置與空間使用率。</p>
+      <a href="http://rackview.sourceforge.net/" target="_blank" style="color:#1d4ed8;text-decoration:underline;font-size:13px;">rackview.sourceforge.net</a>
+    </div>
+    <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;">
+      <h3 style="margin:0 0 8px 0;color:#1e40af;"><code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">CRAMS</code></h3>
+      <p style="margin:0;color:#374151;font-size:14px;line-height:1.6;">Computer Rack and Asset Management System，完整的資產與機架管理方案。</p>
+      <a href="http://sourceforge.net/projects/crams/" target="_blank" style="color:#1d4ed8;text-decoration:underline;font-size:13px;">SourceForge - CRAMS</a>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<h2>網路監控與圖形化工具</h2>
+
+<h3>Cacti 家族</h3>
+
+<table style="width:100%;max-width:900px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">工具名稱</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">用途說明</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">網址</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Cacti</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">RRDtool 圖形化網路監控工具，支援 SNMP 圖形化呈現流量、效能資料</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><a href="http://www.cacti.net/" target="_blank" style="color:#1d4ed8;text-decoration:underline;">www.cacti.net</a></td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Cacti Plug-ins</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Cacti 延伸插件，提供更多圖形模板、效能監控模組</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><a href="http://cactiusers.org/index.php" target="_blank" style="color:#1d4ed8;text-decoration:underline;">cactiusers.org</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>開源 NMS 系統</h3>
+
+<table style="width:100%;max-width:900px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">工具名稱</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">用途說明</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">網址</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">OpenNMS</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">企業級網路管理系統，支援故障監控、效能收集、事件系統</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><a href="http://www.opennms.org/" target="_blank" style="color:#1d4ed8;text-decoration:underline;">www.opennms.org</a></td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Jffnms</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">PHP 撰寫的網路管理系統，輕量級替代方案，適合中小型環境</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><a href="http://www.jffnms.org/" target="_blank" style="color:#1d4ed8;text-decoration:underline;">www.jffnms.org</a></td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Nagios</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">主機與服務監控標竿工具，支援擴充插件、告警通知、狀態 Dashboard</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><a href="http://www.nagios.org/" target="_blank" style="color:#1d4ed8;text-decoration:underline;">www.nagios.org</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2>工具分類總覽</h2>
+
+<table style="width:100%;max-width:900px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+  <caption style="text-align:left;padding:0 0 8px 4px;font-weight:600;color:#374151;font-size:15px;">IDC 工具分類索引</caption>
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">分類</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">推薦工具</th>
+      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">適用情境</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><strong style="color:#1e40af;">IP 管理</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">phpIP Management</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">IP 申請、分配、回收管理</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><strong style="color:#1e40af;">機架視覺化</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Racked</code>、<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">CRAMS</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">機櫃 U 槽位配置、空間規劃</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><strong style="color:#1e40af;">資產管理</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">IDIS</code>、<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">h-inventory</code>、<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">CRAMS</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">設備規格、序號、保固、位置管理</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><strong style="color:#1e40af;">流量圖形化</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Cacti</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">SNMP 效能資料收集與 RRDtool 繪圖</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><strong style="color:#1e40af;">主機監控</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Nagios</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">服務可用性、告警通知、狀態報表</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><strong style="color:#1e40af;">整合 NMS</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">OpenNMS</code>、<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">Jffnms</code>、<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">OpenDataCenter NMS</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">企業級網路管理、故障監控、事件管理</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h3>常見組合推薦</h3>
+
+<div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:14px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 12px 0;color:#166534;font-weight:600;">🚀 推薦工具組合（依需求規模）</p>
+  <table style="width:100%;border-collapse:collapse;font-family:system-ui,sans-serif;font-size:13px;">
+    <thead>
+      <tr>
+        <th style="padding:8px 12px;text-align:left;color:#166534;border-bottom:1px solid #bbf7d0;font-weight:600;">規模</th>
+        <th style="padding:8px 12px;text-align:left;color:#166534;border-bottom:1px solid #bbf7d0;font-weight:600;">推薦組合</th>
+        <th style="padding:8px 12px;text-align:left;color:#166534;border-bottom:1px solid #bbf7d0;font-weight:600;">說明</th>
+      </tr>
+    </thead>
+    <tbody style="color:#15803d;">
+      <tr>
+        <td style="padding:8px 12px;border-bottom:1px solid #dcfce7;"><strong>小型</strong></td>
+        <td style="padding:8px 12px;border-bottom:1px solid #dcfce7;"><code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">phpIP</code> + <code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">Cacti</code> + <code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">Nagios</code></td>
+        <td style="padding:8px 12px;border-bottom:1px solid #dcfce7;">IP、流量、服務監控基本需求</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 12px;border-bottom:1px solid #dcfce7;"><strong>中型</strong></td>
+        <td style="padding:8px 12px;border-bottom:1px solid #dcfce7;"><code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">CRAMS</code> + <code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">OpenNMS</code> + <code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">Cacti</code></td>
+        <td style="padding:8px 12px;border-bottom:1px solid #dcfce7;">資產、機架、網路統一管理</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 12px;"><strong>大型/企業</strong></td>
+        <td style="padding:8px 12px;"><code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">IDIS</code> + <code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">OpenDataCenter NMS</code> + <code style="background:#dcfce7;padding:2px 6px;border-radius:4px;">Jffnms</code></td>
+        <td style="padding:8px 12px;">完整 IDC 管理、事件整合、報表分析</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr/>
+
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0;color:#1e40af;"><strong>💡</strong> 以上工具皆為<strong>開源免費</strong>，可從 SourceForge、官方網站下載。建議先評估機房規模與管理需求，再選擇適合的工具組合。</p>
+</div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%A9%9F%E6%88%BF%E7%AE%A1%E7%90%86/" rel="tag"># 機房管理</a>
+              <a href="/tags/%E7%9B%A3%E6%8E%A7%E5%B7%A5%E5%85%B7/" rel="tag"># 監控工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2008/10/13/2008-10-14-%E5%8F%B0%E7%81%A3%E6%80%9D%E7%A7%91%E6%8A%80%E8%A1%93%E7%B6%93%E7%90%86-%E8%AC%9D%E6%9D%B1%E8%88%88-tony/" rel="next" title="台灣思科技術經理：謝東興(Tony)">
+                  台灣思科技術經理：謝東興(Tony) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yuhao Chen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

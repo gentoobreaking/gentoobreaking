@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gentoobreaking.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="在 EC2 上构建 CentOS 5.5 自定义 AMI  本篇文章說明如何將本機虛擬機（VirtualBox &#x2F; VMware）或 EC2 instance-store 實例轉換為 EBS-backed AMI。    前置需求     一套已安裝的 CentOS（自己的 VM、VBox 或 EC2 instance 皆可）   已安裝 rpm-python 及 Java   設定好 Scrip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build only Core CentOS 5.5 AMI for Amazon EC2">
+<meta property="og:url" content="https://gentoobreaking.github.io/2012/11/22/2012-11-23-build-only-core-centos-5-5-ami-for-amazon-ec2/index.html">
+<meta property="og:site_name" content="IT@DOG">
+<meta property="og:description" content="在 EC2 上构建 CentOS 5.5 自定义 AMI  本篇文章說明如何將本機虛擬機（VirtualBox &#x2F; VMware）或 EC2 instance-store 實例轉換為 EBS-backed AMI。    前置需求     一套已安裝的 CentOS（自己的 VM、VBox 或 EC2 instance 皆可）   已安裝 rpm-python 及 Java   設定好 Scrip">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2012-11-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-18T08:37:39.895Z">
+<meta property="article:author" content="Yuhao Chen">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="CentOS">
+<meta property="article:tag" content="EC2">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gentoobreaking.github.io/2012/11/22/2012-11-23-build-only-core-centos-5-5-ami-for-amazon-ec2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://gentoobreaking.github.io/2012/11/22/2012-11-23-build-only-core-centos-5-5-ami-for-amazon-ec2/","path":"2012/11/22/2012-11-23-build-only-core-centos-5-5-ami-for-amazon-ec2/","title":"Build only Core CentOS 5.5 AMI for Amazon EC2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Build only Core CentOS 5.5 AMI for Amazon EC2 | IT@DOG</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="IT@DOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">IT@DOG</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">45</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">26</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">在 EC2 上构建 CentOS 5.5 自定义 AMI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">前置需求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">Script 功能說明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">將 Instance-Store 轉換為 EBS AMI（VirtualBox &#x2F; VMware 適用）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">（如有需要事後修改 image）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">從 Volume 建立 Snapshot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">從 Snapshot 建立 AMI 並調整大小</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Script 文件：EC2_CentOS5.5_AMI.sh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">重要參數備註</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuhao Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://gentoobreaking.github.io/2012/11/22/2012-11-23-build-only-core-centos-5-5-ami-for-amazon-ec2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuhao Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Build only Core CentOS 5.5 AMI for Amazon EC2 | IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Build only Core CentOS 5.5 AMI for Amazon EC2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2012-11-23 00:00:00" itemprop="dateCreated datePublished" datetime="2012-11-23T00:00:00+08:00">2012-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-06-18 16:37:39" itemprop="dateModified" datetime="2026-06-18T16:37:39+08:00">2026-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AE%A1%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">伺服器管理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2>在 EC2 上构建 CentOS 5.5 自定义 AMI</h2>
+
+<p>本篇文章說明如何將本機虛擬機（VirtualBox / VMware）或 EC2 instance-store 實例轉換為 EBS-backed AMI。</p>
+
+<hr />
+
+<h2>前置需求</h2>
+
+<ul>
+  <li>一套已安裝的 <strong>CentOS</strong>（自己的 VM、VBox 或 EC2 instance 皆可）</li>
+  <li>已安裝 <strong>rpm-python</strong> 及 <strong>Java</strong></li>
+  <li>設定好 Script 前面的參數部分</li>
+</ul>
+
+<h3>Script 功能說明</h3>
+
+<ul>
+  <li>自動抓取及安裝 <code>ec2-api-tools.zip</code>、<code>ec2-ami-tools.zip</code></li>
+  <li>自動上傳至所設定的 <code>S3_REGION</code> 之 <code>S3_BUCKET_NAME</code></li>
+</ul>
+
+<hr />
+
+<h2>將 Instance-Store 轉換為 EBS AMI（VirtualBox / VMware 適用）</h2>
+
+<ol>
+  <li><strong>建立 10G EBS Volume</strong> → <code>vol-xxxxxxxx</code></li>
+  <li><strong>Attach Volume 到 Instance</strong> → <code>/dev/sdf</code>
+    <ul>
+      <li>注意：較新的 Linux kernel 可能會將設備名稱重新命名為 <code>/dev/xvdf</code> ～ <code>/dev/xvdp</code></li>
+    </ul>
+  </li>
+  <li><strong>確認是否認到該 Volume</strong></li>
+  <li><strong>格式化為 ext3</strong></li>
+  <li><strong>建立掛載目錄</strong></li>
+</ol>
+
+<pre style="background: rgb(30, 30, 30); border-radius: 8px; color: #e6e6e6; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.6; margin: 16px 0px; overflow-x: auto; padding: 16px 20px;"><span style="color: #569cd6;">fdisk</span> <span style="color: #9cdcfe;">/dev/sdf</span>
+<span style="color: #569cd6;">mkfs.ext3</span> <span style="color: #9cdcfe;">/dev/sdf</span>
+<span style="color: #569cd6;">mkdir</span> <span style="color: #9cdcfe;">/mnt/target</span>
+</pre>
+
+<h3>（如有需要事後修改 image）</h3>
+
+<pre style="background: rgb(30, 30, 30); border-radius: 8px; color: #e6e6e6; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.6; margin: 16px 0px; overflow-x: auto; padding: 16px 20px;"><span style="color: #569cd6;">mount</span> <span style="color: #9cdcfe;">/dev/sdf</span> <span style="color: #9cdcfe;">/mnt/target</span>
+<span style="color: #569cd6;">rsync</span> <span style="color: #4ec9b0;">-avHx</span> <span style="color: #9cdcfe;">/</span> <span style="color: #9cdcfe;">/mnt/target</span>
+<span style="color: #569cd6;">rsync</span> <span style="color: #4ec9b0;">-avHx</span> <span style="color: #9cdcfe;">/dev</span> <span style="color: #9cdcfe;">/mnt/target</span>
+<span style="color: #569cd6;">sync</span>;<span style="color: #569cd6;">sync</span>;<span style="color: #569cd6;">sync</span>;<span style="color: #569cd6;">sync</span> <span style="color: #567d46;">&amp;&amp; umount /mnt/target</span>
+</pre>
+
+<h3>從 Volume 建立 Snapshot</h3>
+
+<p>（實測為無須 Detach Volume，亦可直接做 Snapshots）</p>
+
+<pre style="background: rgb(30, 30, 30); border-radius: 8px; color: #e6e6e6; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.6; margin: 16px 0px; overflow-x: auto; padding: 16px 20px;"><span style="color: #4ec9b0;">Volumes → Snapshots:</span> <span style="color: #ce9178;">vol-xxxxxxxx</span> <span style="color: #4ec9b0;">→</span> <span style="color: #ce9178;">CentOS5.5 EBS (Snapshots)</span>
+</pre>
+
+<h3>從 Snapshot 建立 AMI 並調整大小</h3>
+
+<ol>
+  <li>Create Image from Snapshot → <strong>CentOS 5.5 (Root Volume) resize to 500G</strong></li>
+  <li>Launch Instance</li>
+  <li>進入 Instance 後執行：</li>
+</ol>
+
+<pre style="background: rgb(30, 30, 30); border-radius: 8px; color: #e6e6e6; font-family: Consolas, Monaco, monospace; font-size: 14px; line-height: 1.6; margin: 16px 0px; overflow-x: auto; padding: 16px 20px;"><span style="color: #567d46;"># resize2fs /dev/sda1    # 費時，視空間大小而定</span>
+</pre>
+
+<hr />
+
+<h2>Script 文件：EC2_CentOS5.5_AMI.sh</h2>
+
+<pre style="background: rgb(30, 30, 30); border-radius: 8px; color: #e6e6e6; font-family: Consolas, Monaco, monospace; font-size: 13px; line-height: 1.5; margin: 16px 0px; overflow-x: auto; padding: 16px 20px;"><span style="color: #567d46;">#!/bin/bash</span>
+
+<span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">-e "\n *** Build only Core CentOS 5.5 AMI for Amazon EC2 *** \n"</span>
+
+<span style="color: #567d46;"># yum install rpm-python</span>
+<span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">-e "匯入RPM-GPG-KEY-centos4."</span>
+<span style="color: #569cd6;">rpm</span> <span style="color: #4ec9b0;">--import</span> <span style="color: #9cdcfe;">http://vault.centos.org/RPM-GPG-KEY-centos4</span>
+
+<span style="color: #567d46;">#============================================================#</span>
+<span style="color: #567d46;"># 需先設定好Script的參數部分</span>
+<span style="color: #567d46;">#============================================================#</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">AMI_NAME</span>=<span style="color: #ce9178;">"centos-5.5-x86_64-core"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">AMI_IMG</span>=<span style="color: #ce9178;">"${AMI_NAME}.img"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">MNT_DIR</span>=<span style="color: #ce9178;">"fs-${AMI_NAME}"</span>
+
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">JAVA_HOME</span>=<span style="color: #9cdcfe;">/usr</span>   <span style="color: #567d46;"># for rpm</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">EC2_CERT</span>=<span style="color: #ce9178;">"/root/.aws/x509-cert-xxxx.pem"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">EC2_PRIVATE_KEY</span>=<span style="color: #ce9178;">"/root/.aws/x509-pk-xxxx.pem"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">ACCOUNT_NUM</span>=<span style="color: #ce9178;">"xxxxxxxxxxxx"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">S3_BUCKET_NAME</span>=<span style="color: #ce9178;">"centos-5.5-david"</span>
+<span style="color: #567d46;"># S3_BUCKET_NAME 需使用小寫，方不會出現錯誤提示!!!</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">S3_REGION</span>=<span style="color: #ce9178;">"ap-southeast-1"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">ACCESS_KEY_ID</span>=<span style="color: #ce9178;">"xxxxxxxxxxxxxxxxxxxxxxx"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">SECRET_ACCESS_KEY</span>=<span style="color: #ce9178;">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span>
+<span style="color: #567d46;">#============================================================#</span>
+
+<span style="color: #569cd6;">cd</span> <span style="color: #9cdcfe;">/mnt</span>
+<span style="color: #569cd6;">dd</span> <span style="color: #4ec9b0;">if</span>=<span style="color: #9cdcfe;">/dev/zero</span> <span style="color: #4ec9b0;">of</span>=${<span style="color: #9cdcfe;">AMI_IMG</span>} <span style="color: #4ec9b0;">count</span>=<span style="color: #b5cea8;">1024</span> <span style="color: #4ec9b0;">bs</span>=<span style="color: #b5cea8;">1M</span>
+
+<span style="color: #569cd6;">mke2fs</span> <span style="color: #4ec9b0;">-F -j</span> ${<span style="color: #9cdcfe;">AMI_IMG</span>}
+<span style="color: #569cd6;">mkdir</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}
+<span style="color: #569cd6;">mount</span> <span style="color: #4ec9b0;">-o loop</span> ${<span style="color: #9cdcfe;">AMI_IMG</span>} ${<span style="color: #9cdcfe;">MNT_DIR</span>}
+
+<span style="color: #569cd6;">mkdir</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/dev</span>
+<span style="color: #569cd6;">mkdir</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/etc</span>
+
+<span style="color: #569cd6;">/sbin/MAKEDEV</span> <span style="color: #4ec9b0;">-d</span> <span style="color: #9cdcfe;">/mnt/${MNT_DIR}/dev/</span> <span style="color: #4ec9b0;">-x</span> console
+<span style="color: #569cd6;">/sbin/MAKEDEV</span> <span style="color: #4ec9b0;">-d</span> <span style="color: #9cdcfe;">/mnt/${MNT_DIR}/dev/</span> <span style="color: #4ec9b0;">-x</span> null
+<span style="color: #569cd6;">/sbin/MAKEDEV</span> <span style="color: #4ec9b0;">-d</span> <span style="color: #9cdcfe;">/mnt/${MNT_DIR}/dev/</span> <span style="color: #4ec9b0;">-x</span> zero
+
+<span style="color: #569cd6;">cat</span> &gt; ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/etc/fstab</span> <span style="color: #4ec9b0;">&lt;&lt; EOS</span>
+<span style="color: #ce9178;">/dev/sda1 / ext3 defaults 1 1
+/dev/sda2 /mnt ext3 defaults 0 0
+/dev/sda3 swap swap defaults 0 0
+none /dev/pts devpts gid=5,mode=620 0 0
+none /dev/shm tmpfs defaults 0 0
+none /proc proc defaults 0 0
+none /sys sysfs defaults 0 0</span>
+<span style="color: #4ec9b0;">EOS</span>
+
+<span style="color: #569cd6;">mkdir</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/proc</span>
+<span style="color: #569cd6;">mount</span> <span style="color: #4ec9b0;">-t proc</span> none ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/proc</span>
+
+<span style="color: #9cdcfe;">YUMCNF</span>=<span style="color: #9cdcfe;">./yum.conf</span>
+<span style="color: #569cd6;">wget</span> <span style="color: #9cdcfe;">http://vault.centos.org/4.9/CentOS-Base.repo</span>
+
+<span style="color: #569cd6;">cat</span> &gt; ${<span style="color: #9cdcfe;">YUMCNF</span>} <span style="color: #4ec9b0;">&lt;&lt; EOS</span>
+<span style="color: #ce9178;">[main]
+cachedir=/var/cache/yum
+debuglevel=2
+logfile=/var/log/yum.log
+exclude=*-debuginfo
+gpgcheck=0
+pkgpolicy=newest
+distroverpkg=redhat-release
+tolerant=1
+exactarch=1
+obsoletes=1
+plugins=1
+reposdir=/dev/null
+metadata_expire=1800</span>
+<span style="color: #4ec9b0;">EOS</span>
+
+<span style="color: #569cd6;">cat</span> CentOS-Base.repo &gt;&gt; ${<span style="color: #9cdcfe;">YUMCNF</span>}
+<span style="color: #569cd6;">sed</span> <span style="color: #4ec9b0;">-i</span> <span style="color: #ce9178;">'s/4.9/5.5/g'</span> ${<span style="color: #9cdcfe;">YUMCNF</span>}
+<span style="color: #569cd6;">sed</span> <span style="color: #4ec9b0;">-i</span> <span style="color: #ce9178;">'s/gpgcheck=1/gpgcheck=0/g'</span> ${<span style="color: #9cdcfe;">YUMCNF</span>}
+<span style="color: #569cd6;">yum</span> <span style="color: #4ec9b0;">-c</span> ${<span style="color: #9cdcfe;">YUMCNF</span>} <span style="color: #4ec9b0;">--installroot</span>=<span style="color: #9cdcfe;">/mnt/${MNT_DIR}</span> <span style="color: #4ec9b0;">-y groupinstall</span> Core
+<span style="color: #569cd6;">yum</span> <span style="color: #4ec9b0;">-c</span> ${<span style="color: #9cdcfe;">YUMCNF</span>} <span style="color: #4ec9b0;">--installroot</span>=<span style="color: #9cdcfe;">/mnt/${MNT_DIR}</span> <span style="color: #4ec9b0;">-y install</span> curl
+
+<span style="color: #567d46;"># SSH 設定</span>
+<span style="color: #569cd6;">sed</span> <span style="color: #4ec9b0;">-i</span> <span style="color: #ce9178;">"s/#PermitRootLogin yes/PermitRootLogin yes/g"</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/etc/ssh/sshd_config</span>
+<span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">"UseDNS  no"</span> &gt;&gt; ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/etc/ssh/sshd_config</span>
+<span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">"PermitRootLogin without-password"</span> &gt;&gt; ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/etc/ssh/sshd_config</span>
+
+<span style="color: #567d46;"># 停用多餘的 tty</span>
+<span style="color: #569cd6;">sed</span> <span style="color: #4ec9b0;">-i</span> <span style="color: #ce9178;">'s/2:2345:respawn:\/sbin\/mingetty tty2/#2:2345:respawn:\/sbin\/mingetty tty2/g'</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/etc/inittab</span>
+<span style="color: #567d46;"># ... 其餘 tty3~tty6 同上</span>
+
+<span style="color: #567d46;"># Xen 相關</span>
+<span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">"hwcap 0 nosegneg"</span> &gt; ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/etc/ld.so.conf.d/libc6-xen.conf</span>
+
+<span style="color: #567d46;"># 安裝 EC2 自定義核心模組</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">MFILE</span>=<span style="color: #ce9178;">"ec2-modules-2.6.16.33-xenU-x86_64"</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">MODULE</span>=<span style="color: #ce9178;">"http://s3.amazonaws.com/ec2-downloads/${MFILE}.tgz"</span>
+<span style="color: #569cd6;">wget</span> ${<span style="color: #9cdcfe;">MODULE</span>}
+<span style="color: #569cd6;">gunzip</span> ${<span style="color: #9cdcfe;">MFILE</span>}.tgz
+<span style="color: #569cd6;">tar</span> <span style="color: #4ec9b0;">-xvf</span> ${<span style="color: #9cdcfe;">MFILE</span>}.tar <span style="color: #4ec9b0;">-C</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}
+<span style="color: #569cd6;">rm</span> <span style="color: #4ec9b0;">-f</span> ${<span style="color: #9cdcfe;">MFILE</span>}.tar
+
+<span style="color: #567d47;"># 進入 chroot 環境</span>
+<span style="color: #569cd6;">chroot</span> <span style="color: #9cdcfe;">/mnt/${MNT_DIR}</span> /bin/sh
+<span style="color: #569cd6;">/sbin/depmod</span> <span style="color: #4ec9b0;">-ae</span> <span style="color: #b5cea8;">2.6.16.33-xenU</span>
+<span style="color: #569cd6;">exit</span>
+
+<span style="color: #567d47;"># 帳號與權限設定</span>
+<span style="color: #569cd6;">chroot</span> <span style="color: #9cdcfe;">/mnt/${MNT_DIR}</span> /bin/sh
+<span style="color: #569cd6;">chkconfig</span> <span style="color: #4ec9b0;">--level 345</span> sshd on
+<span style="color: #569cd6;">pwconv</span>
+<span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">'root:'</span> | <span style="color: #569cd6;">chpasswd</span>
+<span style="color: #569cd6;">useradd</span> david; <span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">'david:davidpw'</span> | <span style="color: #569cd6;">chpasswd</span>
+<span style="color: #569cd6;">echo</span> <span style="color: #ce9178;">'david ALL=(ALL) NOPASSWD: ALL'</span> &gt;&gt; /etc/sudoers
+<span style="color: #569cd6;">exit</span>
+
+<span style="color: #569cd6;">umount</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}<span style="color: #9cdcfe;">/proc/</span>
+<span style="color: #569cd6;">umount</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}
+<span style="color: #569cd6;">rmdir</span> ${<span style="color: #9cdcfe;">MNT_DIR</span>}
+
+<span style="color: #567d47;"># 安裝 EC2 工具</span>
+<span style="color: #569cd6;">wget</span> <span style="color: #ce9178;">"http://...ec2-api-tools.zip"</span>
+<span style="color: #569cd6;">wget</span> <span style="color: #9cdcfe;">http://s3.amazonaws.com/ec2-downloads/ec2-ami-tools.zip</span>
+<span style="color: #569cd6;">mv</span> *.zip /opt/
+<span style="color: #569cd6;">cd</span> /opt
+<span style="color: #569cd6;">unzip</span> ec2-api-tools.zip
+<span style="color: #569cd6;">unzip</span> ec2-ami-tools.zip
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">EC2_HOME</span>=<span style="color: #9cdcfe;">/opt/ec2-api-tools-1.6.5.1</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">EC2_AMITOOL_HOME</span>=<span style="color: #9cdcfe;">/opt/ec2-ami-tools-1.4.0.7</span>
+<span style="color: #569cd6;">export</span> <span style="color: #9cdcfe;">PATH</span>=<span style="color: #9cdcfe;">$EC2_HOME/bin:$EC2_AMITOOL_HOME/bin:$PATH</span>
+
+<span style="color: #567d47;"># 打包並上傳至 S3</span>
+<span style="color: #569cd6;">cd</span> /mnt
+<span style="color: #569cd6;">ec2-bundle-image</span> <span style="color: #4ec9b0;">-i</span> ${<span style="color: #9cdcfe;">AMI_IMG</span>} <span style="color: #4ec9b0;">-c</span> ${<span style="color: #9cdcfe;">EC2_CERT</span>} <span style="color: #4ec9b0;">-k</span> ${<span style="color: #9cdcfe;">EC2_PRIVATE_KEY</span>} <span style="color: #4ec9b0;">-u</span> ${<span style="color: #9cdcfe;">ACCOUNT_NUM</span>} <span style="color: #4ec9b0;">-r</span> x86_64
+<span style="color: #569cd6;">ec2-upload-bundle</span> <span style="color: #4ec9b0;">-b</span> ${<span style="color: #9cdcfe;">S3_BUCKET_NAME</span>} <span style="color: #4ec9b0;">-m</span> <span style="color: #9cdcfe;">/tmp/${AMI_IMG}.manifest.xml</span> <span style="color: #4ec9b0;">-a</span> ${<span style="color: #9cdcfe;">ACCESS_KEY_ID</span>} <span style="color: #4ec9b0;">-s</span> ${<span style="color: #9cdcfe;">SECRET_ACCESS_KEY</span>} <span style="color: #4ec9b0;">--location</span> ${<span style="color: #9cdcfe;">S3_REGION</span>}
+<span style="color: #569cd6;">ec2-register</span> <span style="color: #4ec9b0;">--region</span> ${<span style="color: #9cdcfe;">S3_REGION</span>} <span style="color: #4ec9b0;">-C</span> ${<span style="color: #9cdcfe;">EC2_CERT</span>} <span style="color: #4ec9b0;">-K</span> ${<span style="color: #9cdcfe;">EC2_PRIVATE_KEY</span>} <span style="color: #4ec9b0;">-n</span> ${<span style="color: #9cdcfe;">AMI_NAME</span>} ${<span style="color: #9cdcfe;">S3_BUCKET_NAME</span>}<span style="color: #9cdcfe;">/${AMI_IMG}.manifest.xml</span>
+</pre>
+
+<hr />
+
+
+<h3>重要參數備註</h3>
+
+<table style="width:100%;max-width:700px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background: rgb(51, 65, 85);">
+      <th style="border: 1px solid rgb(71, 85, 105); color: #f1f5f9; padding: 10px 16px; text-align: left;">參數</th>
+      <th style="border: 1px solid rgb(71, 85, 105); color: #f1f5f9; padding: 10px 16px; text-align: left;">說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">S3_BUCKET_NAME</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><strong>需使用小寫</strong>，否則出現錯誤：<em style="color:#dc2626;">The specified bucket is not S3 v2 safe</em></td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">S3_REGION</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">可選：<code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">EU</code>, <code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">US</code>, <code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">us-west-1</code>, <code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">us-west-2</code>, <code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">ap-southeast-1</code>, <code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">ap-northeast-1</code>, <code style="background:#eff6ff;padding:2px 6px;border-radius:4px;color:#1d4ed8;">sa-east-1</code></td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">resize2fs</code></td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Launch 後執行，<strong>費時</strong>，視空間大小而定</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CentOS/" rel="tag"># CentOS</a>
+              <a href="/tags/AWS/" rel="tag"># AWS</a>
+              <a href="/tags/EC2/" rel="tag"># EC2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2012/11/22/2012-11-23-logging-all-user-command-history-%E5%B7%B2%E8%A7%A3%E6%B1%BAwinscp-sftp%E5%95%8F%E9%A1%8C/" rel="prev" title="logging all user command history (已解決winscp&#x2F;sftp問題)">
+                  <i class="fa fa-angle-left"></i> logging all user command history (已解決winscp/sftp問題)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2012/11/29/2012-11-30-per-process-i-o-statistics-on-linux/" rel="next" title="per-process I&#x2F;O statistics on Linux">
+                  per-process I/O statistics on Linux <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yuhao Chen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

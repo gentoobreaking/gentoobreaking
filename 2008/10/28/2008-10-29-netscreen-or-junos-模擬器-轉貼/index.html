@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gentoobreaking.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Netscreen 與 JunOS 模擬器資源彙整 (轉貼)  Juniper 網路設備模擬環境搭建指南       資源介紹：Olive: JUNOS 8.5 + JWEB 8.5 虛擬機下載 (極限優化版)   這是一個經過深度優化的 Olive 鏡像，壓縮包僅 98M，解壓後 159M，適合放在隨身碟中隨時進行實驗。     1. 虛擬機特色與說明                 項目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netscreen OR JunOS 模擬器 (轉貼)">
+<meta property="og:url" content="https://gentoobreaking.github.io/2008/10/28/2008-10-29-netscreen-or-junos-%E6%A8%A1%E6%93%AC%E5%99%A8-%E8%BD%89%E8%B2%BC/index.html">
+<meta property="og:site_name" content="IT@DOG">
+<meta property="og:description" content="Netscreen 與 JunOS 模擬器資源彙整 (轉貼)  Juniper 網路設備模擬環境搭建指南       資源介紹：Olive: JUNOS 8.5 + JWEB 8.5 虛擬機下載 (極限優化版)   這是一個經過深度優化的 Olive 鏡像，壓縮包僅 98M，解壓後 159M，適合放在隨身碟中隨時進行實驗。     1. 虛擬機特色與說明                 項目">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2008-10-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-18T08:37:39.895Z">
+<meta property="article:author" content="Yuhao Chen">
+<meta property="article:tag" content="JunOS">
+<meta property="article:tag" content="Juniper">
+<meta property="article:tag" content="Netscreen">
+<meta property="article:tag" content="模擬器">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gentoobreaking.github.io/2008/10/28/2008-10-29-netscreen-or-junos-%E6%A8%A1%E6%93%AC%E5%99%A8-%E8%BD%89%E8%B2%BC/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://gentoobreaking.github.io/2008/10/28/2008-10-29-netscreen-or-junos-%E6%A8%A1%E6%93%AC%E5%99%A8-%E8%BD%89%E8%B2%BC/","path":"2008/10/28/2008-10-29-netscreen-or-junos-模擬器-轉貼/","title":"Netscreen OR JunOS 模擬器 (轉貼)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Netscreen OR JunOS 模擬器 (轉貼) | IT@DOG</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="IT@DOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">IT@DOG</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">45</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">26</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Netscreen 與 JunOS 模擬器資源彙整 (轉貼)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">1. 虛擬機特色與說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">2. 快速啟動與連線設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">3. JunOS 初始配置範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">4. 已知問題與解決方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.1.</span> <span class="nav-text">檔案下載與參考資源</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuhao Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://gentoobreaking.github.io/2008/10/28/2008-10-29-netscreen-or-junos-%E6%A8%A1%E6%93%AC%E5%99%A8-%E8%BD%89%E8%B2%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yuhao Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Netscreen OR JunOS 模擬器 (轉貼) | IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Netscreen OR JunOS 模擬器 (轉貼)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2008-10-29 00:00:00" itemprop="dateCreated datePublished" datetime="2008-10-29T00:00:00+08:00">2008-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2026-06-18 16:37:39" itemprop="dateModified" datetime="2026-06-18T16:37:39+08:00">2026-06-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B6%B2%E8%B7%AF%E6%8A%80%E8%A1%93/" itemprop="url" rel="index"><span itemprop="name">網路技術</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2>Netscreen 與 JunOS 模擬器資源彙整 (轉貼)</h2>
+
+<p style="color:#6b7280;font-size:14px;margin-top:-8px;">Juniper 網路設備模擬環境搭建指南</p>
+
+<hr/>
+
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#1e40af;font-weight:600;">資源介紹：Olive: JUNOS 8.5 + JWEB 8.5 虛擬機下載 (極限優化版)</p>
+  <p style="margin:0;font-size:14px;color:#374151;">這是一個經過深度優化的 Olive 鏡像，壓縮包僅 98M，解壓後 159M，適合放在隨身碟中隨時進行實驗。</p>
+</div>
+
+<hr/>
+
+<h2>1. 虛擬機特色與說明</h2>
+
+<table style="width:100%;max-width:800px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;width:30%;">項目</th>
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">基底系統</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">從 FreeBSD 6.0 遷移至 FreeBSD 4.11 以縮減體積。</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">JunOS 版本</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">jinstall-8.5R1.4-domestic-olive。</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">連線方式</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">支援命名管道 (Named Pipe) 控制，可透過 Telnet 進行操作。</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">J-Web 支援</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">已內建 JWEB 網管介面，支援瀏覽器登入管理。</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2>2. 快速啟動與連線設定</h2>
+
+<p>為了正確看到 Console 輸出，建議使用 <strong>Pipe Proxy</strong> 工具建立管道連線：</p>
+
+<ol style="line-height:1.8; color:#374151;">
+  <li>使用 <strong>Pipe Proxy</strong> 新建管道名稱：<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">\\.\pipe\rocisky</code></li>
+  <li>設定連接埠：<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">2001</code></li>
+  <li>使用終端機連線：<code style="background:#1e1e1e;color:#9cdcfe;padding:2px 6px;border-radius:4px;">telnet 127.0.0.1 2001</code></li>
+</ol>
+
+<hr/>
+
+<h2>3. JunOS 初始配置範例</h2>
+
+<p>安裝好 JunOS 後，FreeBSD 的原始配置會被覆蓋，需透過以下指令重新設定網路與帳號：</p>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#567d46;"># 設定 Root 密碼</span>
+<span style="color:#569cd6;">set</span> system root-authentication plain-text-password
+
+<span style="color:#567d46;"># 建立管理帳號</span>
+<span style="color:#569cd6;">set</span> system login user rocisky uid <span style="color:#b5cea8;">2004</span> class super-user authentication plain-text-password
+
+<span style="color:#567d46;"># 設定主機名稱與網域</span>
+<span style="color:#569cd6;">set</span> system host-name olive
+<span style="color:#569cd6;">set</span> system domain-name juniper.net
+
+<span style="color:#567d46;"># 設定管理網口 IP (em0)</span>
+<span style="color:#569cd6;">set</span> interface em0 unit <span style="color:#b5cea8;">0</span> family inet address <span style="color:#b5cea8;">192.168.1.11/24</span>
+
+<span style="color:#567d46;"># 設定預設閘道</span>
+<span style="color:#569cd6;">set</span> system backup-router <span style="color:#b5cea8;">192.168.1.254</span>
+
+<span style="color:#567d46;"># 啟用 J-Web 服務</span>
+<span style="color:#569cd6;">set</span> system services web-management http
+</pre>
+
+<hr/>
+
+<h2>4. 已知問題與解決方案</h2>
+
+<div style="background:#fff7ed;border-left:4px solid #f97316;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#c2410c;font-weight:600;">⚠ 關於組播 (Multicast) 未固化問題</p>
+  <p style="margin:0;font-size:14px;color:#374151;">
+    目前版本的 Olive 存在組播配置無法固化的現象。若需要進行 OSPF 或組播相關實驗，每次啟動後可能需要進入單用戶模式執行特定的打補丁指令。
+  </p>
+</div>
+
+<hr/>
+
+<h3>檔案下載與參考資源</h3>
+
+<ul>
+  <li><strong>Rapidshare 下載網址：</strong> <a href="http://rapidshare.com/files/109424406/OliveCOM2002.rar" target="_blank" style="color:#1d4ed8;text-decoration:underline;">http://rapidshare.com/files/109424406/OliveCOM2002.rar</a></li>
+  <li><strong>原始轉貼出處：</strong> <a href="http://www.junipers.cn/Simulation/755.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Juniper 中國模擬資源站</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Netscreen/" rel="tag"># Netscreen</a>
+              <a href="/tags/Juniper/" rel="tag"># Juniper</a>
+              <a href="/tags/%E6%A8%A1%E6%93%AC%E5%99%A8/" rel="tag"># 模擬器</a>
+              <a href="/tags/JunOS/" rel="tag"># JunOS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2008/10/28/2008-10-29-%E6%8C%96%E6%8E%98%E8%83%BD%E5%8A%9B%E7%9A%84%E9%BB%83%E9%87%91%E7%B5%84%E5%90%88/" rel="prev" title="挖掘能力的黃金組合">
+                  <i class="fa fa-angle-left"></i> 挖掘能力的黃金組合
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2008/10/28/2008-10-29-%E6%83%B3%E6%B8%AC%E8%A9%A6%E4%B8%80%E4%B8%8Bhsrp%E7%9A%84%E9%83%A8%E5%88%86/" rel="next" title="想測試一下HSRP的部分">
+                  想測試一下HSRP的部分 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yuhao Chen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
