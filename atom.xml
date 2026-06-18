@@ -9,7 +9,7 @@
   <link href="https://gentoobreaking.github.io/gentoobreaking/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Yuhao Chen</rights>
   <title>IT@DOG</title>
-  <updated>2026-06-18T08:51:27.398Z</updated>
+  <updated>2026-06-18T09:01:06.784Z</updated>
   <entry>
     <author>
       <name>Yuhao Chen</name>
@@ -29,7 +29,7 @@
 <p style="color:#6b7280;font-size:14px;margin-top:-8px;">從 Blogger 搬家到 Hexo]]>
     </summary>
     <title>Hexo Migrator for Blogger 遷移指南</title>
-    <updated>2026-06-18T08:51:27.398Z</updated>
+    <updated>2026-06-18T09:01:06.784Z</updated>
   </entry>
   <entry>
     <author>
@@ -52,7 +52,7 @@
     <title>
       <![CDATA[macOS Rootkit & Virus & Spyware 檢測工具彙整]]>
     </title>
-    <updated>2026-06-18T08:51:27.398Z</updated>
+    <updated>2026-06-18T09:01:06.784Z</updated>
   </entry>
   <entry>
     <author>
@@ -74,7 +74,7 @@
   <span]]>
     </summary>
     <title>OpenClaw 深度使用心得：強大、危險，以及龍蝦化 AI 的現狀與反思</title>
-    <updated>2026-06-18T08:51:27.398Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -97,7 +97,7 @@
 <p>Linux Kernel 2.6.20 以後，kernel]]>
     </summary>
     <title>per-process I/O statistics on Linux</title>
-    <updated>2026-06-18T08:51:27.398Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -121,7 +121,7 @@
 <hr]]>
     </summary>
     <title>Build only Core CentOS 5.5 AMI for Amazon EC2</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +142,7 @@
 <p>本篇記錄三種 Linux]]>
     </summary>
     <title>logging all user command history (已解決winscp/sftp問題)</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -161,7 +161,7 @@
 <p>兩套比較有名的商業版本（都有試用版可下載，完整測試就要使用 crack]]>
     </summary>
     <title>Tools for Scanning Source Code for Vulnerabilities</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -184,7 +184,7 @@
     <title>
       <![CDATA[Windows Rootkit & Virus & Spyware Check Way]]>
     </title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -204,7 +204,7 @@
   <p]]>
     </summary>
     <title>CentOS 自動化安裝：PXE 網路開機實戰</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -225,7 +225,7 @@
 <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:14px 16px;margin:16px]]>
     </summary>
     <title>修改penk的SliTaz.tw LiveCD.....嘿嘿</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
   </entry>
   <entry>
     <author>
@@ -244,7 +244,25 @@
       <![CDATA[<h2 id="OSIRIS"><a href="#OSIRIS" class="headerlink" title="OSIRIS"></a>OSIRIS</h2><p><strong>官方網站：</strong> <a]]>
     </summary>
     <title>兩套免費的 HIDS</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Yuhao Chen</name>
+    </author>
+    <category term="網路技術" scheme="https://gentoobreaking.github.io/gentoobreaking/categories/%E7%B6%B2%E8%B7%AF%E6%8A%80%E8%A1%93/"/>
+    <category term="GNS3" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/GNS3/"/>
+    <content>
+      <![CDATA[<p>這個應該很多人都知道囉。就不多說囉。<br /><br /><img src="file:///C:/DOCUME%7E1/ADMINI%7E1/LOCALS%7E1/Temp/moz-screenshot.jpg" alt="" /> <p align="center"><img src="http://www.gns3.net/sites/gns3.net/files/images/screenshots/screenshot-complex-lab.mini.png" title="You can design complex toplogies" width="600" height="450" /></p></p>]]>
+    </content>
+    <id>https://gentoobreaking.github.io/gentoobreaking/2008/10/28/2008-10-29-gsn3/</id>
+    <link href="https://gentoobreaking.github.io/gentoobreaking/2008/10/28/2008-10-29-gsn3/"/>
+    <published>2008-10-28T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p>這個應該很多人都知道囉。就不多說囉。<br /><br /><img src="file:///C:/DOCUME%7E1/ADMINI%7E1/LOCALS%7E1/Temp/moz-screenshot.jpg" alt="" /> <p]]>
+    </summary>
+    <title>GSN3</title>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
   <entry>
     <author>
@@ -263,25 +281,7 @@
       <![CDATA[<p><span class="titlename">Cisco Packet Tracer<br /><br />目前有Windows及Linux兩種版本。<br /><br /></span><strong style="color: rgb(255, 255,]]>
     </summary>
     <title>Cisco Packet Tracer</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Yuhao Chen</name>
-    </author>
-    <category term="網路技術" scheme="https://gentoobreaking.github.io/gentoobreaking/categories/%E7%B6%B2%E8%B7%AF%E6%8A%80%E8%A1%93/"/>
-    <category term="GNS3" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/GNS3/"/>
-    <content>
-      <![CDATA[<p>這個應該很多人都知道囉。就不多說囉。<br /><br /><img src="file:///C:/DOCUME%7E1/ADMINI%7E1/LOCALS%7E1/Temp/moz-screenshot.jpg" alt="" /> <p align="center"><img src="http://www.gns3.net/sites/gns3.net/files/images/screenshots/screenshot-complex-lab.mini.png" title="You can design complex toplogies" width="600" height="450" /></p></p>]]>
-    </content>
-    <id>https://gentoobreaking.github.io/gentoobreaking/2008/10/28/2008-10-29-gsn3/</id>
-    <link href="https://gentoobreaking.github.io/gentoobreaking/2008/10/28/2008-10-29-gsn3/"/>
-    <published>2008-10-28T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p>這個應該很多人都知道囉。就不多說囉。<br /><br /><img src="file:///C:/DOCUME%7E1/ADMINI%7E1/LOCALS%7E1/Temp/moz-screenshot.jpg" alt="" /> <p]]>
-    </summary>
-    <title>GSN3</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
   <entry>
     <author>
@@ -308,7 +308,7 @@
 <div]]>
     </summary>
     <title>Netscreen OR JunOS 模擬器 (轉貼)</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
   <entry>
     <author>
@@ -327,7 +327,7 @@
       <![CDATA[<p>想測試一下HSRP的部分，竟然發現一堆IOS都無法建立vlan?<br />最後，看到這篇文章才發現…..&gt;&lt;||<br /><br /><h1><a]]>
     </summary>
     <title>想測試一下HSRP的部分</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
   <entry>
     <author>
@@ -345,7 +345,25 @@
       <![CDATA[<p><span style="color: rgb(51, 204, 0);">本篇文章摘自： 商業周刊第 1083 期</span><br /><span style="color: rgb(51, 204, 0);">作者：曠文琪</span><br /><br]]>
     </summary>
     <title>挖掘能力的黃金組合</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.783Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Yuhao Chen</name>
+    </author>
+    <category term="開發工具與自動化" scheme="https://gentoobreaking.github.io/gentoobreaking/categories/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7%E8%88%87%E8%87%AA%E5%8B%95%E5%8C%96/"/>
+    <category term="壓力測試" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6/"/>
+    <content>
+      <![CDATA[<p><span style="font-size:130%;"><span style="font-weight: bold;">許多工具的地方：</span><br /><br /><a style="font-family: arial;" href="http://www.softwareqatest.com/qatweb1.html#SECURITY">Web Site Test Tools and Site Management Tools</a><br /><br /><br /><a style="font-family: arial;" href="http://www.opensourcetesting.org/performance.php">Open Source Performance test tools</a></span><br /><br /><span style="font-size:130%;"><a style="font-weight: bold; font-family: arial;" href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank"></a><span style="font-weight: bold;font-family:arial;" >ApacheBench </span></span>- 可由Apache直接下載安裝使用。也可以直接copy出來單獨使用。<br /><br /><span style="font-weight: bold;">使用範例：</span><br />C:&gt;ab -e output.csv -n 10000 -c 10 -k <a href="http://www.xxx.com.tw/index.aspx">http://www.xxx.com.tw/index.aspx</a><br />This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;<br />Copyright 1996 Adam Twiss, Zeus Technology Ltd, <a href="http://www.zeustech.net/">http://www.zeustech.net/</a><br />Licensed to The Apache Software Foundation, <a href="http://www.apache.org/">http://www.apache.org/</a><br /><br />Benchmarking <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a> (be patient)<br />Completed 1000 requests<br />Completed 2000 requests<br />Completed 3000 requests<br />Completed 4000 requests<br />Completed 5000 requests<br />Completed 6000 requests<br />Completed 7000 requests<br />Completed 8000 requests<br />Completed 9000 requests<br />Completed 10000 requests<br />Finished 10000 requests<br /><br /><br />Server Software:        Apache<br />Server Hostname:        <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a><br />Server Port:            80<br /><br />Document Path:          &#x2F;index.aspx<br />Document Length:        208 bytes<br /><br />Concurrency Level:      10<br />Time taken for tests:   17.156 seconds<br />Complete requests:      10000<br />Failed requests:        0<br />Write errors:           0<br />Non-2xx responses:      10000<br />Keep-Alive requests:    9985<br />Total transferred:      4087331 bytes<br />HTML transferred:       2080000 bytes<br />Requests per second:    582.88 [#&#x2F;sec] (mean)<br />Time per request:       17.156 [ms] (mean)<br />Time per request:       1.716 [ms] (mean, across all concurrent requests)<br />Transfer rate:          232.66 [Kbytes&#x2F;sec] received<br /><br />Connection Times (ms)<br />              min  mean[+&#x2F;-sd] median   max<br />Connect:        0    0   0.9      0      31<br />Processing:     0   17   6.8     16     219<br />Waiting:        0   17   6.6     16     219<br />Total:          0   17   7.0     16     219<br /><br />Percentage of the requests served within a certain time (ms)<br />  50%     16<br />  66%     16<br />  75%     16<br />  80%     16<br />  90%     16<br />  95%     31<br />  98%     31<br />  99%     47<br /> 100%    219 (longest request)<br /><br /><span style="font-weight: bold;">參數說明：</span><br />C:&gt;ab -h<br />Usage: ab [options] [http:&#x2F;&#x2F;]hostname[:port]&#x2F;path<br />Options are:<br />   -n requests     Number of requests to perform<br />   -c concurrency  Number of multiple requests to make<br />   -t timelimit    Seconds to max. wait for responses<br />   -b windowsize   Size of TCP send&#x2F;receive buffer, in bytes<br />   -p postfile     File containing data to POST. Remember also to set -T<br />   -T content-type Content-type header for POSTing, eg.<br />                   ‘application&#x2F;x-www-form-urlencoded’<br />                   Default is ‘text&#x2F;plain’<br />   -v verbosity    How much troubleshooting info to print<br />   -w              Print out results in HTML tables<br />   -i              Use HEAD instead of GET<br />   -x attributes   String to insert as table attributes<br />   -y attributes   String to insert as tr attributes<br />   -z attributes   String to insert as td or th attributes<br />   -C attribute    Add cookie, eg. ‘Apache&#x3D;1234. (repeatable)<br />   -H attribute    Add Arbitrary header line, eg. ‘Accept-Encoding: gzip’<br />                   Inserted after all normal header lines. (repeatable)<br />   -A attribute    Add Basic WWW Authentication, the attributes<br />                   are a colon separated username and password.<br />   -P attribute    Add Basic Proxy Authentication, the attributes<br />                   are a colon separated username and password.<br />   -X proxy:port   Proxyserver and port number to use<br />   -V              Print version number and exit<br />   -k              Use HTTP KeepAlive feature<br />   -d              Do not show percentiles served table.<br />   -S              Do not show confidence estimators and warnings.<br />   -g filename     Output collected data to gnuplot format file.<br />   -e filename     Output CSV file with percentages served<br />   -r              Don’t exit on socket receive errors.<br />   -h              Display usage information (this message)<br /><br />C:&gt;<br /><br /><span style="font-weight: bold;">或可以參考</span><a style="font-weight: bold;" href="http://blog.miniasp.com/post/2008/06/Using-ApacheBench-ab-to-to-Web-stress-test.aspx">這裡</a><span style="font-weight: bold;">的說明。</span></p>]]>
+    </content>
+    <id>https://gentoobreaking.github.io/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/</id>
+    <link href="https://gentoobreaking.github.io/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/"/>
+    <published>2008-10-22T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p><span style="font-size:130%;"><span style="font-weight: bold;">許多工具的地方：</span><br /><br /><a style="font-family: arial;"]]>
+    </summary>
+    <title>壓力測試工具</title>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
   <entry>
     <author>
@@ -364,25 +382,7 @@
       <![CDATA[<p><span style="font-weight: bold;">雖然，玩過很多套NMS的系統，但看到他的畫面，還是想裝來試試看….&gt;&lt;||</span><br /><br /><a]]>
     </summary>
     <title>Spiceworks IT Desktop 3.1─能充分顯示網路節點訊息，協助管理</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Yuhao Chen</name>
-    </author>
-    <category term="開發工具與自動化" scheme="https://gentoobreaking.github.io/gentoobreaking/categories/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7%E8%88%87%E8%87%AA%E5%8B%95%E5%8C%96/"/>
-    <category term="壓力測試" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6/"/>
-    <content>
-      <![CDATA[<p><span style="font-size:130%;"><span style="font-weight: bold;">許多工具的地方：</span><br /><br /><a style="font-family: arial;" href="http://www.softwareqatest.com/qatweb1.html#SECURITY">Web Site Test Tools and Site Management Tools</a><br /><br /><br /><a style="font-family: arial;" href="http://www.opensourcetesting.org/performance.php">Open Source Performance test tools</a></span><br /><br /><span style="font-size:130%;"><a style="font-weight: bold; font-family: arial;" href="http://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank"></a><span style="font-weight: bold;font-family:arial;" >ApacheBench </span></span>- 可由Apache直接下載安裝使用。也可以直接copy出來單獨使用。<br /><br /><span style="font-weight: bold;">使用範例：</span><br />C:&gt;ab -e output.csv -n 10000 -c 10 -k <a href="http://www.xxx.com.tw/index.aspx">http://www.xxx.com.tw/index.aspx</a><br />This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;<br />Copyright 1996 Adam Twiss, Zeus Technology Ltd, <a href="http://www.zeustech.net/">http://www.zeustech.net/</a><br />Licensed to The Apache Software Foundation, <a href="http://www.apache.org/">http://www.apache.org/</a><br /><br />Benchmarking <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a> (be patient)<br />Completed 1000 requests<br />Completed 2000 requests<br />Completed 3000 requests<br />Completed 4000 requests<br />Completed 5000 requests<br />Completed 6000 requests<br />Completed 7000 requests<br />Completed 8000 requests<br />Completed 9000 requests<br />Completed 10000 requests<br />Finished 10000 requests<br /><br /><br />Server Software:        Apache<br />Server Hostname:        <a href="http://www.xxx.com.tw/">www.xxx.com.tw</a><br />Server Port:            80<br /><br />Document Path:          &#x2F;index.aspx<br />Document Length:        208 bytes<br /><br />Concurrency Level:      10<br />Time taken for tests:   17.156 seconds<br />Complete requests:      10000<br />Failed requests:        0<br />Write errors:           0<br />Non-2xx responses:      10000<br />Keep-Alive requests:    9985<br />Total transferred:      4087331 bytes<br />HTML transferred:       2080000 bytes<br />Requests per second:    582.88 [#&#x2F;sec] (mean)<br />Time per request:       17.156 [ms] (mean)<br />Time per request:       1.716 [ms] (mean, across all concurrent requests)<br />Transfer rate:          232.66 [Kbytes&#x2F;sec] received<br /><br />Connection Times (ms)<br />              min  mean[+&#x2F;-sd] median   max<br />Connect:        0    0   0.9      0      31<br />Processing:     0   17   6.8     16     219<br />Waiting:        0   17   6.6     16     219<br />Total:          0   17   7.0     16     219<br /><br />Percentage of the requests served within a certain time (ms)<br />  50%     16<br />  66%     16<br />  75%     16<br />  80%     16<br />  90%     16<br />  95%     31<br />  98%     31<br />  99%     47<br /> 100%    219 (longest request)<br /><br /><span style="font-weight: bold;">參數說明：</span><br />C:&gt;ab -h<br />Usage: ab [options] [http:&#x2F;&#x2F;]hostname[:port]&#x2F;path<br />Options are:<br />   -n requests     Number of requests to perform<br />   -c concurrency  Number of multiple requests to make<br />   -t timelimit    Seconds to max. wait for responses<br />   -b windowsize   Size of TCP send&#x2F;receive buffer, in bytes<br />   -p postfile     File containing data to POST. Remember also to set -T<br />   -T content-type Content-type header for POSTing, eg.<br />                   ‘application&#x2F;x-www-form-urlencoded’<br />                   Default is ‘text&#x2F;plain’<br />   -v verbosity    How much troubleshooting info to print<br />   -w              Print out results in HTML tables<br />   -i              Use HEAD instead of GET<br />   -x attributes   String to insert as table attributes<br />   -y attributes   String to insert as tr attributes<br />   -z attributes   String to insert as td or th attributes<br />   -C attribute    Add cookie, eg. ‘Apache&#x3D;1234. (repeatable)<br />   -H attribute    Add Arbitrary header line, eg. ‘Accept-Encoding: gzip’<br />                   Inserted after all normal header lines. (repeatable)<br />   -A attribute    Add Basic WWW Authentication, the attributes<br />                   are a colon separated username and password.<br />   -P attribute    Add Basic Proxy Authentication, the attributes<br />                   are a colon separated username and password.<br />   -X proxy:port   Proxyserver and port number to use<br />   -V              Print version number and exit<br />   -k              Use HTTP KeepAlive feature<br />   -d              Do not show percentiles served table.<br />   -S              Do not show confidence estimators and warnings.<br />   -g filename     Output collected data to gnuplot format file.<br />   -e filename     Output CSV file with percentages served<br />   -r              Don’t exit on socket receive errors.<br />   -h              Display usage information (this message)<br /><br />C:&gt;<br /><br /><span style="font-weight: bold;">或可以參考</span><a style="font-weight: bold;" href="http://blog.miniasp.com/post/2008/06/Using-ApacheBench-ab-to-to-Web-stress-test.aspx">這裡</a><span style="font-weight: bold;">的說明。</span></p>]]>
-    </content>
-    <id>https://gentoobreaking.github.io/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/</id>
-    <link href="https://gentoobreaking.github.io/gentoobreaking/2008/10/22/2008-10-23-%E5%A3%93%E5%8A%9B%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7/"/>
-    <published>2008-10-22T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<p><span style="font-size:130%;"><span style="font-weight: bold;">許多工具的地方：</span><br /><br /><a style="font-family: arial;"]]>
-    </summary>
-    <title>壓力測試工具</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
   <entry>
     <author>
@@ -401,7 +401,7 @@
       <![CDATA[<p><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}"]]>
     </summary>
     <title>我在超高點買的南科~~</title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
   <entry>
     <author>
@@ -433,6 +433,6 @@
     <title>
       <![CDATA[Apache Log To Syslog & AWStats]]>
     </title>
-    <updated>2026-06-18T08:51:27.397Z</updated>
+    <updated>2026-06-18T09:01:06.782Z</updated>
   </entry>
 </feed>
