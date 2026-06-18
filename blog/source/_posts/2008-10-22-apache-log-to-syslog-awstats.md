@@ -1,6 +1,8 @@
 ---
 title: Apache Log To Syslog & AWStats
 date: 2008-10-22
+categories: 伺服器管理
+tags: [Apache, AWStats, Syslog]
 ---
 
 <h2>Apache Log To Syslog &amp; AWStats</h2>

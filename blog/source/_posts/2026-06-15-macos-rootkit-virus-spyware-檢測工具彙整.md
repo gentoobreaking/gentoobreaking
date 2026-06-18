@@ -1,7 +1,10 @@
+---
 title: macOS Rootkit & Virus & Spyware 檢測工具彙整
 date: 2026-06-15
 categories: 資安技術
+tags: [macOS, Rootkit]
 ---
+
 
 <h2>macOS Rootkit &amp; Virus &amp; Spyware 檢測工具彙整</h2>
 

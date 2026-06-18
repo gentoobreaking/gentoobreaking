@@ -1,6 +1,8 @@
 ---
 title: per-process I/O statistics on Linux
 date: 2012-11-30
+categories: 伺服器管理
+tags: [Linux, IO]
 ---
 
 <!-- 建議：在 Blogger 后台「新增页面」→「HTML 视图」贴上此代码 -->
