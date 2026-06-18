@@ -21,6 +21,7 @@ marked:
 unsafe: true
 ```
 
+
 # 如果數量不對，先砍掉重建
 rm -f ~/git/gentoobreaking/blog/source/_posts/*
 
