@@ -2,7 +2,106 @@
 title: Netscreen OR JunOS 模擬器 (轉貼)
 date: 2008-10-29
 categories: 網路技術
-tags: [Netscreen, Juniper]
+tags: [Netscreen, Juniper, 模擬器, JunOS]
 ---
 
-<h1><span style="font-size:100%;">找了一會，終於給我找到Netscreen OR JunOS 模擬器 了。嘿嘿。<br /></span></h1><h1><span style="font-size:100%;"><a href="http://www.junipers.cn/Simulation/755.html">Olive:JUNOS8.5+JWEB8.5虚拟机下载极限优化版[98M]有组播未固化问题</a></span></h1>做了个olive，跟大家分享，是经过优化的，压缩包才98M，解压后159M，轻轻松松把JUNOS装进U盘了。<br /><br />我从freebsd6.0用磁盘镜像迁移到freebsd4.11，删除安装用的JUNOS和JWEB后，整个磁盘只有115M，直接用VMWARE打开就行了<br /><br />已经打过组播补丁，和DY一起配过OSPF，组播没问题。有朋友反应第二次启动还会有问题，参考里面的说明吧。<br /><br />初始是出场配置，压缩包中交代了初始化配置，另外支持命名管道控制（JUNOS完全启动后也可以进FREEBSD），压缩包中有pipe<br /><br />代理安装程序，安装后使用pipe proxy新建管道名\\.\pipe\rocisky 端口号2001，然后telnet 127.0.0.1 2001即可。<br /><br />FREEBSD开机后会有JUNOS一段初始化时间，用命名管道可以看到相关信息，如果要进单用户模式只能用pipe来操作了。<br /><br />按照压缩包内的初始化以后就可以JWEB登陆了，这个我用过，可以参考将JUNOS作为第二语言和OJRE,AJRE的实验指导来做实验的。<br /><br />下载地址：点free后等会就能下了，试过了，连接还有效<br /><br /><a href="http://rapidshare.com/files/109424406/OliveCOM2002.rar" target="_blank"><span style="color:#810081;">http://rapidshare.com/files/109424406/OliveCOM2002.rar</span></a><br /><br />我把制作和优化过程给大家看看，关于组播无法固化确实存在，需要每次进单用户去打几行命令才行<br /><br />一。JUNOS setup过程<br /><br />1.Named Pipe TCP Proxy 新建命名管道端口后可以telnet 127.0.0.1 到该端口<br /><br />2.FreeBSD分区时将/var 分到 ad0s1f上，（freebsd4.11第四个分区，freebsd6.0第五个）<br /><br />3.已经打包好jinstall-8.5R1.4-domestic-olive.tgz,用binary方式ftp到/var/tmp后<br /><br />  pkg_add -f jinstall-8.5R1.4-domestic-olive.tgz后重启会自动安装，tenlet后能<br /><br />  看到串口输出。<br /><br />4.安装好JUNOS原先FREEBSD的配置信息全没了，需要重新配置网卡em0的IP，才能FTP，<br /><br />  下载并安装jweb，并将OLIVE配置成web-manager模式，可以WEB登陆<br /><br />   set system root-authentication plain-text-password<br /><br />   set system login user rocisky uid 2004 class super-user authentication plain-text-password<br /><br />   set system login user keith uid 2005 class super-user authentication plain-text-password<br /><br />   set system host-name olive<br /><br />   set system domain-name juniper.net<br /><br />   set interface em0 unit 0 family inet address 192.168.1.11/24<br /><br />   set system backup-router 192.168.1.254<br /><br />   set routing-options static route default nexthop 192.168.1.254 retain no-readvertise<br /><br />   set system services ftp<br /><br />   set system services telnet<br /><br />安装jweb后可以使用set system service web-management http port 80命令<br /><br /><a href="http://192.168.2.22/" target="_blank">http://192.168.2.22</a>登陆JWEB<br /><br /><span style="color:#ff0000;">5.安装组播包，用命名管道进FREEBSD但用户模式进行操作，补丁已经在系统里了</span><br /><br /><span style="color:#ff0000;">  重新启动freebsd，在开始的BTX界面按空格，输入boot -s,显示NO boot -s，然后/boot/loader确定</span><br /><br /><span style="color:#ff0000;">会提示/usr/bin: 这里也确定，在# 后输入kldload /boot/syscall.ko（已FTP到/boot），提示最大数量</span><br /><br /><span style="color:#ff0000;">然后按ctrl+d  ,然后root登陆后输入：</span><br /><br /><span style="color:#ff0000;">  sysctl dev.em.0.fix_em_multicast=1</span><br /><br /><span style="color:#ff0000;">  sysctl dev.em.1.fix_em_multicast=1</span><br /><br /><span style="color:#ff0000;">  sysctl dev.em.2.fix_em_multicast=1</span><br /><br />6.freebsd4.11和freebsd6.0都能安装Junos8.5和Jweb8.5（直接安装）<br /><br />二。磁盘镜像优化<br /><br />1.用configure中的fdisk，按A使用整块磁盘，按W存盘，并退出重启,不是虚拟机重启，是安装重启<br />2.重启后继续用configure中的label，利用C创建如下分区（FREEBSD4.11只要分4个）：<br />      ad0s1a   /                  1024M<br />      ad0s1b   swap            512M<br />      ad0s1d   /tmp            512M<br />      ad0s1e   /config         32M(freebsd4.11不用)<br />      ad0s1f   /var             利用剩余的空间约970M<br />3.利用已经安装junos8.5的vmdk设为主盘，将刚刚格式化的新的vmdk作为从盘，启动<br />   在10秒倒计时的时候按下空格(space)键，在ok模式输入boot -s <br />   然后在#后输入<br />   fsck -p<br />   mount -u /<br />   mount -a<br />   swapon -a <br />   adjkerntz -i<br />4. mkdir /backup<br />   mkdir /backup/root<br />   mkdir /backup/var<br />5.mount /dev/ad1s1a /backup/root<br />  mount /dev/ad1s1f /backup/var<br />  ( dump -0f - / ) | ( cd /backup/root ; restore -rf - )<br />  ( dump -0f - /var ) | ( cd /backup/var ; restore -rf - )<br />  umount /backup/root<br />  umount /backup/var<br />务必要umount所有挂载分区再重启！不然每次开机都有信息显示<br />交流地址<a href="http://netemu.cn/bbs/thread-8820-1-1.html">http://netemu.cn/bbs/thread-8820-1-1.html</a>
+<h2>Netscreen 與 JunOS 模擬器資源彙整 (轉貼)</h2>
+
+<p style="color:#6b7280;font-size:14px;margin-top:-8px;">Juniper 網路設備模擬環境搭建指南</p>
+
+<hr/>
+
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#1e40af;font-weight:600;">資源介紹：Olive: JUNOS 8.5 + JWEB 8.5 虛擬機下載 (極限優化版)</p>
+  <p style="margin:0;font-size:14px;color:#374151;">這是一個經過深度優化的 Olive 鏡像，壓縮包僅 98M，解壓後 159M，適合放在隨身碟中隨時進行實驗。</p>
+</div>
+
+<hr/>
+
+<h2>1. 虛擬機特色與說明</h2>
+
+<table style="width:100%;max-width:800px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;width:30%;">項目</th>
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">說明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">基底系統</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">從 FreeBSD 6.0 遷移至 FreeBSD 4.11 以縮減體積。</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">JunOS 版本</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">jinstall-8.5R1.4-domestic-olive。</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">連線方式</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">支援命名管道 (Named Pipe) 控制，可透過 Telnet 進行操作。</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">J-Web 支援</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">已內建 JWEB 網管介面，支援瀏覽器登入管理。</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2>2. 快速啟動與連線設定</h2>
+
+<p>為了正確看到 Console 輸出，建議使用 <strong>Pipe Proxy</strong> 工具建立管道連線：</p>
+
+<ol style="line-height:1.8; color:#374151;">
+  <li>使用 <strong>Pipe Proxy</strong> 新建管道名稱：<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">\\.\pipe\rocisky</code></li>
+  <li>設定連接埠：<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">2001</code></li>
+  <li>使用終端機連線：<code style="background:#1e1e1e;color:#9cdcfe;padding:2px 6px;border-radius:4px;">telnet 127.0.0.1 2001</code></li>
+</ol>
+
+<hr/>
+
+<h2>3. JunOS 初始配置範例</h2>
+
+<p>安裝好 JunOS 後，FreeBSD 的原始配置會被覆蓋，需透過以下指令重新設定網路與帳號：</p>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#567d46;"># 設定 Root 密碼</span>
+<span style="color:#569cd6;">set</span> system root-authentication plain-text-password
+
+<span style="color:#567d46;"># 建立管理帳號</span>
+<span style="color:#569cd6;">set</span> system login user rocisky uid <span style="color:#b5cea8;">2004</span> class super-user authentication plain-text-password
+
+<span style="color:#567d46;"># 設定主機名稱與網域</span>
+<span style="color:#569cd6;">set</span> system host-name olive
+<span style="color:#569cd6;">set</span> system domain-name juniper.net
+
+<span style="color:#567d46;"># 設定管理網口 IP (em0)</span>
+<span style="color:#569cd6;">set</span> interface em0 unit <span style="color:#b5cea8;">0</span> family inet address <span style="color:#b5cea8;">192.168.1.11/24</span>
+
+<span style="color:#567d46;"># 設定預設閘道</span>
+<span style="color:#569cd6;">set</span> system backup-router <span style="color:#b5cea8;">192.168.1.254</span>
+
+<span style="color:#567d46;"># 啟用 J-Web 服務</span>
+<span style="color:#569cd6;">set</span> system services web-management http
+</pre>
+
+<hr/>
+
+<h2>4. 已知問題與解決方案</h2>
+
+<div style="background:#fff7ed;border-left:4px solid #f97316;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#c2410c;font-weight:600;">⚠ 關於組播 (Multicast) 未固化問題</p>
+  <p style="margin:0;font-size:14px;color:#374151;">
+    目前版本的 Olive 存在組播配置無法固化的現象。若需要進行 OSPF 或組播相關實驗，每次啟動後可能需要進入單用戶模式執行特定的打補丁指令。
+  </p>
+</div>
+
+<hr/>
+
+<h3>檔案下載與參考資源</h3>
+
+<ul>
+  <li><strong>Rapidshare 下載網址：</strong> <a href="http://rapidshare.com/files/109424406/OliveCOM2002.rar" target="_blank" style="color:#1d4ed8;text-decoration:underline;">http://rapidshare.com/files/109424406/OliveCOM2002.rar</a></li>
+  <li><strong>原始轉貼出處：</strong> <a href="http://www.junipers.cn/Simulation/755.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Juniper 中國模擬資源站</a></li>
+</ul>
