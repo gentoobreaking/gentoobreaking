@@ -9,7 +9,35 @@
   <link href="https://gentoobreaking.github.io/gentoobreaking/atom.xml" rel="self"/>
   <rights>All rights reserved 2026, Yuhao Chen</rights>
   <title>IT@DOG</title>
-  <updated>2026-06-18T09:32:18.108Z</updated>
+  <updated>2026-07-30T14:30:11.226Z</updated>
+  <entry>
+    <author>
+      <name>Yuhao Chen</name>
+    </author>
+    <category term="AI工具與開發" scheme="https://gentoobreaking.github.io/gentoobreaking/categories/AI%E5%B7%A5%E5%85%B7%E8%88%87%E9%96%8B%E7%99%BC/"/>
+    <category term="OpenClaw" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/OpenClaw/"/>
+    <category term="AI Agent" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/AI-Agent/"/>
+    <category term="Heartbeat" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/Heartbeat/"/>
+    <category term="Jarvis Mode" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/Jarvis-Mode/"/>
+    <category term="IM" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/IM/"/>
+    <content>
+      <![CDATA[<h2>AI Agent 的任務中斷：Heartbeat 真的夠用嗎？</h2><p style="color:#6b7280;font-size:14px;margin-top:-8px;">測試多套 AI Agent 後的系統級思考</p><hr/><h2>1. 任務中斷之痛</h2><p>最近密集測試了多套不同的 AI Agent 系統與模型，包含 OpenClaw、Claude Code、Cline、Cursor Agent Mode 等，發現一個共通的痛點：<strong>任務跑到一半就中斷了</strong>。</p><p>常見的中斷情境：</p><ul style="line-height:1.8;color:#374151;">  <li>長時間編譯或部署任務超過模型 Context Window 上限</li>  <li>API Timeout 導致子任務未完成就被截斷</li>  <li>用戶切換話題後，原來的任務狀態遺失</li>  <li>大型檔案處理過程中被系統 Kill（OOM 或運算超時）</li></ul><hr/><h2>2. Heartbeat 配置的真實用法</h2><p>OpenClaw 提供了 <strong>Heartbeat</strong> 機制，理論上可以讓 Agent 定期「甦醒」檢查狀態、繼續未完成的任務。但實際使用後發現，Heartbeat 的設計初衷是<strong>被動輪詢（Polling）</strong>，而非任務生命週期管理。</p><div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0 0 8px 0;color:#1e40af;font-weight:600;">Heartbeat vs 任務持續性</p>  <ul style="margin:4px 0;padding-left:20px;color:#374151;line-height:1.8;">    <li><strong>✅ Heartbeat 適合做：</strong>定時輪詢來觸發任務、檢查執行狀態、確認任務是否卡住。這是 Heartbeat 的強項，搭配任務清單可以批次檢查多個事項。</li>    <li><strong>❌ Heartbeat 無法保證：</strong>執行中的長任務不會因 Context Window 耗盡或 API Timeout 而中斷。Heartbeat 輪詢只能事後發現中斷，無法事前防止。</li>    <li><strong>💡 注意：</strong>Heartbeat 是多數 AI Agent 平台都有的通用機制，相對成熟。但內建 Cron 排程系統反而是少數 Agent 才具備的功能（如 OpenClaw），並非每個平台都有，不太適合當成 Heartbeat 的通用替代方案。</li>  </ul></div><p>理想的任務生命週期應該是：</p><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#567d46;"># 設想的流程</span>發起任務 → Agent 切割子任務 → 逐個執行 →若 Context 將滿 → 自動壓縮/儲存狀態 →恢復時載入上下文 → 繼續執行 → 任務完成</pre><p>目前只有部分工具（如 Claude Code 的 Resume 功能）能做到類似的斷點續傳，但還沒有一個統一的標準。</p><hr/><h2>3. Jarvis Mode：語音喚醒的 AI Agent</h2><p>另一個我認為 AI Agent 應該都要直接支援的功能是 <strong>Jarvis Mode</strong>。</p><p>就像鋼鐵人的 Jarvis 一樣：</p><ul style="line-height:1.8;color:#374151;">  <li><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">"Hey, Claw~"</code> → 直接語音喚醒對話</li>  <li>全程語音交互，不需要打字</li>  <li>Agent 能「聽懂」並即時回應，類似語音助理但具備完整的 Agent 能力</li></ul><p>為什麼這很重要？</p><ul style="line-height:1.8;color:#374151;">  <li><strong>降低使用門檻：</strong>不是每個場景都適合打字（開車、做家事、coding 中不想切換視窗）</li>  <li><strong>提高使用頻率：</strong>語音是最自然的交互方式，隨口一句就能啟動任務</li>  <li><strong>即時反饋：</strong>任務完成後直接語音匯報結果，比看文字通知更有效率</li></ul><div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0 0 8px 0;color:#166534;font-weight:600;">Jarvis Mode 的理想架構</p>  <pre style="margin:4px 0;font-family:monospace;color:#374151;font-size:13px;">用戶語音 → STT（語音轉文字）   → Agent 理解意圖 → 執行工具/任務   → TTS（文字轉語音） → 語音回覆用戶  </pre></div><hr/><h2>4. Jarvis Mode + IM = 更高使用率</h2><p>如果 Jarvis Mode 再結合 <strong>IM（即時通訊）</strong>，那就是殺手級組合：</p><table style="width:100%;max-width:800px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">  <thead>    <tr style="background:rgb(51,65,85);">      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">場景</th>      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">傳統方式</th>      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">Jarvis + IM</th>    </tr>  </thead>  <tbody>    <tr style="background:#ffffff;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">檢查服務狀態</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">開 terminal → SSH → 下指令</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">「Hey Claw, server 還活著嗎？」→ 語音回報</td>    </tr>    <tr style="background:#f9fafb;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">部署更新</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">手動 git push + CI/CD</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">Line/Signal 傳「deploy 最新版」→ IM 回傳結果</td>    </tr>    <tr style="background:#ffffff;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">排程提醒</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">設行事曆鬧鐘</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">「30分鐘後提醒我重啟資料庫」→ IM 定時推送</td>    </tr>  </tbody></table><p>OpenClaw 已經內建了多種 IM 通道（Telegram、Signal、Discord、WhatsApp 等），如果能再加上語音喚醒的 Jarvis 層，使用率絕對會翻倍。</p><div style="background:#fef2f2;border-left:4px solid #ef4444;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0 0 8px 0;color:#991b1b;font-weight:600;">一個大膽的願景</p>  <p style="margin:0;color:#374151;">未來的 AI Agent 不應該只是「聊天機器人」，而應該是真正的 <strong>數位助手</strong>——隨時在線、語音喚醒、跨 IM 平台、任務永不中斷。就像隨身帶了一個 Jarvis。</p></div><hr/><h2>5. 結語</h2><p>總結這次的測試心得：</p><ol style="line-height:1.8;color:#374151;">  <li><strong>任務中斷</strong>是目前 AI Agent 最大的痛點，Heartbeat 能緩解但無法根治，需要更好的 Context 壓縮與任務持久化機制</li>  <li><strong>Jarvis Mode（語音喚醒）</strong>是 Agent 應該原生支援的能力，不要讓用戶每次都手動開介面</li>  <li><strong>Jarvis + IM</strong> 是提高 AI Agent 使用率的關鍵組合，語音進、即時通訊出，形成完整的交互閉環</li></ol><p>希望未來能看到更多 Agent 框架原生內建這些能力，而不是靠使用者自己拼湊。</p>]]>
+    </content>
+    <id>https://gentoobreaking.github.io/gentoobreaking/2026/07/29/2026-07-30-AI-Agent-Heartbeat-Voice-Jarvis-Mode/</id>
+    <link href="https://gentoobreaking.github.io/gentoobreaking/2026/07/29/2026-07-30-AI-Agent-Heartbeat-Voice-Jarvis-Mode/"/>
+    <published>2026-07-29T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<h2>AI Agent 的任務中斷：Heartbeat 真的夠用嗎？</h2>
+
+<p style="color:#6b7280;font-size:14px;margin-top:-8px;">測試多套 AI Agent 後的系統級思考</p>
+
+<hr/>
+
+<h2>1.]]>
+    </summary>
+    <title>AI Agent Heartbeat 與 Jarvis Mode — 任務中斷與語音互動的實戰思考</title>
+    <updated>2026-07-30T14:30:11.226Z</updated>
+  </entry>
   <entry>
     <author>
       <name>Yuhao Chen</name>
@@ -29,7 +57,7 @@
 <p style="color:#6b7280;font-size:14px;margin-top:-8px;">從 Blogger 搬家到 Hexo]]>
     </summary>
     <title>Hexo Migrator for Blogger 遷移指南</title>
-    <updated>2026-06-18T09:32:18.108Z</updated>
+    <updated>2026-07-30T14:30:11.226Z</updated>
   </entry>
   <entry>
     <author>
@@ -52,7 +80,7 @@
     <title>
       <![CDATA[macOS Rootkit & Virus & Spyware 檢測工具彙整]]>
     </title>
-    <updated>2026-06-18T09:32:18.108Z</updated>
+    <updated>2026-07-30T14:30:11.226Z</updated>
   </entry>
   <entry>
     <author>
@@ -74,7 +102,7 @@
   <span]]>
     </summary>
     <title>OpenClaw 深度使用心得：強大、危險，以及龍蝦化 AI 的現狀與反思</title>
-    <updated>2026-06-18T09:32:18.108Z</updated>
+    <updated>2026-07-30T14:30:11.226Z</updated>
   </entry>
   <entry>
     <author>
@@ -97,7 +125,7 @@
 <p>Linux Kernel 2.6.20 以後，kernel]]>
     </summary>
     <title>per-process I/O statistics on Linux</title>
-    <updated>2026-06-18T09:32:18.108Z</updated>
+    <updated>2026-07-30T14:30:11.226Z</updated>
   </entry>
   <entry>
     <author>
@@ -121,7 +149,7 @@
 <hr]]>
     </summary>
     <title>Build only Core CentOS 5.5 AMI for Amazon EC2</title>
-    <updated>2026-06-18T09:32:18.108Z</updated>
+    <updated>2026-07-30T14:30:11.226Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +170,7 @@
 <p>本篇記錄三種 Linux]]>
     </summary>
     <title>logging all user command history (已解決winscp/sftp問題)</title>
-    <updated>2026-06-18T09:32:18.108Z</updated>
+    <updated>2026-07-30T14:30:11.226Z</updated>
   </entry>
   <entry>
     <author>
@@ -161,7 +189,7 @@
 <p>兩套比較有名的商業版本（都有試用版可下載，完整測試就要使用 crack]]>
     </summary>
     <title>Tools for Scanning Source Code for Vulnerabilities</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -184,7 +212,7 @@
     <title>
       <![CDATA[Windows Rootkit & Virus & Spyware Check Way]]>
     </title>
-    <updated>2026-06-18T09:32:18.108Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -204,7 +232,7 @@
   <p]]>
     </summary>
     <title>CentOS 自動化安裝：PXE 網路開機實戰</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -225,7 +253,7 @@
 <div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:14px 16px;margin:16px]]>
     </summary>
     <title>修改penk的SliTaz.tw LiveCD.....嘿嘿</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -244,7 +272,7 @@
       <![CDATA[<h2 id="OSIRIS"><a href="#OSIRIS" class="headerlink" title="OSIRIS"></a>OSIRIS</h2><p><strong>官方網站：</strong> <a]]>
     </summary>
     <title>兩套免費的 HIDS</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -263,7 +291,7 @@
       <![CDATA[<p><span class="titlename">Cisco Packet Tracer<br /><br />目前有Windows及Linux兩種版本。<br /><br /></span><strong style="color: rgb(255, 255,]]>
     </summary>
     <title>Cisco Packet Tracer</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -281,7 +309,7 @@
       <![CDATA[<p>這個應該很多人都知道囉。就不多說囉。<br /><br /><img src="file:///C:/DOCUME%7E1/ADMINI%7E1/LOCALS%7E1/Temp/moz-screenshot.jpg" alt="" /> <p]]>
     </summary>
     <title>GSN3</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -308,7 +336,7 @@
 <div]]>
     </summary>
     <title>Netscreen OR JunOS 模擬器 (轉貼)</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -327,7 +355,7 @@
       <![CDATA[<p>想測試一下HSRP的部分，竟然發現一堆IOS都無法建立vlan?<br />最後，看到這篇文章才發現…..&gt;&lt;||<br /><br /><h1><a]]>
     </summary>
     <title>想測試一下HSRP的部分</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -345,7 +373,7 @@
       <![CDATA[<p><span style="color: rgb(51, 204, 0);">本篇文章摘自： 商業周刊第 1083 期</span><br /><span style="color: rgb(51, 204, 0);">作者：曠文琪</span><br /><br]]>
     </summary>
     <title>挖掘能力的黃金組合</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -364,7 +392,7 @@
       <![CDATA[<p><span style="font-weight: bold;">雖然，玩過很多套NMS的系統，但看到他的畫面，還是想裝來試試看….&gt;&lt;||</span><br /><br /><a]]>
     </summary>
     <title>Spiceworks IT Desktop 3.1─能充分顯示網路節點訊息，協助管理</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -382,7 +410,7 @@
       <![CDATA[<p><span style="font-size:130%;"><span style="font-weight: bold;">許多工具的地方：</span><br /><br /><a style="font-family: arial;"]]>
     </summary>
     <title>壓力測試工具</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
   <entry>
     <author>
@@ -401,38 +429,6 @@
       <![CDATA[<p><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}"]]>
     </summary>
     <title>我在超高點買的南科~~</title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>Yuhao Chen</name>
-    </author>
-    <category term="伺服器管理" scheme="https://gentoobreaking.github.io/gentoobreaking/categories/%E4%BC%BA%E6%9C%8D%E5%99%A8%E7%AE%A1%E7%90%86/"/>
-    <category term="Apache" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/Apache/"/>
-    <category term="AWStats" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/AWStats/"/>
-    <category term="Syslog" scheme="https://gentoobreaking.github.io/gentoobreaking/tags/Syslog/"/>
-    <content>
-      <![CDATA[<h2>Apache Log To Syslog &amp; AWStats</h2><h3>目的：統計多站台檔案存取次數及流量</h3><hr/><h2>一、Apache Log To Syslog</h2><h3>參考資源</h3><ul style="color:#374151;line-height:2;">  <li><a href="http://www.oreillynet.com/pub/a/sysadmin/2006/10/12/httpd-syslog.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">O'Reilly - HTTPd Syslog</a></li>  <li><a href="http://www.devshed.com/c/a/Apache/Logging-in-Apache/4/" target="_blank" style="color:#1d4ed8;text-decoration:underline;">DevShed - Logging in Apache</a></li>  <li><a href="http://phorum.study-area.org/index.php?topic=26137.0" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Study-Area 討論串</a></li>  <li><a href="http://linux.chinaunix.net/techdoc/net/2007/11/30/973513.shtml" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Linux ChinaUnix Techdoc</a></li></ul><div style="background:#fff7ed;border-left:4px solid #f97316;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0;color:#c2410c;"><strong>⚠️</strong> <strong>Remote Log Server IP：</strong><code style="background:#fff7ed;color:#c2410c;padding:2px 6px;border-radius:4px;">@remotelogsrvip</code></p></div><h3>開機時自動啟動 tail + logger</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># vi /etc/rc.local 加入下列</span><span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/error_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local1.info &amp;<span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/access_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local2.info &amp;</pre><h3>Syslog 設定：傳送到遠端伺服器</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># vi /etc/syslog.conf</span><span style="color:#9cdcfe;">local1.*</span>  <span style="color:#ce9178;">@remotelogsrvip</span><span style="color:#9cdcfe;">local2.*</span>  <span style="color:#ce9178;">@remotelogsrvip</span><span style="color:#9cdcfe;">*.*</span>       <span style="color:#ce9178;">@remotelogsrvip</span></pre><div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0;color:#1e40af;"><strong>💡</strong> 需手動執行一次（開機後若 rc.local 尚未觸發）：p></div><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/error_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local1.info &amp;<span style="color:#569cd6;">nohup</span> tail <span style="color:#4ec9b0;">-f</span> /var/log/httpd/access_log | /usr/bin/logger <span style="color:#4ec9b0;">-p</span> local2.info &amp;<span style="color:#569cd6;">service</span> syslog restart</pre><h3>Syslog 設定：寫入本地端檔案</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># vi /etc/syslog.conf</span><span style="color:#9cdcfe;">local1.*</span>  /var/log/apache/error_log<span style="color:#9cdcfe;">local2.*</span>  /var/log/apache/access_log</pre><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># 需手動執行一次</span><span style="color:#569cd6;">mkdir</span> /var/log/apache<span style="color:#569cd6;">service</span> syslog restart</pre><h3>修改 Log 自動封存時間</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># vi /etc/logrotate.conf</span><span style="color:#9cdcfe;">/var/log/httpd/access_log</span> {  <span style="color:#9cdcfe;">daily</span>  <span style="color:#569cd6;">create</span> <span style="color:#b5cea8;">0664</span> root root  <span style="color:#9cdcfe;">rotate</span> <span style="color:#b5cea8;">90</span>}<span style="color:#9cdcfe;">/var/log/httpd/error_log</span> {  <span style="color:#9cdcfe;">daily</span>  <span style="color:#569cd6;">create</span> <span style="color:#b5cea8;">0664</span> root root  <span style="color:#9cdcfe;">rotate</span> <span style="color:#b5cea8;">90</span>}</pre><hr/><h2>二、AWStats 安裝與設定</h2><h3>參考資源</h3><ul style="color:#374151;line-height:2;">  <li><a href="http://awstats.sourceforge.net/docs/awstats_setup.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">AWStats 官方設定文件</a></li>  <li><a href="http://www.chedong.com/tech/awstats.html" target="_blank" style="color:#1d4ed8;text-decoration:underline;">chedong.com AWStats 教學</a></li>  <li><a href="http://dennys.tiger2.net/zh-hant/blog/2007/02/02/awstats" target="_blank" style="color:#1d4ed8;text-decoration:underline;">Denny's AWStats 繁體中文設定</a></li></ul><h3>安裝</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#569cd6;">rpm</span> <span style="color:#4ec9b0;">-i</span> awstats-6.8-1.noarch.rpm</pre><div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0;color:#1e40af;"><strong>💡</strong> AWStats 安裝三步驟：</p>  <ol style="margin:8px 0 0 0;padding-left:20px;color:#1e40af;line-height:1.8;">    <li>Install and Setup with <code style="background:#dbeafe;padding:2px 4px;border-radius:3px;color:#1e40af;">awstats_configure.pl</code></li>    <li>Build/Update Statistics with <code style="background:#dbeafe;padding:2px 4px;border-radius:3px;color:#1e40af;">awstats.pl</code></li>    <li>Read Statistics</li>  </ol></div><h3>設定 Apache Alias</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># vi /etc/httpd/conf/httpd.conf 加入下列</span><span style="color:#569cd6;">Alias</span> /awstatsclasses <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/classes/"</span><span style="color:#569cd6;">Alias</span> /awstatscss <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/css/"</span><span style="color:#569cd6;">Alias</span> /awstatsicons <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/icon/"</span><span style="color:#569cd6;">ScriptAlias</span> /awstats/ <span style="color:#ce9178;">"/usr/local/awstats/wwwroot/cgi-bin/"</span><span style="color:#569cd6;">Options</span> None<span style="color:#569cd6;">AllowOverride</span> None<span style="color:#569cd6;">Order</span> allow,deny<span style="color:#569cd6;">Allow from</span> all</pre><h3>執行 awstats_configure.pl</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#569cd6;">cd</span> /usr/local/awstats/<span style="color:#569cd6;">perl</span> awstats_configure.pl</pre><p style="color:#374151;margin-top:16px;">畫面輸出：</p><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;">-----> Create config file '/etc/awstats/awstats.ftp.xxx.com.tw.conf'</span><span style="color:#4ec9b0;">Config file /etc/awstats/awstats.ftp.xxx.com.tw.conf created.</span><span style="color:#6a9955;">-----> Add update process inside a scheduler</span><span style="color:#f97316;">Sorry, configure.pl does not support automatic add to cron yet.</span><span style="color:#6a9955;">You can do it manually by adding the following command to your cron:</span>/usr/local/awstats/wwwroot/cgi-bin/awstats.pl -update -config=ftp.xxx.com.tw<span style="color:#6a9955;">Or if you have several config files:</span>/usr/local/awstats/tools/awstats_updateall.pl now<span style="color:#6a9955;"># 瀏覽 AWStats 報表</span><span style="color:#ce9178;">http://localhost/awstats/awstats.pl?config=ftp.xxx.com.tw</span></pre><h3>修改 AWStats 設定檔</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># vi /etc/awstats/awstats.ftp.xxx.com.tw.conf</span><span style="color:#6a9955;">##LogFile="/var/log/httpd/mylog.log"</span><span style="color:#9cdcfe;">LogFile</span>=<span style="color:#ce9178;">"/var/log/apache/access_log"</span><span style="color:#6a9955;">##DirData="/var/lib/awstats"</span><span style="color:#9cdcfe;">DirData</span>=<span style="color:#ce9178;">"/usr/local/awstats/"</span></pre><h3>手動更新統計資料</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#569cd6;">/usr/local/awstats/wwwroot/cgi-bin/awstats.pl</span> <span style="color:#4ec9b0;">-update</span> <span style="color:#4ec9b0;">-config</span>=ftp.xxx.com.tw<span style="color:#569cd6;">/usr/local/awstats/wwwroot/cgi-bin/awstats.pl</span> <span style="color:#4ec9b0;">-update</span> <span style="color:#4ec9b0;">-config</span>=autopatch2.xxx.com.tw</pre><h3>瀏覽報表</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#ce9178;">http://localhost/awstats/awstats.pl?config=ftp.xxx.com.tw</span></pre><h3>加入 Crontab 自動更新</h3><pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;"><span style="color:#6a9955;"># crontab -e</span><span style="color:#b5cea8;">5</span> * * * * /usr/local/awstats/tools/awstats_updateall.pl now</pre><div style="background:#fff7ed;border-left:4px solid #f97316;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0;color:#c2410c;"><strong>⚠️</strong> <strong>注意：</strong><code style="background:#fff7ed;color:#c2410c;padding:2px 6px;border-radius:4px;">awstats_configure.pl</code> 目前還不支援自動寫入 crontab，需手動自行新增。</p></div><hr/><h3>流程總覽</h3><div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:20px;margin:16px 0;text-align:center;font-family:monospace;font-size:13px;line-height:2.2;color:#374151;">  <strong style="color:#1e40af;">Apache Log</strong>（access_log / error_log）  → <strong style="color:#d97706;">tail + logger</strong>（Local1 / Local2）  → <strong style="color:#7c3aed;">Syslog Server</strong>  → <strong style="color:#dc2626;">AWStats</strong>（每小時更新）  → <strong style="color:#059669;">Web UI 報表</strong></div><hr/><h3>功能對照表</h3><table style="width:100%;max-width:850px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">  <caption style="text-align:left;padding:0 0 8px 4px;font-weight:600;color:#374151;font-size:15px;">Apache Log To Syslog &amp; AWStats 功能對照</caption>  <thead>    <tr style="background:rgb(51,65,85);">      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">項目</th>      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">功能說明</th>      <th style="border:1px solid #e5e7eb;color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">相關設定</th>    </tr>  </thead>  <tbody>    <tr style="background:#ffffff;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">logger -p local1.info</code></td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Apache Error Log 轉 syslog（local1）</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/syslog.conf</code></td>    </tr>    <tr style="background:#f9fafb;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">logger -p local2.info</code></td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Apache Access Log 轉 syslog（local2）</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/syslog.conf</code></td>    </tr>    <tr style="background:#ffffff;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">logrotate</code></td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">Log 自動封存（預設 90 天）</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/logrotate.conf</code></td>    </tr>    <tr style="background:#f9fafb;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">awstats_configure.pl</code></td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">快速建立站台設定檔</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/usr/local/awstats/</code></td>    </tr>    <tr style="background:#ffffff;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">awstats.pl -update</code></td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">更新統計資料庫</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">/etc/awstats/*.conf</code></td>    </tr>    <tr style="background:#f9fafb;">      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;"><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">awstats_updateall.pl</code></td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">一次更新所有站台統計</td>      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;color:#374151;">加入 crontab 每小時執行</td>    </tr>  </tbody></table><hr/><div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:14px 16px;margin:16px 0;border-radius:0 8px 8px 0;">  <p style="margin:0;color:#166534;"><strong>💜</strong> Apache Log To Syslog + AWStats 組合可以完整掌握多站台的流量、訪客、檔案存取次數等資訊，適合需要統計分析與流量監控的網站管理需求。</p></div>]]>
-    </content>
-    <id>https://gentoobreaking.github.io/gentoobreaking/2008/10/21/2008-10-22-apache-log-to-syslog-awstats/</id>
-    <link href="https://gentoobreaking.github.io/gentoobreaking/2008/10/21/2008-10-22-apache-log-to-syslog-awstats/"/>
-    <published>2008-10-21T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h2>Apache Log To Syslog &amp; AWStats</h2>
-
-<h3>目的：統計多站台檔案存取次數及流量</h3>
-
-<hr/>
-
-<h2>一、Apache Log To Syslog</h2>
-
-<h3>參考資源</h3>
-
-<ul]]>
-    </summary>
-    <title>
-      <![CDATA[Apache Log To Syslog & AWStats]]>
-    </title>
-    <updated>2026-06-18T09:32:18.107Z</updated>
+    <updated>2026-07-30T14:30:11.225Z</updated>
   </entry>
 </feed>

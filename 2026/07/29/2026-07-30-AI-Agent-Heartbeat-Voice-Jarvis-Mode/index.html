@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/gentoobreaking/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/gentoobreaking/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/gentoobreaking/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/gentoobreaking/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/gentoobreaking/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gentoobreaking.github.io","root":"/gentoobreaking/","images":"/gentoobreaking/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"找到 ${hits} 個搜索結果（用時 ${time} 毫秒）","hits":"找到 ${hits} 個搜索結果"}}</script><script src="/gentoobreaking/js/config.js" defer></script>
+
+    <meta name="description" content="AI Agent 的任務中斷：Heartbeat 真的夠用嗎？  測試多套 AI Agent 後的系統級思考    1. 任務中斷之痛  最近密集測試了多套不同的 AI Agent 系統與模型，包含 OpenClaw、Claude Code、Cline、Cursor Agent Mode 等，發現一個共通的痛點：任務跑到一半就中斷了。  常見的中斷情境：    長時間編譯或部署任務超過模型 Con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Agent Heartbeat 與 Jarvis Mode — 任務中斷與語音互動的實戰思考">
+<meta property="og:url" content="https://gentoobreaking.github.io/gentoobreaking/2026/07/29/2026-07-30-AI-Agent-Heartbeat-Voice-Jarvis-Mode/index.html">
+<meta property="og:site_name" content="IT@DOG">
+<meta property="og:description" content="AI Agent 的任務中斷：Heartbeat 真的夠用嗎？  測試多套 AI Agent 後的系統級思考    1. 任務中斷之痛  最近密集測試了多套不同的 AI Agent 系統與模型，包含 OpenClaw、Claude Code、Cline、Cursor Agent Mode 等，發現一個共通的痛點：任務跑到一半就中斷了。  常見的中斷情境：    長時間編譯或部署任務超過模型 Con">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-07-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-30T14:30:11.226Z">
+<meta property="article:author" content="Yuhao Chen">
+<meta property="article:tag" content="AI Agent">
+<meta property="article:tag" content="Heartbeat">
+<meta property="article:tag" content="IM">
+<meta property="article:tag" content="Jarvis Mode">
+<meta property="article:tag" content="OpenClaw">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gentoobreaking.github.io/gentoobreaking/2026/07/29/2026-07-30-AI-Agent-Heartbeat-Voice-Jarvis-Mode/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://gentoobreaking.github.io/gentoobreaking/2026/07/29/2026-07-30-AI-Agent-Heartbeat-Voice-Jarvis-Mode/","path":"2026/07/29/2026-07-30-AI-Agent-Heartbeat-Voice-Jarvis-Mode/","title":"AI Agent Heartbeat 與 Jarvis Mode — 任務中斷與語音互動的實戰思考"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>AI Agent Heartbeat 與 Jarvis Mode — 任務中斷與語音互動的實戰思考 | IT@DOG</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/7.2.0/pangu.umd.js" integrity="sha256-JnmRRnJK7DC6RQJbAJb6AXOM9OmWzS6z8eYultk/48Y=" crossorigin="anonymous" defer></script>
+<script src="/gentoobreaking/js/utils.js" defer></script><script src="/gentoobreaking/js/motion.js" defer></script><script src="/gentoobreaking/js/sidebar.js" defer></script><script src="/gentoobreaking/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/gentoobreaking/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/gentoobreaking/atom.xml" title="IT@DOG" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/gentoobreaking/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">IT@DOG</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/gentoobreaking/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/gentoobreaking/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/gentoobreaking/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">49</span></a></li><li class="menu-item menu-item-categories"><a href="/gentoobreaking/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/gentoobreaking/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">27</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">AI Agent 的任務中斷：Heartbeat 真的夠用嗎？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">1. 任務中斷之痛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">2. Heartbeat 配置的真實用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">3. Jarvis Mode：語音喚醒的 AI Agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">4. Jarvis Mode + IM &#x3D; 更高使用率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">5. 結語</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yuhao Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/gentoobreaking/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/gentoobreaking/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/gentoobreaking/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://gentoobreaking.github.io/gentoobreaking/2026/07/29/2026-07-30-AI-Agent-Heartbeat-Voice-Jarvis-Mode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/gentoobreaking/images/avatar.gif">
+      <meta itemprop="name" content="Yuhao Chen">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="AI Agent Heartbeat 與 Jarvis Mode — 任務中斷與語音互動的實戰思考 | IT@DOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AI Agent Heartbeat 與 Jarvis Mode — 任務中斷與語音互動的實戰思考
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2026-07-30 00:00:00 / 修改時間：22:30:11" itemprop="dateCreated datePublished" datetime="2026-07-30T00:00:00+08:00">2026-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/gentoobreaking/categories/AI%E5%B7%A5%E5%85%B7%E8%88%87%E9%96%8B%E7%99%BC/" itemprop="url" rel="index"><span itemprop="name">AI工具與開發</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2>AI Agent 的任務中斷：Heartbeat 真的夠用嗎？</h2>
+
+<p style="color:#6b7280;font-size:14px;margin-top:-8px;">測試多套 AI Agent 後的系統級思考</p>
+
+<hr/>
+
+<h2>1. 任務中斷之痛</h2>
+
+<p>最近密集測試了多套不同的 AI Agent 系統與模型，包含 OpenClaw、Claude Code、Cline、Cursor Agent Mode 等，發現一個共通的痛點：<strong>任務跑到一半就中斷了</strong>。</p>
+
+<p>常見的中斷情境：</p>
+<ul style="line-height:1.8;color:#374151;">
+  <li>長時間編譯或部署任務超過模型 Context Window 上限</li>
+  <li>API Timeout 導致子任務未完成就被截斷</li>
+  <li>用戶切換話題後，原來的任務狀態遺失</li>
+  <li>大型檔案處理過程中被系統 Kill（OOM 或運算超時）</li>
+</ul>
+
+<hr/>
+
+<h2>2. Heartbeat 配置的真實用法</h2>
+
+<p>OpenClaw 提供了 <strong>Heartbeat</strong> 機制，理論上可以讓 Agent 定期「甦醒」檢查狀態、繼續未完成的任務。但實際使用後發現，Heartbeat 的設計初衷是<strong>被動輪詢（Polling）</strong>，而非任務生命週期管理。</p>
+
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#1e40af;font-weight:600;">Heartbeat vs 任務持續性</p>
+  <ul style="margin:4px 0;padding-left:20px;color:#374151;line-height:1.8;">
+    <li><strong>✅ Heartbeat 適合做：</strong>定時輪詢來觸發任務、檢查執行狀態、確認任務是否卡住。這是 Heartbeat 的強項，搭配任務清單可以批次檢查多個事項。</li>
+    <li><strong>❌ Heartbeat 無法保證：</strong>執行中的長任務不會因 Context Window 耗盡或 API Timeout 而中斷。Heartbeat 輪詢只能事後發現中斷，無法事前防止。</li>
+    <li><strong>💡 注意：</strong>Heartbeat 是多數 AI Agent 平台都有的通用機制，相對成熟。但內建 Cron 排程系統反而是少數 Agent 才具備的功能（如 OpenClaw），並非每個平台都有，不太適合當成 Heartbeat 的通用替代方案。</li>
+  </ul>
+</div>
+
+<p>理想的任務生命週期應該是：</p>
+
+<pre style="color:#e6e6e6;background:#1e1e1e;padding:16px 20px;border-radius:8px;overflow-x:auto;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5;margin:16px 0;">
+<span style="color:#567d46;"># 設想的流程</span>
+發起任務 → Agent 切割子任務 → 逐個執行 →
+若 Context 將滿 → 自動壓縮/儲存狀態 →
+恢復時載入上下文 → 繼續執行 → 任務完成
+</pre>
+
+<p>目前只有部分工具（如 Claude Code 的 Resume 功能）能做到類似的斷點續傳，但還沒有一個統一的標準。</p>
+
+<hr/>
+
+<h2>3. Jarvis Mode：語音喚醒的 AI Agent</h2>
+
+<p>另一個我認為 AI Agent 應該都要直接支援的功能是 <strong>Jarvis Mode</strong>。</p>
+
+<p>就像鋼鐵人的 Jarvis 一樣：</p>
+<ul style="line-height:1.8;color:#374151;">
+  <li><code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;color:#dc2626;">"Hey, Claw~"</code> → 直接語音喚醒對話</li>
+  <li>全程語音交互，不需要打字</li>
+  <li>Agent 能「聽懂」並即時回應，類似語音助理但具備完整的 Agent 能力</li>
+</ul>
+
+<p>為什麼這很重要？</p>
+<ul style="line-height:1.8;color:#374151;">
+  <li><strong>降低使用門檻：</strong>不是每個場景都適合打字（開車、做家事、coding 中不想切換視窗）</li>
+  <li><strong>提高使用頻率：</strong>語音是最自然的交互方式，隨口一句就能啟動任務</li>
+  <li><strong>即時反饋：</strong>任務完成後直接語音匯報結果，比看文字通知更有效率</li>
+</ul>
+
+<div style="background:#f0fdf4;border-left:4px solid #22c55e;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#166534;font-weight:600;">Jarvis Mode 的理想架構</p>
+  <pre style="margin:4px 0;font-family:monospace;color:#374151;font-size:13px;">
+用戶語音 → STT（語音轉文字）
+   → Agent 理解意圖 → 執行工具/任務
+   → TTS（文字轉語音） → 語音回覆用戶
+  </pre>
+</div>
+
+<hr/>
+
+<h2>4. Jarvis Mode + IM = 更高使用率</h2>
+
+<p>如果 Jarvis Mode 再結合 <strong>IM（即時通訊）</strong>，那就是殺手級組合：</p>
+
+<table style="width:100%;max-width:800px;border-collapse:collapse;margin:16px 0;font-family:system-ui,sans-serif;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background:rgb(51,65,85);">
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">場景</th>
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">傳統方式</th>
+      <th style="border:1px solid rgb(71,85,105);color:#f1f5f9;padding:10px 16px;text-align:left;font-weight:600;">Jarvis + IM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">檢查服務狀態</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">開 terminal → SSH → 下指令</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">「Hey Claw, server 還活著嗎？」→ 語音回報</td>
+    </tr>
+    <tr style="background:#f9fafb;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">部署更新</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">手動 git push + CI/CD</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">Line/Signal 傳「deploy 最新版」→ IM 回傳結果</td>
+    </tr>
+    <tr style="background:#ffffff;">
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;font-weight:600;">排程提醒</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">設行事曆鬧鐘</td>
+      <td style="padding:12px 16px;border-bottom:1px solid #e5e7eb;">「30分鐘後提醒我重啟資料庫」→ IM 定時推送</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>OpenClaw 已經內建了多種 IM 通道（Telegram、Signal、Discord、WhatsApp 等），如果能再加上語音喚醒的 Jarvis 層，使用率絕對會翻倍。</p>
+
+<div style="background:#fef2f2;border-left:4px solid #ef4444;padding:12px 16px;margin:16px 0;border-radius:0 8px 8px 0;">
+  <p style="margin:0 0 8px 0;color:#991b1b;font-weight:600;">一個大膽的願景</p>
+  <p style="margin:0;color:#374151;">未來的 AI Agent 不應該只是「聊天機器人」，而應該是真正的 <strong>數位助手</strong>——隨時在線、語音喚醒、跨 IM 平台、任務永不中斷。就像隨身帶了一個 Jarvis。</p>
+</div>
+
+<hr/>
+
+<h2>5. 結語</h2>
+
+<p>總結這次的測試心得：</p>
+<ol style="line-height:1.8;color:#374151;">
+  <li><strong>任務中斷</strong>是目前 AI Agent 最大的痛點，Heartbeat 能緩解但無法根治，需要更好的 Context 壓縮與任務持久化機制</li>
+  <li><strong>Jarvis Mode（語音喚醒）</strong>是 Agent 應該原生支援的能力，不要讓用戶每次都手動開介面</li>
+  <li><strong>Jarvis + IM</strong> 是提高 AI Agent 使用率的關鍵組合，語音進、即時通訊出，形成完整的交互閉環</li>
+</ol>
+
+<p>希望未來能看到更多 Agent 框架原生內建這些能力，而不是靠使用者自己拼湊。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/gentoobreaking/tags/OpenClaw/" rel="tag"># OpenClaw</a>
+              <a href="/gentoobreaking/tags/AI-Agent/" rel="tag"># AI Agent</a>
+              <a href="/gentoobreaking/tags/Heartbeat/" rel="tag"># Heartbeat</a>
+              <a href="/gentoobreaking/tags/Jarvis-Mode/" rel="tag"># Jarvis Mode</a>
+              <a href="/gentoobreaking/tags/IM/" rel="tag"># IM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/gentoobreaking/2026/06/17/2026-06-18-Hexo-Migrator-for-Blogger%E9%81%B7%E7%A7%BB%E6%8C%87%E5%8D%97/" rel="prev" title="Hexo Migrator for Blogger 遷移指南">
+                  <i class="fa fa-angle-left"></i> Hexo Migrator for Blogger 遷移指南
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yuhao Chen</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
