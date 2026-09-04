@@ -32,7 +32,7 @@ vim ~/git/gentoobreaking/blog/source/_posts/文章標題.md
 <h2>本地預覽</h2>
 
 ```bash
-npx hexo s
+npx hexo clean ; npx hexo s
 ```
 
 開啟 <code>http://localhost:4000</code> 在瀏覽器中預覽效果。
