@@ -13,14 +13,19 @@ type: about
   <sub>🐧 20+ years Linux &nbsp;·&nbsp; 🤖 Currently learning AI &nbsp;·&nbsp; 📍 Taipei, Taiwan</sub>
 </p>
 
-<table style="margin:24px auto; border-collapse:collapse; border:none; background:none; white-space:nowrap; table-layout:auto;">
-  <tr>
-    <td style="padding:0 4px; border:none;"><a href="https://www.linkedin.com/in/yuhao-c-b851015a/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" /></a></td>
-    <td style="padding:0 4px; border:none;"><a href="https://www.cake.me/me/chen-david-eb92ff"><img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" /></a></td>
-    <td style="padding:0 4px; border:none;"><a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md"><img src="https://img.shields.io/badge/AI%20Lab-181717?style=flat&logo=github&logoColor=white" /></a></td>
-    <td style="padding:0 4px; border:none;"><a href="https://gentoobreaking.github.io/gentoobreaking/"><img src="https://img.shields.io/badge/Blog-181717?style=flat&logo=blogger&logoColor=orange" /></a></td>
-  </tr>
-</table>
+<div style="
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+">
+  <a href="https://www.linkedin.com/in/yuhao-c-b851015a/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white"></a>
+  <a href="https://www.cake.me/me/chen-david-eb92ff"><img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white"></a>
+  <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md"><img src="https://img.shields.io/badge/AI%20Lab-181717?style=flat&logo=github&logoColor=white"></a>
+  <a href="https://gentoobreaking.github.io/gentoobreaking/"><img src="https://img.shields.io/badge/Blog-181717?style=flat&logo=blogger&logoColor=orange"></a>
+</div>
 
 <hr style="border-color:#334155;">
 
@@ -72,7 +77,14 @@ type: about
 
 <h2>🛠 Tech Stack</h2>
 
-<div style="margin-top: 10px;">
+<div style="
+  margin-top: 10px;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+">
 
 <h3>☁️ Cloud & Infra</h3>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
