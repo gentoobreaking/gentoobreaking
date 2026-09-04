@@ -2,7 +2,7 @@
 title: Hexo Blog Post Method
 date: 2026-09-04 21:49:59
 tags: [Hexo, Blogging, Workflow, Tutorial]
-
+---
 <div class="post-content">
 
 <h1>Hexo Blog Post Method</h1>
