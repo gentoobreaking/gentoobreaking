@@ -9,7 +9,8 @@ type: about
 <div style="text-align:center; margin-bottom: 30px;">
   <h1 style="margin:0; font-size:28px; color:#f8fafc;">Hi, I'm David 👋</h1>
   <p style="color:#94a3b8; margin-top:10px; font-size: 18px;">
-  <div style="margin-top:16px;">
++</p>
+<div style="margin-top:16px;">
     <a href="https://www.linkedin.com/in/yuhao-c-b851015a/" style="margin:0 4px;"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" /></a>
     <a href="https://www.cake.me/me/chen-david-eb92ff" style="margin:0 4px;"><img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" /></a>
     <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md" style="margin:0 4px;"><img src="https://img.shields.io/badge/AI%20Lab-181717?style=flat&logo=github&logoColor=white" /></a>
@@ -27,15 +28,15 @@ type: about
 <hr style="border-color:#334155;">
 
 <h2>🚀 Projects</h2>
-<div style="overflow-x: auto;">
   <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
     <thead>
       <tr style="border-bottom: 2px solid #475569;">
-        <th style="padding: 10px; text-align: left;">Project</th>
-        <th style="padding: 10px; text-align: left;">Description</th>
-      <tr style="border-bottom: 2px solid #475569;">
         <th style="padding: 10px; text-align: left; color: #e2e8f0;">Project</th>
         <th style="padding: 10px; text-align: left; color: #e2e8f0;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
         <td style="padding: 10px; border-bottom: 1px solid #334155;">🔬 <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md">AI Lab</a></td>
         <td style="padding: 10px; border-bottom: 1px solid #334155;">Personal lab for experiments & tooling</td>
       </tr>
