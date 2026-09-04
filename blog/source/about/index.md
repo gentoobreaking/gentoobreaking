@@ -4,14 +4,11 @@ date: 2026-06-18 14:02:21
 type: about
 ---
 
-<div style="background:#ffffff; padding:24px; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 30px; color: #333;">
+<div style="background:#0f172a; padding:24px; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.3); margin-bottom: 30px; color: #e2e8f0;">
 
 <div style="text-align:center; margin-bottom: 30px;">
-  <h1 style="margin:0; font-size:28px; color:#1e293b;">Hi, I'm David 👋</h1>
-  <p style="color:#64748b; margin-top:10px; font-size: 18px;">
-    <b>Senior DevOps / SRE / Network Engineer</b><br/>
-    🐧 20+ years Linux · 🤖 Currently learning AI · 📍 Taipei, Taiwan
-  </p>
+  <h1 style="margin:0; font-size:28px; color:#f8fafc;">Hi, I'm David 👋</h1>
+  <p style="color:#94a3b8; margin-top:10px; font-size: 18px;">
   <div style="margin-top:16px;">
     <a href="https://www.linkedin.com/in/yuhao-c-b851015a/" style="margin:0 4px;"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" /></a>
     <a href="https://www.cake.me/me/chen-david-eb92ff" style="margin:0 4px;"><img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" /></a>
@@ -27,43 +24,42 @@ type: about
   <li>🌱 Currently exploring <b>AI</b> and integrating it into my workflow</li>
 </ul>
 
-<hr/>
+<hr style="border-color:#334155;">
 
 <h2>🚀 Projects</h2>
 <div style="overflow-x: auto;">
   <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
     <thead>
-      <tr style="border-bottom: 2px solid #ddd;">
+      <tr style="border-bottom: 2px solid #475569;">
         <th style="padding: 10px; text-align: left;">Project</th>
         <th style="padding: 10px; text-align: left;">Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">🔬 <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md">AI Lab</a></td>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">Personal lab for experiments & tooling</td>
-      </tr>
-      <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">🤖 <a href="https://gentoobreaking.github.io/mindnav-codeagent/">MindNav CodeAgent</a></td>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">AI-powered code navigation agent</td>
+      <tr style="border-bottom: 2px solid #475569;">
+        <th style="padding: 10px; text-align: left; color: #e2e8f0;">Project</th>
+        <th style="padding: 10px; text-align: left; color: #e2e8f0;">Description</th>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">🔬 <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md">AI Lab</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">Personal lab for experiments & tooling</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">📈 <a href="https://github.com/gentoobreaking/tw-quant-selector/">台股 + ETF 自動選股系統</a></td>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">Automated Taiwan stock & ETF selector</td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">🤖 <a href="https://gentoobreaking.github.io/mindnav-codeagent/">MindNav CodeAgent</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">AI-powered code navigation agent</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">📄 <a href="https://github.com/gentoobreaking/md-viewer">MD Viewer App</a></td>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">Lightweight Markdown reader & previewer</td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">📈 <a href="https://github.com/gentoobreaking/tw-quant-selector/">台股 + ETF 自動選股系統</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">Automated Taiwan stock & ETF selector</td>
       </tr>
       <tr>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">🐳 <a href="https://github.com/gentoobreaking/dev-sandbox">Gemini SandBox Docker Mode</a></td>
-        <td style="padding: 10px; border-bottom: 1px solid #eee;">Gemini SandBox Docker Mode</td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">📄 <a href="https://github.com/gentoobreaking/md-viewer">MD Viewer App</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">Lightweight Markdown reader & previewer</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">🐳 <a href="https://github.com/gentoobreaking/dev-sandbox">Gemini SandBox Docker Mode</a></td>
+        <td style="padding: 10px; border-bottom: 1px solid #334155;">Gemini SandBox Docker Mode</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<hr/>
+<hr style="border-color:#334155;">
 
 <h2>🛠 Tech Stack</h2>
 
