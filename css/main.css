@@ -1384,7 +1384,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #e396f7;
+    background: #45776b;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2906,4 +2906,59 @@ header.header {
 .btn {
   border-radius: 6px;
   transition: all 0.3s ease;
+}
+.post-content .ai-response {
+  border-left: 3px solid #334155;
+  padding: 16px 24px;
+  margin: 20px 0;
+  background: #1e293b;
+  border-radius: 0 8px 8px 0;
+}
+.post-content .poison-reason li,
+.post-content .adjust-tips li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.post-content h1,
+.post-content h2 {
+  color: #f8fafc;
+  margin-top: 28px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 8px;
+}
+.post-content h1 {
+  border-bottom: 2px solid #334155;
+}
+.post-content h3 {
+  color: #cbd5e1;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.post-content code {
+  background: #334155;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #fbbf24;
+}
+.post-content pre code {
+  background: #0f172a;
+  padding: 0;
+}
+.post-content table {
+  background: #0f172a;
+}
+.post-content table tr {
+  background: #0f172a;
+}
+.post-content table tr:nth-child(odd) {
+  background: #0f172a;
+}
+.post-content table tr:hover {
+  background: #0f172a;
+}
+.post-content table th,
+.post-content table td {
+  background: transparent;
+  color: #e2e8f0;
 }

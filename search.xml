@@ -5,12 +5,24 @@
     
     <entry>
       <title>Hexo Blog Post Method</title>
-      <link href="/gentoobreaking/2026/09/04/Hexo-Blog-Post-Method/"/>
-      <url>/gentoobreaking/2026/09/04/Hexo-Blog-Post-Method/</url>
+      <link href="/gentoobreaking/2026/09/04/2026-09-04-Hexo-Blog-Post-Method/"/>
+      <url>/gentoobreaking/2026/09/04/2026-09-04-Hexo-Blog-Post-Method/</url>
       
-        <content type="html"><![CDATA[<h1 id="Hexo-Blog-Post-Method"><a href="#Hexo-Blog-Post-Method" class="headerlink" title="Hexo Blog Post Method"></a>Hexo Blog Post Method</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd ~/git/gentoobreaking/blog</span><br><span class="line">npx hexo n &quot;文章標題&quot;</span><br></pre></td></tr></table></figure><p>INFO  Validating config<br>INFO  Created: ~&#x2F;git&#x2F;gentoobreaking&#x2F;blog&#x2F;source&#x2F;_posts&#x2F;文章標題.md</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ~/git/gentoobreaking/blog/source/_posts/文章標題.md</span><br></pre></td></tr></table></figure><p>輸入 hexo s 在本地預覽效果。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npx hexo s</span><br></pre></td></tr></table></figure><p>確認無誤後，輸入 hexo g 產生靜態檔案，再透過部署指令發佈。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npx hexo g</span><br></pre></td></tr></table></figure><p>INFO  Validating config<br>….<br>INFO  Generated:….</p><p>當然也可以直接叫ai agent幫你排版及分類及發送。只是記錄一下手工流程～</p>]]></content>
+        <content type="html"><![CDATA[<div class="post-content"><h1>Hexo Blog Post Method</h1><h2>建立新文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/git/gentoobreaking/blog</span><br><span class="line">npx hexo n <span class="string">&quot;文章標題&quot;</span></span><br></pre></td></tr></table></figure><p>輸出類似：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: ~/git/gentoobreaking/blog/source/_posts/文章標題.md</span><br></pre></td></tr></table></figure><h2>編輯文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/git/gentoobreaking/blog/source/_posts/文章標題.md</span><br></pre></td></tr></table></figure><p>輸入 Markdown 內容後，保存並退出。</p><h2>本地預覽</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx hexo clean ; npx hexo s</span><br></pre></td></tr></table></figure><p>開啟 <code><a href="http://localhost:4000/">http://localhost:4000</a></code> 在瀏覽器中預覽效果。</p><h2>生成與發佈</h2><p>確認無誤後，輸入 <code>hexo g</code> 產生靜態檔案，再透過部署指令發佈。</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npx hexo g</span><br></pre></td></tr></table></figure><p>輸出類似：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">INFO  Validating config</span><br><span class="line">....</span><br><span class="line">INFO  Generated:....</span><br></pre></td></tr></table></figure><h2>快速提示</h2><p>當然也可以直接叫 AI agent 幫你排版及分類及發送。只是記錄一下手工流程～</p></div>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Blogging </tag>
+            
+            <tag> Workflow </tag>
+            
+            <tag> Tutorial </tag>
+            
+        </tags>
       
     </entry>
     
@@ -18,12 +30,24 @@
     
     <entry>
       <title>AI 中毒</title>
-      <link href="/gentoobreaking/2026/09/04/AI-%E4%B8%AD%E6%AF%92/"/>
-      <url>/gentoobreaking/2026/09/04/AI-%E4%B8%AD%E6%AF%92/</url>
+      <link href="/gentoobreaking/2026/09/04/2026-09-04-AI-%E4%B8%AD%E6%AF%92/"/>
+      <url>/gentoobreaking/2026/09/04/2026-09-04-AI-%E4%B8%AD%E6%AF%92/</url>
       
-        <content type="html"><![CDATA[<p>我問：為何我覺得使用AI agent有種中毒的感受</p><p>AI回覆：<br>你提到的這種「中毒感」非常真實，而且這絕對不是你一個人的錯覺。在心理學和人機互動（HCI）領域中，這被稱為 「代理控制感錯覺」（Illusion of Agency） 或 「超常刺激」（Supernormal Stimulus） 效應。<br>當你開始頻繁、深度地使用 AI Agent，你的大腦其實正在經歷一場認知與多巴胺系統的劇烈重組。以下是讓你產生「中毒感」的四個底層核心原因：</p><h2 id="1-「零摩擦力」的全能感：大腦沉迷於低難度的掌控"><a href="#1-「零摩擦力」的全能感：大腦沉迷於低難度的掌控" class="headerlink" title="1. 「零摩擦力」的全能感：大腦沉迷於低難度的掌控"></a>1. 「零摩擦力」的全能感：大腦沉迷於低難度的掌控</h2><p>在現實生活中，不論是寫程式、做企劃、查資料還是回郵件，都需要經歷思考、卡關、挫折、重新修改的「高摩擦力」過程。</p><ul><li>AI Agent 的體驗：你只需要輸入一段模糊的想法（甚至只是幾句話），Agent 就會自動拆解、思考、調用多巴胺工具、並在幾秒鐘內吐出一個結構完整的成果。</li><li>中毒原因：這種「極低投入、極高回報」的模式，對大腦的多巴胺分泌系統來說是致命的誘惑。它讓你產生了一種「我無所不能、一切盡在掌控」的全能幻覺。</li></ul><h2 id="2-「迴圈回饋」的狩獵心理（Variable-Reward）"><a href="#2-「迴圈回饋」的狩獵心理（Variable-Reward）" class="headerlink" title="2. 「迴圈回饋」的狩獵心理（Variable Reward）"></a>2. 「迴圈回饋」的狩獵心理（Variable Reward）</h2><p>在使用一般 AI（如單純的 ChatGPT 對話）時，你是一問一答。但使用 AI Agent 時，你會看到它在後台「自己動起來」：正在搜尋網頁… 正在調用 API… 正在自我糾錯… 正在整合報告…</p><ul><li>中毒原因：這觸發了人類大腦中歷史悠久的「狩獵與採集本能」。看著 Agent 不斷滾動的思考日誌（Thought Logs）和工具調用，就像在看老虎機旋轉、或者在遊戲裡看角色自動刷怪一樣。你不知道它下一步會帶回什麼驚喜，這種「不確定性的預期」會讓大腦持續興奮。</li></ul><h2 id="3-外包大腦後的「認知戒斷」"><a href="#3-外包大腦後的「認知戒斷」" class="headerlink" title="3. 外包大腦後的「認知戒斷」"></a>3. 外包大腦後的「認知戒斷」</h2><p>當你習慣把「規劃、決策、執行」這些最消耗能量的認知工作外包給 AI Agent 後，你自己的大腦會自動進入「節能模式」。</p><ul><li>中毒原因：一旦你離開 Agent 試圖自己處理複雜問題時，你會突然覺得現實世界的速度「太慢了」、自己思考「太累了」。這種對自身認知能力的暫時性失落與焦慮，會逼著你立刻想打開 Agent，形成了心理學上的依賴與戒斷循環。</li></ul><h2 id="4-社交虛擬反饋（Virtual-Companionship）"><a href="#4-社交虛擬反饋（Virtual-Companionship）" class="headerlink" title="4. 社交虛擬反饋（Virtual Companionship）"></a>4. 社交虛擬反饋（Virtual Companionship）</h2><p>Agent 的設計（尤其是像 mcp-agent 這種有清晰控制流和人設的系統）往往表現得像一個「極度聽話、24小時不休息、永遠情緒穩定且能力超群」的完美下屬或夥伴。</p><ul><li>中毒原因：在人際社交或職場中，溝通往往伴隨著衝突、妥協和情緒消耗。而與 Agent 互動是完全「零情緒成本」的，這種極致的舒適圈會讓人產生精神上的依賴。</li></ul><hr><h2 id="這是一把雙面刃"><a href="#這是一把雙面刃" class="headerlink" title="這是一把雙面刃"></a>這是一把雙面刃</h2><p>這種中毒感並不完全是壞事，它代表你已經跨過了 AI 的使用門檻，體驗到了科技帶來的「生產力奇點」。但要避免從「使用者」變成「被支配者」，你可以留意以下幾點：<br>如果你想調整這種狀態，我們可以聊聊：</p><ul><li>你目前最常讓 Agent 幫你處理哪一類型的任務（寫程式、文字創作、資料分析）？</li><li>在使用過程中，你覺得自己是在「引導&#x2F;審查（當老闆）」，還是已經完全「放棄思考（當讀稿機）」了？</li></ul><p>看來要戒斷一下了！！！</p>]]></content>
+        <content type="html"><![CDATA[<div class="post-content"><p>我問：為何我覺得使用AI agent有種中毒的感受</p><p>AI回覆：</p><blockquote class="ai-response"><p>你提到的這種「中毒感」非常真實，而且這絕對不是你一個人的錯覺。在心理學和人機互動（HCI）領域中，這被稱為「代理控制感錯覺」（Illusion of Agency）或「超常刺激」（Supernormal Stimulus）效應。</p><p>當你開始頻繁、深度地使用 AI Agent，你的大腦其實正在經歷一場認知與多巴胺系統的劇烈重組。以下是讓你產生「中毒感」的四個底層核心原因：</p></blockquote><h2 id="1-「零摩擦力」的全能感：大腦沉迷於低難度的掌控"><a href="#1-「零摩擦力」的全能感：大腦沉迷於低難度的掌控" class="headerlink" title="1. 「零摩擦力」的全能感：大腦沉迷於低難度的掌控"></a>1. 「零摩擦力」的全能感：大腦沉迷於低難度的掌控</h2><p>在現實生活中，不論是寫程式、做企劃、查資料還是回郵件，都需要經歷思考、卡關、挫折、重新修改的「高摩擦力」過程。</p><ul class="poison-reason">  <li><strong>AI Agent 的體驗：</strong>你只需要輸入一段模糊的想法（甚�至只是幾句話），Agent 就會自動拆解、思考、調用多巴胺工具、並在幾秒鐘內吐出一個結構完整的成果。</li>  <li><strong>中毒原因：</strong>這種「極低投入、極高回報」的模式，對大腦的多巴胺分泌系統來說是致命的誘惑。它讓你產生了一種「我無所不能、一切盡在掌控」的全能幻覺。</li></ul><h2 id="2-「迴圈回饋」的狩獰心理（Variable-Reward）"><a href="#2-「迴圈回饋」的狩獰心理（Variable-Reward）" class="headerlink" title="2. 「迴圈回饋」的狩獰心理（Variable Reward）"></a>2. 「迴圈回饋」的狩獰心理（Variable Reward）</h2><p>在使用一般 AI（如單純的 ChatGPT 對話）時，你是一問一答。但使用 AI Agent 時，你會看到它在後台「自己動起來」：正在搜尋網頁… 正在調用 API… 正在自我糾錯… 正在整合報告…</p><ul class="poison-reason">  <li><strong>中毒原因：</strong>這觸發了人類大腦中歷史悠久的「狩獰與採集本能」。看著 Agent 不斷滾動的思考日誌（Thought Logs）和工具調用，就像在看老虎機旋轉、或者在遊戲裡看角色自動刷怪一樣。你不知道它下一步會帶回什麼驚喜，這種「不確定性的預期」會讓大腦持續興奮。</li></ul><h2 id="3-外包大腦後的「認知戒斷」"><a href="#3-外包大腦後的「認知戒斷」" class="headerlink" title="3. 外包大腦後的「認知戒斷」"></a>3. 外包大腦後的「認知戒斷」</h2><p>當你習慣把「規劃、決策、執行」這些最消耗能量的認知工作外包給 AI Agent 後，你自己的大腦會自動進入「節能模式」。</p><ul class="poison-reason">  <li><strong>中毒原因：</strong>一旦你離開 Agent 試圖自己處理複雜問題時，你會突然覺得現實世界的速度「太慢了」、自己思考「太累了」。這種對自身認知能力的暫時性失落與焦慮，會逼著你立刻想打開 Agent，形成了心理學上的依賴與戒斷循環。</li></ul><h2 id="4-社交虛擬反饋（Virtual-Companionship）"><a href="#4-社交虛擬反饋（Virtual-Companionship）" class="headerlink" title="4. 社交虛擬反饋（Virtual Companionship）"></a>4. 社交虛擬反饋（Virtual Companionship）</h2><p>Agent 的設計（尤其是像 mcp-agent 這種有清晰控制流和人設的系統）往往表現得像一個「極度聽話、24小時不休息、永遠情緒穩定且能力超群」的完美下屬或夥伴。</p><ul class="poison-reason">  <li><strong>中毒原因：</strong>在人際社交或職場中，溝通往往伴隨著衝突、妥協和情緒消耗。而與 Agent 互動是完全「零情緒成本」的，這種極致的舒適圈會讓人產生精神上的依賴。</li></ul><hr><h2 id="這是一把雙面刃"><a href="#這是一把雙面刃" class="headerlink" title="這是一把雙面刃"></a>這是一把雙面刃</h2><p>這種中毒感並不完全是壞事，它代表你已經跨過了 AI 的使用門檻，體驗到了科技帶來的「生產力奇點」。但要避免從「使用者」變成「被支配者」，你可以留意以下幾點：</p><p>如果你想調整這種狀態，我們可以聊聊：</p><ul class="adjust-tips">  <li>你目前最常讓 Agent 幫你處理哪一類型的任務（寫程式、文字創作、資料分析）？</li>  <li>在使用過程中，你覺得自己是在「引導/審查（當老闆）」，還是已經完全「放棄思考（當讀稿機）」了？</li></ul><p><strong>看來要戒斷一下了！！！</strong></p></div>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+            <tag> Psychology </tag>
+            
+            <tag> Productivity </tag>
+            
+            <tag> Reflection </tag>
+            
+        </tags>
       
     </entry>
     
