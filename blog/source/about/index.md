@@ -13,12 +13,12 @@ type: about
   <sub>🐧 20+ years Linux &nbsp;·&nbsp; 🤖 Currently learning AI &nbsp;·&nbsp; 📍 Taipei, Taiwan</sub>
 </p>
 
-<p align="center">
+<div style="text-align:center; white-space:nowrap; margin:24px 0;">
   <a href="https://www.linkedin.com/in/yuhao-c-b851015a/" style="margin:0 4px;"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" /></a>
   <a href="https://www.cake.me/me/chen-david-eb92ff" style="margin:0 4px;"><img src="https://img.shields.io/badge/Cake%20Resume-38BDF8?style=flat&logo=read-the-docs&logoColor=white" /></a>
   <a href="https://github.com/gentoobreaking/ai-tasks/blob/main/PROJECTS.md" style="margin:0 4px;"><img src="https://img.shields.io/badge/AI%20Lab-181717?style=flat&logo=github&logoColor=white" /></a>
   <a href="https://gentoobreaking.github.io/gentoobreaking/" style="margin:0 4px;"><img src="https://img.shields.io/badge/Blog-181717?style=flat&logo=blogger&logoColor=orange" /></a>
-</p>
+</div>
 
 <hr style="border-color:#334155;">
 
